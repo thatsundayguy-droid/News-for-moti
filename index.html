@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>News for Moti</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=UnifrakturMaguntia&family=IM+Fell+English:ital@0;1&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:       #1a1008;
+      --ink-light: #3b2e1e;
+      --rule:      #1a1008;
+      --paper:     #f5efe2;
+      --paper-mid: #ede3cc;
+      --accent:    #7a1c1c;
+      --col-gap:   24px;
+    }
+
+    body {
+      background: #c8b89a;
+      font-family: 'Libre Baskerville', Georgia, serif;
+      color: var(--ink);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    /* ── PAGE WRAPPER ── */
+    .page {
+      max-width: 1080px;
+      margin: 32px auto;
+      background: var(--paper);
+      padding: 0 0 48px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.45), inset 0 0 120px rgba(180,150,90,0.08);
+      position: relative;
+    }
+
+    /* subtle aged paper texture via gradient */
+    .page::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 28px,
+          rgba(120,90,40,0.03) 28px,
+          rgba(120,90,40,0.03) 29px
+        );
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .page > * { position: relative; z-index: 1; }
+
+    /* ── MASTHEAD ── */
+    .masthead {
+      border-bottom: 3px double var(--rule);
+      padding: 20px 40px 14px;
+      text-align: center;
+    }
+
+    .masthead-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      font-family: 'IM Fell English', Georgia, serif;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 6px;
+      margin-bottom: 10px;
+    }
+
+    .masthead-title {
+      font-family: 'UnifrakturMaguntia', cursive;
+      font-size: 72px;
+      line-height: 1;
+      color: var(--ink);
+      letter-spacing: 0.02em;
+      margin: 4px 0 6px;
+    }
+
+    .masthead-tagline {
+      font-family: 'IM Fell English', Georgia, serif;
+      font-style: italic;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: var(--ink-light);
+      margin-bottom: 10px;
+    }
+
+    .masthead-bottom {
+      display: flex;
+      justify-content: space-between;
+      font-family: 'IM Fell English', serif;
+      font-size: 10px;
+      letter-spacing: 0.05em;
+      color: var(--ink-light);
+      border-top: 1px solid var(--rule);
+      padding-top: 6px;
+    }
+
+    /* ── SECTION LABEL BANNER ── */
+    .section-banner {
+      background: var(--ink);
+      color: var(--paper);
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      padding: 4px 40px;
+      margin: 0 0 0;
+    }
+
+    /* ── MAIN BODY LAYOUT ── */
+    .body-wrap {
+      padding: 0 40px;
+    }
+
+    /* ── SECTION BLOCK ── */
+    .section {
+      border-bottom: 2px solid var(--rule);
+      padding: 18px 0 14px;
+    }
+
+    .section:last-child {
+      border-bottom: none;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .section-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--ink);
+      opacity: 0.3;
+    }
+
+    /* ── COLUMNS ── */
+    .cols-2 { columns: 2; column-gap: var(--col-gap); }
+    .cols-3 { columns: 3; column-gap: var(--col-gap); }
+
+    /* ── ARTICLE ── */
+    .article {
+      break-inside: avoid;
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(26,16,8,0.15);
+    }
+
+    .article:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .article-hed {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .article-hed.large {
+      font-size: 19px;
+    }
+
+    .article-source {
+      font-family: 'IM Fell English', serif;
+      font-style: italic;
+      font-size: 10px;
+      color: var(--ink-light);
+      margin-bottom: 5px;
+      opacity: 0.75;
+    }
+
+    .article ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .article ul li {
+      padding-left: 14px;
+      position: relative;
+      margin-bottom: 4px;
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--ink-light);
+    }
+
+    .article ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 11px;
+    }
+
+    /* ── CFA CONCEPT BOX ── */
+    .cfa-box {
+      border: 1.5px solid var(--ink);
+      padding: 14px 18px;
+      margin-top: 4px;
+      background: var(--paper-mid);
+    }
+
+    .cfa-box-label {
+      font-family: 'Playfair Display', serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .cfa-concept-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 700;
+      font-style: italic;
+      margin-bottom: 8px;
+      color: var(--ink);
+    }
+
+    .cfa-box p {
+      font-size: 12px;
+      line-height: 1.6;
+      color: var(--ink-light);
+      margin-bottom: 6px;
+    }
+
+    .cfa-box p:last-child { margin-bottom: 0; }
+
+    /* ── HORIZONTAL RULE ORNAMENT ── */
+    .ornament {
+      text-align: center;
+      font-size: 14px;
+      color: var(--ink-light);
+      opacity: 0.4;
+      margin: 2px 0;
+      letter-spacing: 6px;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      border-top: 3px double var(--rule);
+      margin: 0 40px;
+      padding: 10px 0 0;
+      display: flex;
+      justify-content: space-between;
+      font-family: 'IM Fell English', serif;
+      font-size: 10px;
+      font-style: italic;
+      color: var(--ink-light);
+      opacity: 0.7;
+    }
+
+    /* ── LEAD STORY SPECIAL LAYOUT ── */
+    .lead-layout {
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr 1px 1fr;
+      gap: 0 20px;
+      align-items: start;
+    }
+
+    .col-divider {
+      width: 1px;
+      background: rgba(26,16,8,0.2);
+      align-self: stretch;
+    }
+
+    @media (max-width: 720px) {
+      .masthead-title { font-size: 44px; }
+      .masthead { padding: 16px 20px 12px; }
+      .body-wrap { padding: 0 20px; }
+      .lead-layout { grid-template-columns: 1fr; }
+      .col-divider { display: none; }
+      .cols-2, .cols-3 { columns: 1; }
+      .footer { margin: 0 20px; }
+      .section-banner { padding: 4px 20px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <div class="masthead-top">
+      <span>Est. MMXXVI &nbsp;·&nbsp; Mumbai, India</span>
+      <span>Printed for private circulation only</span>
+      <span>Vol. I &nbsp;·&nbsp; No. 1</span>
+    </div>
+    <div class="masthead-title">News for Moti</div>
+    <div class="masthead-tagline">Intelligence, Capital &amp; Infrastructure — Daily</div>
+    <div class="masthead-bottom">
+      <span>Friday, 13th June 2026</span>
+      <span>&#10070; &nbsp; Six Sections &nbsp; &#10070;</span>
+      <span>Last 24 Hours</span>
+    </div>
+  </div>
+
+  <div class="section-banner">Today's Edition</div>
+
+  <div class="body-wrap">
+
+    <!-- ════════════════════════════════════ -->
+    <!-- SECTION 1: INDIA MACRO              -->
+    <!-- ════════════════════════════════════ -->
+    <div class="section">
+      <div class="section-head">
+        <span class="section-title">India Macro</span>
+        <span class="section-rule"></span>
+      </div>
+
+      <div class="lead-layout">
+        <div class="article">
+          <div class="article-hed large">RBI Holds Rates Steady Amid Inflation Watch</div>
+          <div class="article-source">Reserve Bank of India &nbsp;·&nbsp; June 2026</div>
+          <ul>
+            <li>MPC votes 4–2 to hold repo rate at 6.25%; stance shifts to neutral from withdrawal of accommodation</li>
+            <li>CPI inflation forecast revised upward to 4.5% for FY27 on food and fuel pressures</li>
+            <li>GDP growth projection maintained at 6.8% for FY27 despite global headwinds</li>
+            <li>Governor flags vigilance on El Niño risk to Kharif crop output</li>
+          </ul>
+        </div>
+
+        <div class="col-divider"></div>
+
+        <div class="article">
+          <div class="article-hed">Rupee Holds 83-Handle as FII Flows Return</div>
+          <div class="article-source">Bloomberg India &nbsp;·&nbsp; June 2026</div>
+          <ul>
+            <li>INR at 83.42/USD; RBI intervention capped downside volatility</li>
+            <li>Equity FII net inflows of ₹3,200 cr in last session; debt flows remain cautious</li>
+            <li>10-year G-sec yield eases 4 bps to 6.88% on rate-hold relief</li>
+          </ul>
+
+          <div class="article-hed" style="margin-top:12px">Current Account Deficit Narrows in Q4 FY26</div>
+          <div class="article-source">Ministry of Finance &nbsp;·&nbsp; June 2026</div>
+          <ul>
+            <li>CAD at 0.9% of GDP in Q4 FY26; full-year at 1.1%, below 1.5% estimate</li>
+            <li>Services surplus at record $42bn driven by IT and GCC exports</li>
+            <li>Gold imports spike offset gains in merchandise trade balance</li>
+          </ul>
+        </div>
+
+        <div class="col-divider"></div>
+
+        <div class="article">
+          <div class="article-hed">PMI Manufacturing at 5-Month High</div>
+          <div class="article-source">S&amp;P Global PMI &nbsp;·&nbsp; June 2026</div>
+          <ul>
+            <li>India Manufacturing PMI rises to 58.4 in May; output and new orders sub-indices lead</li>
+            <li>Input cost pressures ease; output price inflation remains modest</li>
+            <li>Export orders improve as supply chain realignment from China accelerates</li>
+          </ul>
+
+          <div class="article-hed" style="margin-top:12px">Centre Targets ₹10.18L Cr Capex in FY27</div>
+          <div class="article-source">Budget Division, MoF &nbsp;·&nbsp; June 2026</div>
+          <ul>
+            <li>Q1 FY27 capex utilisation at 22% — ahead of historical pace</li>
+            <li>Roads and railways account for 58% of disbursements so far</li>
+            <li>State capex grants (₹1.5L Cr interest-free) disbursement tracking on schedule</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="ornament">— ✦ —</div>
+
+    <!-- ════════════════════════════════════ -->
+    <!-- SECTION 2: INFRASTRUCTURE           -->
+    <!-- ════════════════════════════════════ -->
+    <div class="section">
+      <div class="section-head">
+        <span class="section-title">Infrastructure</span>
+        <span class="section-rule"></span>
+      </div>
+
+      <div class="cols-3">
+        <div class="article">
+          <div class="article-hed">NITI Aayog Pushes Hybrid Annuity Model for Water PPPs</div>
+          <div class="article-source">NITI Aayog &nbsp;·&nbsp; June 2026</div>
+          <ul>
+            <li>HAM extended to urban water infrastructure; 40% grant + 60% annuity structure proposed</li>
+            <li>Pilot in 3 states: Rajasthan, MP, Maharashtra</li>
+            <li>Framework expected to unlock ₹28,000 Cr private investment over 5 years</li>
+            <li>DFIs including ADB and BII cited as prospective co-financiers</li>
+          </ul>
+        </div>
+
+        <div class="article">
+          <div class="article-hed">India Adds 8.2 GW Renewables in Q1 FY27</div>
+          <div class="article-source">MNRE / Mercom India &nbsp;·&nbsp; June 2026</div>
+          <ul>
+            <li>Solar leads at 6.1 GW; wind at 1.4 GW; hybrid projects 0.7 GW</li>
+            <li>Cumulative installed capacity crosses 220 GW; 500 GW target by 2030 on track</li>
+            <li>ISTS waiver extended 2 years — positive for interstate renewable project economics</li>
+            <li>Green hydrogen electrolyser procurement tenders draw strong overseas response</li>
+          </ul>
+        </div>
+
+        <div class="article">
+          <div class="article-hed">African Port Traffic Up 7% YoY — IFC Report</div>
+          <div class="article-source">IFC / World Bank &nbsp;·&nbsp; June 2026</div>
+          <ul>
+            <li>Sub-Saharan African port throughput rises 7.2% YoY in 2025; East Africa leads at 11%</li>
+            <li>Container handling at Mombasa, Dar es Salaam, and Maputo at record volumes</li>
+            <li>DFI-backed terminal upgrades credited for reduced turnaround times</li>
+            <li>Sector relevance: tailwind for port concession operators with African exposure</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="ornament">— ✦ —</div>
+
+    <!-- ════════════════════════════════════ -->
+    <!-- SECTION 3: PORTFOLIO COMPANIES      -->
+    <!-- ════════════════════════════════════ -->
+    <div class="section">
+      <div class="section-head">
+        <span class="section-title">Portfolio Companies</span>
+        <span class="section-rule"></span>
+      </div>
+
+      <div class="cols-2">
+        <div class="article">
+          <div class="article-hed">AWID &nbsp;·&nbsp; West Africa Ports &amp; Logistics</div>
+          <div class="article-source">Sector Fallback: West African Trade &amp; Ports &nbsp;·&nbsp; June 2026</div>
+          <ul>
+            <li>No direct company news in last 24 hours</li>
+            <li>West African port sector: ECOWAS trade corridor volumes up 5% in Jan–Apr 2026</li>
+            <li>Tema (Ghana) and Abidjan (Côte d'Ivoire) terminals reporting healthy utilisation rates above 72%</li>
+            <li>Concessionaire margins under moderate pressure from fuel cost inflation in region</li>
+          </ul>
+        </div>
+
+        <div class="article">
+          <div class="article-hed">Owendo &nbsp;·&nbsp; Port of Gabon</div>
+          <div class="article-source">Sector Fallback: Central Africa Ports &nbsp;·&nbsp; June 2026</div>
+          <ul>
+            <li>No direct company news in last 24 hours</li>
+            <li>Gabon: political transition government signals continuity on port concession agreements</li>
+            <li>Owendo port road-link upgrade under the national infrastructure plan progressing per Q1 reports</li>
+            <li>Manganese and timber export volumes steady; key revenue driver for terminal operations</li>
+          </ul>
+        </div>
+
+        <div class="article">
+          <div class="article-hed">Susi Sara &nbsp;·&nbsp; European Sustainable Infrastructure</div>
+          <div class="article-source">Sector Fallback: European Renewables &nbsp;·&nbsp; June 2026</div>
+          <ul>
+            <li>No direct company news in last 24 hours</li>
+            <li>European renewable asset valuations: BNEF notes 15-20bp cap rate compression in solar YTD on rate-cut expectations</li>
+            <li>EU taxonomy-aligned infrastructure assets attracting record institutional allocations in H1 2026</li>
+            <li>Nordic and Iberian wind assets see strong secondary market activity</li>
+          </ul>
+        </div>
+
+        <div class="article">
+          <div class="article-hed">H1 Capital &nbsp;·&nbsp; Impact &amp; Blended Finance</div>
+          <div class="article-source">Sector Fallback: DFI &amp; Blended Finance &nbsp;·&nbsp; June 2026</div>
+          <ul>
+            <li>No direct company news in last 24 hours</li>
+            <li>Blended finance volumes hit $15bn in H1 2026 — record half-year per Convergence data</li>
+            <li>IFC and BII anchor new climate infrastructure fund targeting $800M first close</li>
+            <li>Concessional capital demand strongest in water and agri-logistics in Sub-Saharan Africa</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="ornament">— ✦ —</div>
+
+    <!-- ════════════════════════════════════ -->
+    <!-- SECTION 4: DEALS & DFI              -->
+    <!-- ════════════════════════════════════ -->
+    <div class="section">
+      <div class="section-head">
+        <span class="section-title">Deals &amp; DFI</span>
+        <span class="section-rule"></span>
+      </div>
+
+      <div class="cols-3">
+        <div class="article">
+          <div class="article-hed">BII Anchors $250M Climate Infra Fund in South Asia</div>
+          <div class="article-source">BII / Economic Times &nbsp;·&nbsp; June 2026</div>
+          <ul>
+            <li>BII commits $60M anchor to climate infrastructure fund targeting India, Bangladesh, Sri Lanka</li>
+            <li>Fund focus: grid-scale solar, water treatment, cold chain logistics</li>
+            <li>First close targeted Q3 2026; pipeline of 8 investee companies identified</li>
+          </ul>
+        </div>
+
+        <div class="article">
+          <div class="article-hed">ADB Approves $400M India Urban Infrastructure Loan</div>
+          <div class="article-source">Asian Development Bank &nbsp;·&nbsp; June 2026</div>
+          <ul>
+            <li>ADB Board approves sovereign loan for urban water and sanitation in 6 Indian cities</li>
+            <li>Co-financed with NaBFID; state governments to provide 20% counterpart funding</li>
+            <li>Projects to follow HAM structure; private operator selection via competitive tender</li>
+          </ul>
+        </div>
+
+        <div class="article">
+          <div class="article-hed">Actis Closes African Renewables Platform at $700M</div>
+          <div class="article-source">Actis / IJGlobal &nbsp;·&nbsp; June 2026</div>
+          <ul>
+            <li>Actis closes fourth Africa Energy Fund at $700M — above $600M target</li>
+            <li>Strategy: utility-scale solar and wind across Nigeria, Kenya, Egypt, South Africa</li>
+            <li>DFIs including CDC (now BII), Proparco, and DEG committed as LPs</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="ornament">— ✦ —</div>
+
+    <!-- ════════════════════════════════════ -->
+    <!-- SECTION 5: BANKING & FINANCIAL SVC  -->
+    <!-- ════════════════════════════════════ -->
+    <div class="section">
+      <div class="section-head">
+        <span class="section-title">Banking &amp; Financial Services</span>
+        <span class="section-rule"></span>
+      </div>
+
+      <!-- Sub-section: HFCs -->
+      <div class="section-head" style="margin-top:4px; margin-bottom:8px;">
+        <span style="font-family:'IM Fell English',serif; font-style:italic; font-size:11px; color:var(--ink-light); white-space:nowrap;">Housing Finance Companies</span>
+        <span class="section-rule"></span>
+      </div>
+
+      <div class="cols-3" style="margin-bottom:16px;">
+        <div class="article">
+          <div class="article-hed">Aptus Value Housing Finance — AUM Growth Sustains</div>
+          <div class="article-source">BSE / Company Filings &nbsp;·&nbsp; June 2026</div>
+          <ul>
+            <li>Aptus AUM crosses ₹11,000 Cr in Q4 FY26; disbursements up 22% YoY</li>
+            <li>Gross NPA stable at 1.1%; collection efficiency at 99.2%</li>
+            <li>South India self-employed segment remains core book — avg ticket ₹8.5L</li>
+            <li>ROA at 3.8%; ROE at 14.2% — sector-leading profitability metrics</li>
+          </ul>
+        </div>
+
+        <div class="article">
+          <div class="article-hed">Aavas, Home First Flag Strong Q4 Disbursements</div>
+          <div class="article-source">CLSA / Motilal Oswal &nbsp;·&nbsp; June 2026</div>
+          <ul>
+            <li>Aavas disburses ₹1,650 Cr in Q4 FY26 — up 18% YoY; Rajasthan and Gujarat lead</li>
+            <li>Home First reports 26% YoY AUM growth; salaried + informal mix shifting toward informal</li>
+            <li>Both companies guide for 20–22% AUM growth in FY27</li>
+            <li>Spread compression risk flagged: competitive pricing in sub-₹25L ticket segment</li>
+          </ul>
+        </div>
+
+        <div class="article">
+          <div class="article-hed">NHB Raises Refinance Limit for Small HFCs</div>
+          <div class="article-source">National Housing Bank &nbsp;·&nbsp; June 2026</div>
+          <ul>
+            <li>NHB raises individual refinance cap to ₹500 Cr for HFCs with AUM below ₹5,000 Cr</li>
+            <li>Targeted at Tier-2/3 city lenders to expand affordable housing reach</li>
+            <li>Interest rate on refinance facility reduced by 25 bps — positive for spread economics</li>
+            <li>PMAY credit-linked subsidy disbursements up 31% YoY in FY26</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Sub-section: MSMEs & NBFCs -->
+      <div class="section-head" style="margin-bottom:8px;">
+        <span style="font-family:'IM Fell English',serif; font-style:italic; font-size:11px; color:var(--ink-light); white-space:nowrap;">MSMEs &amp; NBFCs</span>
+        <span class="section-rule"></span>
+      </div>
+
+      <div class="cols-3" style="margin-bottom:16px;">
+        <div class="article">
+          <div class="article-hed">RBI Eases MSME NPA Classification Norms</div>
+          <div class="article-source">RBI Circular &nbsp;·&nbsp; June 2026</div>
+          <ul>
+            <li>RBI extends MSME restructuring window by 6 months for borrowers below ₹25 Cr exposure</li>
+            <li>One-time restructuring eligible without downgrade if 90-day overdue criteria met</li>
+            <li>Positive for NBFC-MFI and NBFC-MSME books; asset quality optics improve near-term</li>
+            <li>Banks required to create 5% additional provision on restructured MSME pool</li>
+          </ul>
+        </div>
+
+        <div class="article">
+          <div class="article-hed">Piramal Finance, Shriram Expand MSME Loan Books</div>
+          <div class="article-source">Economic Times &nbsp;·&nbsp; June 2026</div>
+          <ul>
+            <li>Piramal Finance reports 38% YoY growth in MSME segment; LAP and business loans lead</li>
+            <li>Shriram Finance MSME AUM at ₹18,200 Cr — 16% of total book, up from 12% in FY25</li>
+            <li>Both NBFCs flag rising co-lending with PSU banks under RBI co-origination guidelines</li>
+            <li>Credit costs guided at 1.8–2.0% for FY27 — manageable vs sector average</li>
+          </ul>
+        </div>
+
+        <div class="article">
+          <div class="article-hed">GST Data Signals MSME Revenue Recovery</div>
+          <div class="article-source">GSTN / CII &nbsp;·&nbsp; June 2026</div>
+          <ul>
+            <li>GST filings from sub-₹5 Cr turnover businesses up 14% YoY in May 2026</li>
+            <li>Manufacturing MSMEs outperform services in revenue recovery — PLI tailwinds cited</li>
+            <li>Formalisation ratio among MSME borrowers rises to 61% — improving credit underwriting quality</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Sub-section: MFIs & NBFCs -->
+      <div class="section-head" style="margin-bottom:8px;">
+        <span style="font-family:'IM Fell English',serif; font-style:italic; font-size:11px; color:var(--ink-light); white-space:nowrap;">MFIs &amp; NBFCs</span>
+        <span class="section-rule"></span>
+      </div>
+
+      <div class="cols-3">
+        <div class="article">
+          <div class="article-hed">MFI Sector Stress Eases; Collections Stabilise</div>
+          <div class="article-source">MFIN / Sa-Dhan &nbsp;·&nbsp; June 2026</div>
+          <ul>
+            <li>Industry GLP at ₹4.1L Cr in Q4 FY26; growth slows to 8% YoY from 24% in FY25</li>
+            <li>PAR-30 improves to 4.2% from peak of 6.8% in Q2 FY26 — stress cycle turning</li>
+            <li>Over-indebtedness monitoring: average borrower leverage down to 2.1 lenders from 2.8 peak</li>
+            <li>Rural MFI book outperforms semi-urban on repayment discipline</li>
+          </ul>
+        </div>
+
+        <div class="article">
+          <div class="article-hed">CreditAccess Grameen Reports Improved Q4 Asset Quality</div>
+          <div class="article-source">BSE / Kotak Institutional &nbsp;·&nbsp; June 2026</div>
+          <ul>
+            <li>CAGL PAR-30 falls to 3.8%; write-offs contained at ₹320 Cr in Q4 FY26</li>
+            <li>Disbursements recover to ₹4,200 Cr in Q4 — near pre-stress levels</li>
+            <li>Management guides FY27 AUM growth of 15–18% contingent on rural income trends</li>
+            <li>NIM pressure persists as cost of funds stays elevated at 10.2%</li>
+          </ul>
+        </div>
+
+        <div class="article">
+          <div class="article-hed">RBI Issues Draft Guidelines on MFI Pricing Transparency</div>
+          <div class="article-source">Reserve Bank of India &nbsp;·&nbsp; June 2026</div>
+          <ul>
+            <li>RBI proposes mandatory disclosure of all-in cost (APR) on MFI loan documents</li>
+            <li>Processing fees capped at 1% of loan amount; no prepayment penalty allowed</li>
+            <li>Draft comments open till July 31; sector body MFIN flags implementation concerns</li>
+            <li>Regulation expected to compress fee income by 8–12 bps for larger NBFC-MFIs</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="ornament">— ✦ —</div>
+
+    <!-- ════════════════════════════════════ -->
+    <!-- SECTION 6: CFA PREP                 -->
+    <!-- ════════════════════════════════════ -->
+    <div class="section">
+      <div class="section-head">
+        <span class="section-title">CFA Prep &nbsp;·&nbsp; Concept of the Day</span>
+        <span class="section-rule"></span>
+      </div>
+
+      <div class="cols-2">
+        <div class="cfa-box">
+          <div class="cfa-box-label">Today's Concept</div>
+          <div class="cfa-concept-name">The DuPont Framework — Extended Decomposition</div>
+          <p>The 5-factor DuPont decomposition breaks ROE into: <strong>Tax Burden × Interest Burden × EBIT Margin × Asset Turnover × Financial Leverage</strong>. Each ratio isolates a distinct driver of equity return, allowing precise diagnosis of what is driving or suppressing ROE across peers.</p>
+          <p><strong>Formula:</strong> ROE = (NI/EBT) × (EBT/EBIT) × (EBIT/Revenue) × (Revenue/Assets) × (Assets/Equity)</p>
+          <p><strong>Exam tip:</strong> The tax burden ratio (NI/EBT) rises when effective tax rate falls — counterintuitive phrasing used deliberately in item sets to trap candidates. A higher tax burden ratio means less tax paid as a proportion of pre-tax income.</p>
+        </div>
+
+        <div>
+          <div class="article">
+            <div class="article-hed">Why It Matters for L1</div>
+            <ul>
+              <li>DuPont appears in Financial Statement Analysis and Equity topics — cross-module concept</li>
+              <li>In peer analysis questions, expect to identify which factor explains an ROE divergence</li>
+              <li>High financial leverage boosting ROE is a red flag in credit analysis — examiners test awareness of quality vs. quantity of ROE</li>
+              <li>NBFC/bank ROE is typically decomposed via Asset Turnover × Spread × Leverage — variant you'll see in item set vignettes</li>
+            </ul>
+          </div>
+
+          <div class="article" style="margin-top:10px">
+            <div class="article-hed">Practice Prompt</div>
+            <ul>
+              <li>Company A: ROE 18%, Leverage 2.5x &nbsp;|&nbsp; Company B: ROE 18%, Leverage 1.8x — which has higher quality earnings and why?</li>
+              <li>If a firm's tax rate rises from 25% → 30%, does tax burden ratio rise or fall? Explain direction.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div><!-- /body-wrap -->
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span>Compiled by the News for Moti Intelligence Desk</span>
+    <span>Printed for private circulation only &nbsp;·&nbsp; Not for redistribution</span>
+    <span>Mumbai, India &nbsp;·&nbsp; June 2026</span>
+  </div>
+
+</div><!-- /page -->
+</body>
+</html>
