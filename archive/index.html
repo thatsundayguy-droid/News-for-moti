@@ -7,188 +7,30 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=UnifrakturMaguntia&family=IM+Fell+English:ital@0;1&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --ink:       #1a1008;
-      --ink-light: #3b2e1e;
-      --rule:      #1a1008;
-      --paper:     #f5efe2;
-      --paper-mid: #ede3cc;
-      --accent:    #7a1c1c;
-    }
-
-    body {
-      background: #c8b89a;
-      font-family: 'Libre Baskerville', Georgia, serif;
-      color: var(--ink);
-      font-size: 13px;
-      line-height: 1.55;
-    }
-
-    .page {
-      max-width: 720px;
-      margin: 32px auto;
-      background: var(--paper);
-      padding: 0 0 48px;
-      box-shadow: 0 4px 32px rgba(0,0,0,0.45), inset 0 0 120px rgba(180,150,90,0.08);
-      position: relative;
-    }
-
-    .page::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(
-        0deg,
-        transparent, transparent 28px,
-        rgba(120,90,40,0.03) 28px, rgba(120,90,40,0.03) 29px
-      );
-      pointer-events: none;
-      z-index: 0;
-    }
-
+    :root { --ink: #1a1008; --ink-light: #3b2e1e; --rule: #1a1008; --paper: #f5efe2; --paper-mid: #ede3cc; --accent: #7a1c1c; }
+    body { background: #c8b89a; font-family: 'Libre Baskerville', Georgia, serif; color: var(--ink); font-size: 13px; line-height: 1.55; }
+    .page { max-width: 720px; margin: 32px auto; background: var(--paper); padding: 0 0 48px; box-shadow: 0 4px 32px rgba(0,0,0,0.45); position: relative; }
+    .page::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 28px, rgba(120,90,40,0.03) 28px, rgba(120,90,40,0.03) 29px); pointer-events: none; z-index: 0; }
     .page > * { position: relative; z-index: 1; }
-
-    /* MASTHEAD */
-    .masthead {
-      border-bottom: 3px double var(--rule);
-      padding: 20px 40px 14px;
-      text-align: center;
-    }
-
-    .masthead-top {
-      display: flex;
-      justify-content: space-between;
-      font-family: 'IM Fell English', serif;
-      font-size: 10px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--ink-light);
-      border-bottom: 1px solid var(--rule);
-      padding-bottom: 6px;
-      margin-bottom: 10px;
-    }
-
-    .masthead-title {
-      font-family: 'UnifrakturMaguntia', cursive;
-      font-size: 60px;
-      line-height: 1;
-      color: var(--ink);
-      margin: 4px 0 6px;
-    }
-
-    .masthead-tagline {
-      font-family: 'IM Fell English', serif;
-      font-style: italic;
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      color: var(--ink-light);
-      margin-bottom: 10px;
-    }
-
-    .masthead-bottom {
-      display: flex;
-      justify-content: space-between;
-      font-family: 'IM Fell English', serif;
-      font-size: 10px;
-      color: var(--ink-light);
-      border-top: 1px solid var(--rule);
-      padding-top: 6px;
-    }
-
-    /* BODY */
-    .body-wrap {
-      padding: 24px 40px;
-    }
-
-    .archive-heading {
-      font-family: 'Playfair Display', serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--accent);
-      border-bottom: 2px solid var(--rule);
-      padding-bottom: 8px;
-      margin-bottom: 20px;
-    }
-
-    .archive-list {
-      list-style: none;
-    }
-
-    .archive-list li {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      padding: 10px 0;
-      border-bottom: 1px solid rgba(26,16,8,0.12);
-    }
-
-    .archive-list li:last-child {
-      border-bottom: none;
-    }
-
-    .archive-date {
-      font-family: 'IM Fell English', serif;
-      font-size: 13px;
-      font-style: italic;
-      color: var(--ink-light);
-    }
-
-    .archive-link {
-      font-family: 'Playfair Display', serif;
-      font-size: 12px;
-      color: var(--accent);
-      text-decoration: none;
-      letter-spacing: 0.05em;
-    }
-
-    .archive-link:hover {
-      text-decoration: underline;
-    }
-
-    .archive-dots {
-      flex: 1;
-      border-bottom: 1px dotted rgba(26,16,8,0.25);
-      margin: 0 10px 3px;
-    }
-
-    .empty-state {
-      font-family: 'IM Fell English', serif;
-      font-style: italic;
-      font-size: 13px;
-      color: var(--ink-light);
-      opacity: 0.6;
-      text-align: center;
-      padding: 32px 0;
-    }
-
-    /* FOOTER */
-    .footer {
-      border-top: 3px double var(--rule);
-      margin: 0 40px;
-      padding: 10px 0 0;
-      display: flex;
-      justify-content: space-between;
-      font-family: 'IM Fell English', serif;
-      font-size: 10px;
-      font-style: italic;
-      color: var(--ink-light);
-      opacity: 0.7;
-    }
-
-    @media (max-width: 600px) {
-      .masthead { padding: 16px 20px 12px; }
-      .masthead-title { font-size: 40px; }
-      .body-wrap { padding: 20px; }
-      .footer { margin: 0 20px; }
-    }
+    .masthead { border-bottom: 3px double var(--rule); padding: 20px 40px 14px; text-align: center; }
+    .masthead-top { display: flex; justify-content: space-between; font-family: 'IM Fell English', serif; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-light); border-bottom: 1px solid var(--rule); padding-bottom: 6px; margin-bottom: 10px; }
+    .masthead-title { font-family: 'UnifrakturMaguntia', cursive; font-size: 60px; line-height: 1; color: var(--ink); margin: 4px 0 6px; }
+    .masthead-tagline { font-family: 'IM Fell English', serif; font-style: italic; font-size: 11px; letter-spacing: 0.12em; color: var(--ink-light); margin-bottom: 10px; }
+    .masthead-bottom { display: flex; justify-content: space-between; font-family: 'IM Fell English', serif; font-size: 10px; color: var(--ink-light); border-top: 1px solid var(--rule); padding-top: 6px; }
+    .body-wrap { padding: 24px 40px; }
+    .archive-heading { font-family: 'Playfair Display', serif; font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); border-bottom: 2px solid var(--rule); padding-bottom: 8px; margin-bottom: 20px; }
+    .archive-list { list-style: none; }
+    .archive-list li { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 0; border-bottom: 1px solid rgba(26,16,8,0.12); }
+    .archive-list li:last-child { border-bottom: none; }
+    .archive-date { font-family: 'IM Fell English', serif; font-size: 13px; font-style: italic; color: var(--ink-light); }
+    .archive-link { font-family: 'Playfair Display', serif; font-size: 12px; color: var(--accent); text-decoration: none; letter-spacing: 0.05em; }
+    .archive-link:hover { text-decoration: underline; }
+    .archive-dots { flex: 1; border-bottom: 1px dotted rgba(26,16,8,0.25); margin: 0 10px 3px; }
+    .footer { border-top: 3px double var(--rule); margin: 0 40px; padding: 10px 0 0; display: flex; justify-content: space-between; font-family: 'IM Fell English', serif; font-size: 10px; font-style: italic; color: var(--ink-light); opacity: 0.7; }
   </style>
 </head>
 <body>
 <div class="page">
-
   <div class="masthead">
     <div class="masthead-top">
       <span>Est. MMXXVI &nbsp;·&nbsp; Mumbai, India</span>
@@ -201,27 +43,21 @@
       <span>Past Editions Archive</span>
     </div>
   </div>
-
   <div class="body-wrap">
     <div class="archive-heading">All Editions</div>
-
-    <ul class="archive-list" id="archive-list">
-      <!-- ARCHIVE_ENTRIES -->
+    <ul class="archive-list">
       <li>
         <span class="archive-date">Friday, 13th June 2026</span>
         <span class="archive-dots"></span>
         <a class="archive-link" href="2026-06-13.html">Read Edition &rarr;</a>
       </li>
     </ul>
-
   </div>
-
   <div class="footer">
     <span>News for Moti Intelligence Desk</span>
     <span>Printed for private circulation only &nbsp;·&nbsp; Not for redistribution</span>
     <span>Mumbai, India</span>
   </div>
-
 </div>
 </body>
 </html>
