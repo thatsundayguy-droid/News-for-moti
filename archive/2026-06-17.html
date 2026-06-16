@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>News for Moti</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=UnifrakturMaguntia&family=IM+Fell+English:ital@0;1&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--ink:#1a1008;--ink-light:#3b2e1e;--rule:#1a1008;--paper:#f5efe2;--paper-mid:#ede3cc;--accent:#7a1c1c;--col-gap:24px}
+    body{background:#c8b89a;font-family:'Libre Baskerville',Georgia,serif;color:var(--ink);font-size:13px;line-height:1.55}
+    .page{max-width:1080px;margin:32px auto;background:var(--paper);padding:0 0 48px;box-shadow:0 4px 32px rgba(0,0,0,0.45),inset 0 0 120px rgba(180,150,90,0.08);position:relative}
+    .page::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 28px,rgba(120,90,40,0.03) 28px,rgba(120,90,40,0.03) 29px);pointer-events:none;z-index:0}
+    .page>*{position:relative;z-index:1}
+    .masthead{border-bottom:3px double var(--rule);padding:20px 40px 14px;text-align:center}
+    .masthead-top{display:flex;justify-content:space-between;align-items:flex-end;font-family:'IM Fell English',Georgia,serif;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-light);border-bottom:1px solid var(--rule);padding-bottom:6px;margin-bottom:10px}
+    .masthead-title{font-family:'UnifrakturMaguntia',cursive;font-size:72px;line-height:1;color:var(--ink);letter-spacing:0.02em;margin:4px 0 6px}
+    .masthead-tagline{font-family:'IM Fell English',Georgia,serif;font-style:italic;font-size:11px;letter-spacing:0.12em;color:var(--ink-light);margin-bottom:10px}
+    .masthead-bottom{display:flex;justify-content:space-between;font-family:'IM Fell English',serif;font-size:10px;letter-spacing:0.05em;color:var(--ink-light);border-top:1px solid var(--rule);padding-top:6px}
+    .section-banner{background:var(--ink);color:var(--paper);text-align:center;font-family:'Playfair Display',serif;font-size:11px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;padding:4px 40px}
+    .body-wrap{padding:0 40px}
+    .section{border-bottom:2px solid var(--rule);padding:18px 0 14px}
+    .section:last-child{border-bottom:none}
+    .section-head{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+    .section-title{font-family:'Playfair Display',serif;font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);white-space:nowrap}
+    .section-rule{flex:1;height:1px;background:var(--ink);opacity:0.3}
+    .cols-2{columns:2;column-gap:var(--col-gap)}
+    .cols-3{columns:3;column-gap:var(--col-gap)}
+    .article{break-inside:avoid;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid rgba(26,16,8,0.15)}
+    .article:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+    .article-hed{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;line-height:1.25;color:var(--ink);margin-bottom:6px}
+    .article-hed.large{font-size:19px}
+    .article-source{font-family:'IM Fell English',serif;font-style:italic;font-size:10px;color:var(--ink-light);margin-bottom:5px;opacity:0.75}
+    .article ul{list-style:none;padding:0}
+    .article ul li{padding-left:14px;position:relative;margin-bottom:4px;font-size:12px;line-height:1.5;color:var(--ink-light)}
+    .article ul li::before{content:'—';position:absolute;left:0;color:var(--accent);font-size:11px}
+    .cfa-box{border:1.5px solid var(--ink);padding:14px 18px;margin-top:4px;background:var(--paper-mid)}
+    .cfa-box-label{font-family:'Playfair Display',serif;font-size:9px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+    .cfa-concept-name{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;font-style:italic;margin-bottom:8px;color:var(--ink)}
+    .cfa-box p{font-size:12px;line-height:1.6;color:var(--ink-light);margin-bottom:6px}
+    .cfa-box p:last-child{margin-bottom:0}
+    .ornament{text-align:center;font-size:14px;color:var(--ink-light);opacity:0.4;margin:2px 0;letter-spacing:6px}
+    .footer{border-top:3px double var(--rule);margin:0 40px;padding:10px 0 0;display:flex;justify-content:space-between;font-family:'IM Fell English',serif;font-size:10px;font-style:italic;color:var(--ink-light);opacity:0.7}
+    .lead-layout{display:grid;grid-template-columns:1fr 1px 1fr 1px 1fr;gap:0 20px;align-items:start}
+    .col-divider{width:1px;background:rgba(26,16,8,0.2);align-self:stretch}
+    .sub-head{font-family:'IM Fell English',serif;font-style:italic;font-size:11px;color:var(--ink-light);white-space:nowrap}
+    @media(max-width:720px){.masthead-title{font-size:44px}.masthead{padding:16px 20px 12px}.body-wrap{padding:0 20px}.lead-layout{grid-template-columns:1fr}.col-divider{display:none}.cols-2,.cols-3{columns:1}.footer{margin:0 20px}.section-banner{padding:4px 20px}}
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="masthead">
+    <div class="masthead-top">
+      <span>Est. MMXXVI &nbsp;·&nbsp; Mumbai, India</span>
+      <span>Printed for private circulation only</span>
+      <span>Vol. I &nbsp;·&nbsp; No. 5</span>
+    </div>
+    <div class="masthead-title">News for Moti</div>
+    <div class="masthead-tagline">Intelligence, Capital &amp; Infrastructure — Daily</div>
+    <div class="masthead-bottom">
+      <span>Tuesday, 16th June 2026</span>
+      <span>&#10070; &nbsp; Six Sections &nbsp; &#10070;</span>
+      <span>Last 24 Hours</span>
+    </div>
+  </div>
+
+  <div class="section-banner">Today's Edition</div>
+  <div class="body-wrap">
+
+    <!-- SECTION 1: INDIA MACRO -->
+    <div class="section">
+      <div class="section-head"><span class="section-title">India Macro</span><span class="section-rule"></span></div>
+      <div class="lead-layout">
+        <div class="article">
+          <div class="article-hed large">CPI Climbs to 3.93% in May — Highest in 16 Months; Food at 4.8%</div>
+          <div class="article-source">Trading Economics &nbsp;·&nbsp; June 12, 2026</div>
+          <ul>
+            <li>India's May 2026 CPI rises to 3.93% from 3.48% in April — highest since January 2025, but still below market expectations of 4%</li>
+            <li>Food inflation surges to 4.8% from 4.2% — Middle East war lifting energy and fertiliser costs feeding into food production inputs</li>
+            <li>Personal care and miscellaneous goods spike to 18.5%; restaurants and accommodation at 5.75%</li>
+            <li>Transportation (1.75%) and housing/utilities (1.73%) muted — partial cushion against energy cost pass-through</li>
+            <li>Monthly consumer prices up 0.8% — fastest monthly rise in recent data; trajectory bears watching into Q2 FY27</li>
+          </ul>
+        </div>
+        <div class="col-divider"></div>
+        <div class="article">
+          <div class="article-hed">RBI June 2026 Statement: Resilience with Caution</div>
+          <div class="article-source">India CSR / Ambedkar Chamber &nbsp;·&nbsp; June 2026</div>
+          <ul>
+            <li>Governor Malhotra's June statement: "Global economy shaped by heightened uncertainty, disruptions to key trade routes, increased market volatility, and cautious business sentiment"</li>
+            <li>Repo held at 5.25%; GDP growth forecast at 6.6% for FY27 (6.6% Q1, 6.3% Q2, 6.5% Q3, 6.8% Q4)</li>
+            <li>CPI inflation projected at 5.1% for FY27; risks flagged — energy prices, supply chains, weather, capital flow volatility</li>
+            <li>Banks and NBFCs described as healthy; forex reserves comfortable; liquidity actively managed</li>
+          </ul>
+          <div class="article-hed" style="margin-top:12px">Rate Cut Outlook: Further Easing to 5% Projected by End-2026</div>
+          <div class="article-source">Bank of Baroda / Elara Securities &nbsp;·&nbsp; Dec 2025</div>
+          <ul>
+            <li>Bank of Baroda economist projects repo at 5% by end-2026 — aligning with global rate easing cycle</li>
+            <li>Elara expects 50 bps further cut; strong public investment and easing inflation cited as key enablers</li>
+            <li>CareEdge cautions RBI may pause to preserve flexibility amid US tariff risk and rural demand uncertainty</li>
+          </ul>
+        </div>
+        <div class="col-divider"></div>
+        <div class="article">
+          <div class="article-hed">India InvIT Market: 1,500 km of Roads to Be Monetised in FY26</div>
+          <div class="article-source">CFA Institute / NHAI &nbsp;·&nbsp; Oct 2025</div>
+          <ul>
+            <li>Govt monetising ~1,500 km of roads via InvITs in FY2025-26 alone; NHAI-sponsored Raajmarg InvIT already listed</li>
+            <li>India currently at 230-240 GW renewable capacity; target of doubling to ~500 GW by 2030 requires parallel T&D expansion</li>
+            <li>InvITs tapping debt markets as domestic rates fall; Cube Highways launched India's first sustainability-linked bond by a road InvIT</li>
+            <li>Infrastructure financing gap still exceeds 5% of GDP — InvIT structure critical for bridging gap via private capital</li>
+          </ul>
+          <div class="article-hed" style="margin-top:12px">Nepal Case Study: BII Plus Lifted DFI Investment from $75M to $850M</div>
+          <div class="article-source">BII Strategy 2026-31 &nbsp;·&nbsp; May 2026</div>
+          <ul>
+            <li>BII's technical assistance facility (BII Plus) took market-building approach in Nepal — lifted DFI investment in financial institutions from $75M to over $850M by 2025</li>
+            <li>Invest for Impact Nepal expanded investment-ready firms and promoted sustainable lending</li>
+            <li>Model being replicated across South Asia, South East Asia and Africa under 2026-31 strategy</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="ornament">— ✦ —</div>
+
+    <!-- SECTION 2: INFRASTRUCTURE -->
+    <div class="section">
+      <div class="section-head"><span class="section-title">Infrastructure</span><span class="section-rule"></span></div>
+      <div class="cols-3">
+        <div class="article">
+          <div class="article-hed">India's Infrastructure Financing Gap Exceeds 5% of GDP; InvITs Key to Bridging It</div>
+          <div class="article-source">CFA Institute &nbsp;·&nbsp; October 2025</div>
+          <ul>
+            <li>Despite record Rs 11.21T (3.1% of GDP) capex in FY26, India's infrastructure financing gap still exceeds 5% of GDP</li>
+            <li>SEBI streamlining InvIT structures to attract foreign investors; retail participation also rising</li>
+            <li>AIIB invested Rs 4.86bn into SEIT (Sustainable Energy Infra Trust) — Mahindra Susten + Ontario Teachers' — India's largest renewable energy InvIT at 1.54 GW peak</li>
+            <li>Green energy M&A in FY25 resilient: solar, wind, green hydrogen drawing high-value strategic inbound investment</li>
+          </ul>
+        </div>
+        <div class="article">
+          <div class="article-hed">BII Anchors South East Asia Decarbonisation via FAST-P Industrial Transformation</div>
+          <div class="article-source">BII &nbsp;·&nbsp; May 2026</div>
+          <ul>
+            <li>BII anchors Industrial Transformation Programme under Singapore's FAST-P (Financing Asia's Transition Partnership)</li>
+            <li>Also anchored Pentagreen Green Investment Partnership under FAST-P — green and sustainable infrastructure in South East Asia</li>
+            <li>Demonstrates BII's 2026-31 expansion beyond Africa into Indo-Pacific climate transition</li>
+            <li>At least 40% of BII's total new commitments by value to be in climate finance under 2026-31 strategy</li>
+          </ul>
+        </div>
+        <div class="article">
+          <div class="article-hed">India Green M&A: Solar, Wind and Green Hydrogen Drawing Inbound Capital</div>
+          <div class="article-source">Chambers &amp; Partners &nbsp;·&nbsp; Nov 2025</div>
+          <ul>
+            <li>FY24-25 deal space resilient despite global policy uncertainty, US tariffs and geopolitical unrest</li>
+            <li>Shift toward high-value strategic transactions in green energy (solar, wind, green hydrogen), oil and gas, and sustainable mobility</li>
+            <li>India's COP26 commitment (50% energy from renewables by 2030) driving sector-focused inbound investment at significant deal values</li>
+            <li>Infrastructure requirements of a developing economy underpinning sustained deal pipeline</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="ornament">— ✦ —</div>
+
+    <!-- SECTION 3: PORTFOLIO COMPANIES -->
+    <div class="section">
+      <div class="section-head"><span class="section-title">Portfolio Companies</span><span class="section-rule"></span></div>
+      <div class="cols-2">
+        <div class="article">
+          <div class="article-hed">AWID &nbsp;·&nbsp; Africa Water Infrastructure Development</div>
+          <div class="article-source">BII Portfolio / Sector &nbsp;·&nbsp; June 2026</div>
+          <ul>
+            <li>No direct company news in last 24 hours</li>
+            <li>BII 2026-31 strategy explicitly targets "infrastructure gaps that limit growth" — affordable sustainable power, modern trade links, digital connectivity</li>
+            <li>BII Plus market-building model (Nepal $75M → $850M DFI uplift) being replicated — water infrastructure a candidate for similar technical assistance in Africa</li>
+            <li>BII's Urban Resilience Fund (TURF via Meridiam, EUR 20M) — first urban infrastructure fund investment; 85%+ climate finance in African cities</li>
+          </ul>
+        </div>
+        <div class="article">
+          <div class="article-hed">Owendo &nbsp;·&nbsp; Port of Gabon</div>
+          <div class="article-source">Sector Fallback: African Ports &amp; Logistics &nbsp;·&nbsp; June 2026</div>
+          <ul>
+            <li>No direct company news in last 24 hours</li>
+            <li>AIIF4 (AIIM) — BII $76M + FMO $40M anchor — targets mobility and logistics (ports, roads) as one of three priority sub-sectors alongside renewables and digital infra</li>
+            <li>Gabon's transition government: concession continuity remains the key risk variable; port revenue linked to manganese and timber export volumes</li>
+            <li>African ports benefiting from DFI momentum — but Central Africa markets require more concessional support vs East Africa</li>
+          </ul>
+        </div>
+        <div class="article">
+          <div class="article-hed">Susi Sara &nbsp;·&nbsp; European Sustainable Infrastructure</div>
+          <div class="article-source">Sector Fallback: Global Renewables &amp; Infra &nbsp;·&nbsp; June 2026</div>
+          <ul>
+            <li>No direct company news in last 24 hours</li>
+            <li>BII targets global funds including BlackRock and Alterra with £1bn+ climate initiative per CEO Leslie Maasdorp — "something fresh to the party" for large asset managers</li>
+            <li>BII 2026-31 plans to mobilise £6-7.5bn from insurers, pension funds and asset managers — 40% increase vs prior period; unlocks co-investment for infra fund managers</li>
+            <li>Renewables overtook coal in global generation in 2025 — structural tailwind for all renewable infrastructure asset managers</li>
+          </ul>
+        </div>
+        <div class="article">
+          <div class="article-hed">H1 Capital &nbsp;·&nbsp; Impact &amp; Blended Finance</div>
+          <div class="article-source">Sector Fallback: DFI &amp; Blended Finance &nbsp;·&nbsp; June 2026</div>
+          <ul>
+            <li>No direct company news in last 24 hours</li>
+            <li>BII 2026-31 four focus areas: financial services; power, trade and digital infrastructure; sustainable industry; and market building — broad mandate for blended finance vehicles</li>
+            <li>BII deploying £7-8bn own capital targeting £6-7.5bn private mobilisation; blended finance funds sit at intersection of both pots</li>
+            <li>Low and middle-income countries facing widening gap between finance needed for development and climate — blended finance demand structural, not cyclical</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="ornament">— ✦ —</div>
+
+    <!-- SECTION 4: DEALS & DFI -->
+    <div class="section">
+      <div class="section-head"><span class="section-title">Deals &amp; DFI</span><span class="section-rule"></span></div>
+      <div class="cols-3">
+        <div class="article">
+          <div class="article-hed">BII 2026-31 Strategy: Mobilisation, Market Building, LDCs and Climate</div>
+          <div class="article-source">Devex &nbsp;·&nbsp; April 23, 2026</div>
+          <ul>
+            <li>BII plans to invest £7-8bn over 2026-31 — roughly equivalent to prior 5-year deployment — but targeting £6-7.5bn private mobilisation alongside it (40% increase)</li>
+            <li>Four strategic pillars: financial services; power, trade and digital infrastructure; sustainable industry; and market building via BII Plus</li>
+            <li>Increased focus on LDCs, climate (40% of new commitments), and gender (30% of core investments targeting women's economic opportunity)</li>
+            <li>Pressure mounting from UK aid budget contraction — DFI increasingly expected to substitute for shrinking ODA flows</li>
+          </ul>
+        </div>
+        <div class="article">
+          <div class="article-hed">BII Targets BlackRock and Alterra with £1bn+ Climate Co-Investment Initiative</div>
+          <div class="article-source">New Private Markets &nbsp;·&nbsp; April 23, 2026</div>
+          <ul>
+            <li>CEO Leslie Maasdorp: BII can bring "something fresh to the party" for the likes of BlackRock and Alterra by taking first-loss positions and structuring deals large asset managers cannot do alone</li>
+            <li>British Climate Partners initiative (£1.1bn) targeting global institutional capital for climate investments in emerging markets</li>
+            <li>BII acting as anchor investor — simplifying blended finance templates to reduce transaction costs for private co-investors</li>
+          </ul>
+        </div>
+        <div class="article">
+          <div class="article-hed">CGD: BII's Capital Model Needs Fixing, Not Just Ambition</div>
+          <div class="article-source">Center for Global Development &nbsp;·&nbsp; Feb 2026</div>
+          <ul>
+            <li>CGD: BII's challenge is structural — capital model relies on ODA-funded equity and retained earnings; not fit for purpose at expanded scale</li>
+            <li>Organises investments across three portfolios with distinct risk profiles — catalytic, strategic and financial return</li>
+            <li>Structural tension: how to operate at scale in commercial markets without reducing capacity for high-risk, catalytic frontier investments</li>
+            <li>Resolution depends on shareholder capital structure reform — beyond BII's own control</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="ornament">— ✦ —</div>
+
+    <!-- SECTION 5: BANKING & FINANCIAL SERVICES -->
+    <div class="section">
+      <div class="section-head"><span class="section-title">Banking &amp; Financial Services</span><span class="section-rule"></span></div>
+
+      <div class="section-head" style="margin-top:4px;margin-bottom:8px;">
+        <span class="sub-head">Housing Finance Companies</span><span class="section-rule"></span>
+      </div>
+      <div class="cols-3" style="margin-bottom:16px;">
+        <div class="article">
+          <div class="article-hed">RBI Governor: No Concern on Asset Quality from Unsecured Loans Including MFI</div>
+          <div class="article-source">Business Standard / RBI &nbsp;·&nbsp; 2026</div>
+          <ul>
+            <li>Governor Malhotra told reporters system NPAs are "satisfactory" and the proportion of dud assets is not increasing</li>
+            <li>Reassurance covers unsecured loans broadly — consumer credit, MFI, personal loans</li>
+            <li>Deposit rate decline unlikely to trigger major shift to alternative avenues per RBI assessment</li>
+            <li>Tone constructive for HFC and NBFC sector — supervisor not sounding alarm bells on asset quality trajectory</li>
+          </ul>
+        </div>
+        <div class="article">
+          <div class="article-hed">HFC Securitisation Volumes Double; Funding Diversification Strengthening</div>
+          <div class="article-source">Business Standard / ICRA &nbsp;·&nbsp; 2022-26 trend</div>
+          <ul>
+            <li>NBFC and HFC securitisation volumes doubled to ~Rs 33,000 Cr in Q1 FY23 — trend of capital market funding access has continued and deepened through FY26</li>
+            <li>HFCs increasingly tapping NCD market, securitisation, and co-lending — reducing bank borrowing dependence</li>
+            <li>MF funding to NBFCs at record Rs 2.77T — HFCs benefiting from mutual fund CP and NCD appetite</li>
+            <li>Funding diversification a credit-positive signal as HFCs navigate PSB pricing competition in home loans</li>
+          </ul>
+        </div>
+        <div class="article">
+          <div class="article-hed">Affordable HFC Sector FY27 Outlook: Resilient but Moderating</div>
+          <div class="article-source">ICRA / Equirus &nbsp;·&nbsp; 2026</div>
+          <ul>
+            <li>ICRA projects HFC GNPA at 1.8-2.0% as of March 2026; sector-wide credit costs easing from FY25 peaks</li>
+            <li>AUM growth moderating to 12-13% from 14% — PSB competition on pricing in mid-ticket segment the primary headwind</li>
+            <li>Sub-Rs 25L informal income borrowers in Tier-2/3 cities remain structural moat — banks cannot replicate surrogate underwriting at scale</li>
+            <li>Elara Capital contrarian view: ROE seen declining to 15-16% from 18-20% as sector matures — worth tracking</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section-head" style="margin-bottom:8px;">
+        <span class="sub-head">MSMEs &amp; NBFCs</span><span class="section-rule"></span>
+      </div>
+      <div class="cols-3" style="margin-bottom:16px;">
+        <div class="article">
+          <div class="article-hed">NBFC Sector: MF Funding Record Rs 2.77T; Bank Credit Falls 0.3%</div>
+          <div class="article-source">CareEdge &nbsp;·&nbsp; July 2025</div>
+          <ul>
+            <li>Mutual fund exposure to NBFCs at record Rs 2.77T in May 2025 — CPs and corporate debt the instruments</li>
+            <li>Bank credit to NBFCs fell 0.3% YoY — banks tightening on NBFC exposure amid retail stress concerns</li>
+            <li>NBFCs successfully diversifying away from bank dependency — credit-positive structurally but raises refinancing risk during stress periods</li>
+          </ul>
+        </div>
+        <div class="article">
+          <div class="article-hed">MSME vs Consumer Credit: Divergence Widening in FY26</div>
+          <div class="article-source">Business Standard &nbsp;·&nbsp; 2025-26</div>
+          <ul>
+            <li>MSME book showing greater resilience than consumer, personal loan and MFI segments across NBFC earnings</li>
+            <li>Vehicle finance recovering sequentially as CV cycle turns; construction equipment demand rising on infra capex pick-up</li>
+            <li>India Ratings: credit growth 13-13.5% in FY26 led by industrial capex and PSB disbursements — retail and NBFC sub-sectors the drag</li>
+          </ul>
+        </div>
+        <div class="article">
+          <div class="article-hed">MFIN Seeks Rs 15,000-20,000 Cr Govt-Backed Credit Guarantee for NBFC-MFIs</div>
+          <div class="article-source">Business Standard / MFIN &nbsp;·&nbsp; 2026</div>
+          <ul>
+            <li>MFIN formally seeks government-backed credit guarantee of Rs 15,000-20,000 Cr to encourage banks to lend to NBFC-MFIs</li>
+            <li>Cites improved collection efficiency and structural liquidity needs of sector post-FY26 stress cycle</li>
+            <li>Guarantee would complement CGSMFI-2.0 (extended to August 2026, Rs 20,000 Cr envelope) — layered policy support for MFI credit revival</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section-head" style="margin-bottom:8px;">
+        <span class="sub-head">MFIs &amp; NBFCs</span><span class="section-rule"></span>
+      </div>
+      <div class="cols-3">
+        <div class="article">
+          <div class="article-hed">ICRA: MFI AUM Down 12% in FY25; Growth to Resume 10-15% in FY26</div>
+          <div class="article-source">ICRA &nbsp;·&nbsp; July 2025</div>
+          <ul>
+            <li>NBFC-MFI AUM declined 12% in FY25 — borrower overleveraging and operational challenges cited</li>
+            <li>ICRA anticipates growth resumption in FY26 at 10-15%; collections improving and rejection rates stabilising</li>
+            <li>Bihar, Assam, Kerala, Tamil Nadu and West Bengal — 42% of MFI portfolio — election cycle impact on disbursements now passing</li>
+          </ul>
+        </div>
+        <div class="article">
+          <div class="article-hed">RBI Governor: System NPAs Satisfactory; MFI Stress Not Spreading</div>
+          <div class="article-source">RBI / Business Standard &nbsp;·&nbsp; 2026</div>
+          <ul>
+            <li>Governor Malhotra explicitly allayed fears on MFI asset quality — dud asset proportion not increasing at system level</li>
+            <li>RBI Deputy Governor: MFI stress to remain "steady" in coming quarters — controlled deterioration, not acceleration</li>
+            <li>RBI's qualifying asset relaxation (75% to 60%) and CGSMFI-2.0 extension together signal coordinated support for sector recovery</li>
+          </ul>
+        </div>
+        <div class="article">
+          <div class="article-hed">Microfinance: Structural 5-6 Year Stress Cycles — Sector Will Always Be "Sunshine-Challenged"</div>
+          <div class="article-source">Shriram Finance MD Umesh Revankar &nbsp;·&nbsp; June 2025</div>
+          <ul>
+            <li>"Microfinance can never be a sunshine sector because every 5-6 years it gets into some kind of challenges" — Revankar at Business Standard BFSI Summit</li>
+            <li>Current stress cycle tracking the historical pattern — IL&amp;FS (2018), COVID (2020-21), over-leveraging (2024-26)</li>
+            <li>Structural view matters for valuation: terminal growth rates and normalised credit cost assumptions in MFI DCFs must embed cyclicality</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="ornament">— ✦ —</div>
+
+    <!-- SECTION 6: CFA PREP -->
+    <div class="section">
+      <div class="section-head"><span class="section-title">CFA Prep &nbsp;·&nbsp; Concept of the Day</span><span class="section-rule"></span></div>
+      <div class="cols-2">
+        <div class="cfa-box">
+          <div class="cfa-box-label">Today's Concept</div>
+          <div class="cfa-concept-name">Equity Valuation: Price Multiples &amp; the P/E Ratio</div>
+          <p><strong>P/E Ratio</strong> = Price per Share / EPS. The justified P/E (from the Gordon Growth Model) = (D1/E1) / (r − g) = Payout Ratio / (r − g). A higher payout ratio, lower required return, or higher sustainable growth each justify a higher P/E.</p>
+          <p><strong>Trailing vs Leading P/E:</strong> Trailing uses last 12 months' EPS (historical); Leading uses next 12 months' EPS (forward). Leading P/E is preferred for valuation — it captures expectations. In declining earnings environments, trailing P/E overstates cheapness.</p>
+          <p><strong>Exam trap:</strong> A high P/E doesn't always mean overvalued — it may reflect high expected growth (g) or low risk (r). Conversely, a low P/E may signal a value trap, not a bargain. Always decompose P/E using the justified P/E formula before concluding over/undervaluation.</p>
+        </div>
+        <div>
+          <div class="article">
+            <div class="article-hed">Why It Matters for L1 and Your Equity Competition Work</div>
+            <ul>
+              <li>P/E and P/B are the primary multiples tested in the Equity topic at L1 — justified multiples via DDM decomposition is a frequent item-set question</li>
+              <li>For Aptus Value Housing Finance: high ROE + low payout + high retention = high sustainable growth (g) → justifies premium P/B vs peers on Gordon Growth logic</li>
+              <li>P/B = ROE / (r − g) from Gordon Growth — HFCs with superior ROE structurally deserve higher P/B; examiner will test this direction</li>
+              <li>Sector comparison trap: comparing P/E of a high-growth AHFC (Aptus, Home First) to a low-growth large HFC (HDFC Bank mortgage book) without adjusting for g is analytically incorrect</li>
+            </ul>
+          </div>
+          <div class="article" style="margin-top:10px">
+            <div class="article-hed">Practice Prompt</div>
+            <ul>
+              <li>Aptus: ROE 17%, retention 80%, r = 14% — calculate justified P/B and justified P/E (assume EPS Rs 40, payout ratio 20%)</li>
+              <li>If a peer HFC has identical P/E but lower ROE, which is more attractive and why? What does this imply for relative P/B?</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <span>Compiled by the News for Moti Intelligence Desk</span>
+    <span>Printed for private circulation only &nbsp;·&nbsp; Not for redistribution</span>
+    <span>Mumbai, India &nbsp;·&nbsp; June 2026 &nbsp;·&nbsp; <a href="archive/index.html" style="color:var(--ink-light);text-decoration:underline;font-style:italic;">Archive</a></span>
+  </div>
+</div>
+</body>
+</html>
