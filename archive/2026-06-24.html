@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>News for Moti</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=UnifrakturMaguntia&family=IM+Fell+English:ital@0;1&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--ink:#1a1008;--ink-light:#3b2e1e;--rule:#1a1008;--paper:#f5efe2;--paper-mid:#ede3cc;--accent:#7a1c1c;--col-gap:24px}
+    body{background:#c8b89a;font-family:'Libre Baskerville',Georgia,serif;color:var(--ink);font-size:13px;line-height:1.55}
+    .page{max-width:1080px;margin:32px auto;background:var(--paper);padding:0 0 48px;box-shadow:0 4px 32px rgba(0,0,0,0.45),inset 0 0 120px rgba(180,150,90,0.08);position:relative}
+    .page::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 28px,rgba(120,90,40,0.03) 28px,rgba(120,90,40,0.03) 29px);pointer-events:none;z-index:0}
+    .page>*{position:relative;z-index:1}
+    .masthead{border-bottom:3px double var(--rule);padding:20px 40px 14px;text-align:center}
+    .masthead-top{display:flex;justify-content:space-between;align-items:flex-end;font-family:'IM Fell English',Georgia,serif;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-light);border-bottom:1px solid var(--rule);padding-bottom:6px;margin-bottom:10px}
+    .masthead-title{font-family:'UnifrakturMaguntia',cursive;font-size:72px;line-height:1;color:var(--ink);letter-spacing:0.02em;margin:4px 0 6px}
+    .masthead-tagline{font-family:'IM Fell English',Georgia,serif;font-style:italic;font-size:11px;letter-spacing:0.12em;color:var(--ink-light);margin-bottom:10px}
+    .masthead-bottom{display:flex;justify-content:space-between;font-family:'IM Fell English',serif;font-size:10px;letter-spacing:0.05em;color:var(--ink-light);border-top:1px solid var(--rule);padding-top:6px}
+    .section-banner{background:var(--ink);color:var(--paper);text-align:center;font-family:'Playfair Display',serif;font-size:11px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;padding:4px 40px}
+    .body-wrap{padding:0 40px}
+    .section{border-bottom:2px solid var(--rule);padding:18px 0 14px}
+    .section:last-child{border-bottom:none}
+    .section-head{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+    .section-title{font-family:'Playfair Display',serif;font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);white-space:nowrap}
+    .section-rule{flex:1;height:1px;background:var(--ink);opacity:0.3}
+    .cols-2{columns:2;column-gap:var(--col-gap)}
+    .cols-3{columns:3;column-gap:var(--col-gap)}
+    .article{break-inside:avoid;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid rgba(26,16,8,0.15)}
+    .article:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+    .article-hed{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;line-height:1.25;color:var(--ink);margin-bottom:6px}
+    .article-hed.large{font-size:19px}
+    .article-source{font-family:'IM Fell English',serif;font-style:italic;font-size:10px;color:var(--ink-light);margin-bottom:5px;opacity:0.75}
+    .article ul{list-style:none;padding:0}
+    .article ul li{padding-left:14px;position:relative;margin-bottom:4px;font-size:12px;line-height:1.5;color:var(--ink-light)}
+    .article ul li::before{content:'—';position:absolute;left:0;color:var(--accent);font-size:11px}
+    .no-news{font-family:'IM Fell English',serif;font-style:italic;font-size:12px;color:var(--ink-light);opacity:0.65;padding:4px 0}
+
+    .markets-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--col-gap)}
+    .market-block{break-inside:avoid}
+    .market-table{width:100%;border-collapse:collapse}
+    .market-table tr{border-bottom:1px solid rgba(26,16,8,0.1)}
+    .market-table tr:last-child{border-bottom:none}
+    .market-table td{padding:6px 0;font-family:'Libre Baskerville',serif;font-size:11px;vertical-align:baseline}
+    .mt-name{font-family:'Playfair Display',serif;font-size:12px;font-weight:700;color:var(--ink);text-align:left;white-space:nowrap;padding-right:10px}
+    .mt-val{text-align:right;color:var(--ink-light);white-space:nowrap;padding-right:10px;font-variant-numeric:tabular-nums}
+    .mt-chg{text-align:right;font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums;min-width:90px}
+    .up{color:#2a6b2a}
+    .dn{color:#8b1c1c}
+    .market-note{font-family:'IM Fell English',serif;font-style:italic;font-size:10px;color:var(--ink-light);margin-top:8px;opacity:0.7}
+
+    .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .stat-card{text-align:center;border:1px solid rgba(26,16,8,0.25);padding:10px 6px;break-inside:avoid}
+    .stat-num{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--accent);line-height:1.1}
+    .stat-label{font-family:'IM Fell English',serif;font-style:italic;font-size:9.5px;color:var(--ink-light);margin-top:4px;line-height:1.3}
+
+    .f1-podium{display:flex;justify-content:space-around;margin-bottom:12px;text-align:center}
+    .f1-pos{flex:1}
+    .f1-pos-num{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:var(--accent)}
+    .f1-pos-name{font-family:'Playfair Display',serif;font-size:12px;font-weight:700;color:var(--ink);margin-top:2px}
+    .f1-pos-team{font-family:'IM Fell English',serif;font-style:italic;font-size:10px;color:var(--ink-light)}
+    .f1-pos-gap{font-size:10px;color:var(--ink-light);margin-top:2px}
+
+    .cfa-box{border:1.5px solid var(--ink);padding:14px 18px;background:var(--paper-mid)}
+    .cfa-box-label{font-family:'Playfair Display',serif;font-size:9px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+    .cfa-formula{font-family:'Libre Baskerville',serif;font-size:15px;font-weight:700;color:var(--ink);margin-bottom:8px;letter-spacing:0.02em}
+    .cfa-vars{font-size:11px;color:var(--ink-light);line-height:1.7;margin-bottom:6px}
+    .cfa-tip{font-family:'IM Fell English',serif;font-style:italic;font-size:11px;color:var(--accent)}
+    .ornament{text-align:center;font-size:14px;color:var(--ink-light);opacity:0.4;margin:2px 0;letter-spacing:6px}
+    .footer{border-top:3px double var(--rule);margin:0 40px;padding:10px 0 0;display:flex;justify-content:space-between;font-family:'IM Fell English',serif;font-size:10px;font-style:italic;color:var(--ink-light);opacity:0.7}
+    .sub-head{font-family:'IM Fell English',serif;font-style:italic;font-size:11px;color:var(--ink-light);white-space:nowrap}
+    @media(max-width:720px){.masthead-title{font-size:44px}.masthead{padding:16px 20px 12px}.body-wrap{padding:0 20px}.cols-2,.cols-3,.markets-grid{columns:1;grid-template-columns:1fr}.stats-grid{grid-template-columns:repeat(2,1fr)}.footer{margin:0 20px}.section-banner{padding:4px 20px}.f1-podium{flex-direction:column;gap:10px}}
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="masthead">
+    <div class="masthead-top">
+      <span>Est. MMXXVI &nbsp;·&nbsp; Mumbai, India</span>
+      <span>Printed for private circulation only</span>
+      <span>Vol. I &nbsp;·&nbsp; No. 11</span>
+    </div>
+    <div class="masthead-title">News for Moti</div>
+    <div class="masthead-tagline">Intelligence, Capital &amp; Infrastructure — Daily</div>
+    <div class="masthead-bottom">
+      <span>Tuesday, 23rd June 2026</span>
+      <span>&#10070; &nbsp; Seven Sections &nbsp; &#10070;</span>
+      <span>Last 48 Hours Only</span>
+    </div>
+  </div>
+
+  <div class="section-banner">Today's Edition</div>
+  <div class="body-wrap">
+
+    <!-- SECTION 1: MARKETS -->
+    <div class="section">
+      <div class="section-head"><span class="section-title">Markets</span><span class="section-rule"></span></div>
+      <div class="markets-grid">
+
+        <div class="market-block">
+          <div class="section-head" style="margin-bottom:10px;">
+            <span class="sub-head">India &nbsp;·&nbsp; June 22, 2026</span>
+            <span class="section-rule"></span>
+          </div>
+          <table class="market-table">
+            <tr><td class="mt-name">Sensex</td><td class="mt-val">77,094.07</td><td class="mt-chg up">+291.17 (+0.38%)</td></tr>
+            <tr><td class="mt-name">Nifty 50</td><td class="mt-val">24,102.90</td><td class="mt-chg up">+89.80 (+0.37%)</td></tr>
+            <tr><td class="mt-name">Tech Mahindra</td><td class="mt-val">&mdash;</td><td class="mt-chg up">+2.16%</td></tr>
+            <tr><td class="mt-name">Sun Pharma</td><td class="mt-val">&mdash;</td><td class="mt-chg up">+1.37%</td></tr>
+            <tr><td class="mt-name">IndusInd Bank</td><td class="mt-val">&mdash;</td><td class="mt-chg dn">&minus;3.02%</td></tr>
+            <tr><td class="mt-name">Asian Paints</td><td class="mt-val">&mdash;</td><td class="mt-chg dn">&minus;2.20%</td></tr>
+          </table>
+          <p class="market-note">Eighth gain in 10 sessions — pharma, media, IT, energy led; FMCG and consumer durables lagged. Easing crude (US-Iran talks progressing toward a deal within 60 days) and three oil tankers safely crossing the Strait of Hormuz supported sentiment. Analysts (Emkay, Nuvama, Ambit) flag the rally is stretched — valuations rich, FIIs still net sellers of $49bn since Dec 2024.</p>
+        </div>
+
+        <div class="market-block">
+          <div class="section-head" style="margin-bottom:10px;">
+            <span class="sub-head">United States &nbsp;·&nbsp; June 22, 2026</span>
+            <span class="section-rule"></span>
+          </div>
+          <table class="market-table">
+            <tr><td class="mt-name">S&amp;P 500</td><td class="mt-val">7,472.79</td><td class="mt-chg dn">&minus;0.37%</td></tr>
+            <tr><td class="mt-name">Nasdaq</td><td class="mt-val">26,166.60</td><td class="mt-chg dn">&minus;1.32%</td></tr>
+            <tr><td class="mt-name">Dow Jones</td><td class="mt-val">51,712.71</td><td class="mt-chg up">+0.29%</td></tr>
+            <tr><td class="mt-name">Russell 2000</td><td class="mt-val">3,004.40</td><td class="mt-chg up">+0.83%</td></tr>
+            <tr><td class="mt-name">VIX</td><td class="mt-val">17.28</td><td class="mt-chg up">+2.98%</td></tr>
+            <tr><td class="mt-name">Gold</td><td class="mt-val">$4,137.90</td><td class="mt-chg dn">&minus;1.54%</td></tr>
+          </table>
+          <p class="market-note">Mixed close — Big Tech hit hard (Alphabet -4.99%) while Dow gained on rotation. Russell 2000 closed above 3,000 for the first time ever. Markets weighing "encouraging progress" in US-Iran talks (roadmap to a deal within 60 days) against Friday's Fed-driven volatility. Brent slid to ~$78/bbl.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="ornament">— ✦ —</div>
+
+    <!-- SECTION 2: ZERODHA DESK -->
+    <div class="section">
+      <div class="section-head"><span class="section-title">The Zerodha Desk</span><span class="section-rule"></span></div>
+      <div class="article">
+        <p class="no-news">No new posts found from The Daily Brief or The Chatter within the last 48 hours. The most recent Aftermarket Report ("IT rout overshadows late recovery") was published June 19 — outside the window. Will surface here as soon as a fresh post lands.</p>
+      </div>
+    </div>
+
+    <div class="ornament">— ✦ —</div>
+
+    <!-- SECTION 3: INDIA MACRO -->
+    <div class="section">
+      <div class="section-head"><span class="section-title">India Macro</span><span class="section-rule"></span></div>
+      <div class="cols-2">
+        <div class="article">
+          <div class="article-hed large">Sensex Extends Rally to 8th Gain in 10 Sessions; Analysts Flag Stretched Valuations</div>
+          <div class="article-source">BusinessToday / Trading Economics &nbsp;·&nbsp; June 22, 2026</div>
+          <ul>
+            <li>Indices closed firmly higher Monday on improving macro conditions as energy prices extended their decline; broad-based buying across pharma, media, IT and energy</li>
+            <li>Emkay Global: post-war rally "running into rough weather" — US-Iran talks off-track, monsoon delayed three weeks, weak Accenture guidance weighing on tech</li>
+            <li>Ambit Capital: India's one-year underperformance vs EM at 37% — near worst in two decades; 2026/27 EPS revisions at -14%/-15% in dollar terms, worst among EM peers</li>
+            <li>Nuvama: market cap to GDP at 130% vs 10-year average of 100%; median trailing P/E at 30x — valuations rich at the headline level</li>
+          </ul>
+        </div>
+        <div class="article">
+          <div class="article-hed">Bharat Forge Wins Rs 425 Cr Defence Order; Multiple Tanker Safe Passage Through Hormuz</div>
+          <div class="article-source">Trading Economics &nbsp;·&nbsp; June 22, 2026</div>
+          <ul>
+            <li>Bharat Forge secured a Rs 4.25 billion (Rs 425 Cr) contract from the Defence Ministry to supply gas turbine generators</li>
+            <li>India confirmed three oil tankers carrying over 860,000 metric tons safely crossed the Strait of Hormuz — a route handling ~20% of global oil supply — easing supply-risk concerns</li>
+            <li>Other gainers: Aegis Logistics (+6.3%), Shipping Corp of India (+4.1%), NIACL (+3.2%), Garden Reach Shipbuilders (+3.2%), HFCL (+2.8%), Reliance (+2.3%)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="ornament">— ✦ —</div>
+
+    <!-- SECTION 4: INFRASTRUCTURE -->
+    <div class="section">
+      <div class="section-head"><span class="section-title">Infrastructure</span><span class="section-rule"></span></div>
+      <div class="cols-2">
+        <div class="article">
+          <div class="article-hed">ADB to Provide ~$1 Billion in Direct Private Sector Financing to India in 2026</div>
+          <div class="article-source">IBEF / ADB &nbsp;·&nbsp; June 22, 2026</div>
+          <ul>
+            <li>Asian Development Bank plans around Rs 9,436 Cr (~$1bn) in direct private sector financing to India this year — renewable energy and green infrastructure flagged as priority areas</li>
+            <li>ADB confirms India remains its largest private-sector market globally — reinforces the DFI funding environment relevant to BII's own India pipeline</li>
+          </ul>
+        </div>
+        <div class="article">
+          <div class="article-hed">Reliance Jio Platforms Board Approves DRHP for IPO; Net Debt Falls to Rs 27,579 Cr</div>
+          <div class="article-source">NDTV Profit / Moneycontrol &nbsp;·&nbsp; June 19–22, 2026 reporting</div>
+          <ul>
+            <li>Reliance's board approved the draft red herring prospectus for Jio Platforms' IPO, to be filed with SEBI — potentially one of India's largest-ever public issues</li>
+            <li>Around Rs 27,500 Cr of IPO proceeds earmarked for debt repayment; Jio's net debt already down to Rs 27,579 Cr in FY26 from Rs 45,273 Cr a year earlier</li>
+            <li>Akash Ambani: "Reliance Intelligence will disrupt AI economics by making it dramatically more affordable for every Indian by the end of the decade" — same playbook as Jio's original data disruption</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="ornament">— ✦ —</div>
+
+    <!-- SECTION 5: BANKING & FINANCIAL SERVICES -->
+    <div class="section">
+      <div class="section-head"><span class="section-title">Banking &amp; Financial Services</span><span class="section-rule"></span></div>
+      <div class="article">
+        <p class="no-news">No fresh HFC, MSME/NBFC, or MFI-specific news found within the last 48 hours from mainstream sources, Substacks, or op-eds. One adjacent item: RBI infused Rs 72,300 Cr of short-term liquidity via two Variable Rate Repo auctions on June 19 after advance tax outflows tightened banking system liquidity — now just outside the window. Will populate as soon as fresh sector-specific coverage appears.</p>
+      </div>
+    </div>
+
+    <div class="ornament">— ✦ —</div>
+
+    <!-- SECTION 6: STATISTICS DASHBOARD -->
+    <div class="section">
+      <div class="section-head"><span class="section-title">Statistics &nbsp;·&nbsp; Sector Dashboard</span><span class="section-rule"></span></div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-num">$1 Bn</div>
+          <div class="stat-label">ADB direct private-sector financing planned for India in 2026 — renewables priority</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">8 of 10</div>
+          <div class="stat-label">Sensex winning sessions in the last 10 trading days</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">$49 Bn</div>
+          <div class="stat-label">Net FII outflow from Indian equities since December 2024 — Ambit Capital</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">130%</div>
+          <div class="stat-label">India market cap-to-GDP vs 10-year average of 100% — Nuvama</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">Rs 27,579 Cr</div>
+          <div class="stat-label">Jio Platforms net debt in FY26, down from Rs 45,273 Cr a year earlier</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">3,004.40</div>
+          <div class="stat-label">Russell 2000 first-ever close above the 3,000 milestone (June 22)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">860,000 MT</div>
+          <div class="stat-label">Oil safely transported via 3 tankers through the Strait of Hormuz this week</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">-14% / -15%</div>
+          <div class="stat-label">India's FY26/FY27 EPS revisions in USD terms — worst among major EMs, Ambit Capital</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ornament">— ✦ —</div>
+
+    <!-- SECTION 7: FORMULA 1 -->
+    <div class="section">
+      <div class="section-head"><span class="section-title">Formula 1 &nbsp;·&nbsp; Last Race Report</span><span class="section-rule"></span></div>
+      <div class="article">
+        <div class="article-hed large">2026 Spanish Grand Prix — Barcelona-Catalunya &nbsp;·&nbsp; June 14, 2026</div>
+        <div class="article-source">Lewis Hamilton claims maiden Ferrari victory, ending Mercedes' 2026 winning streak</div>
+
+        <div class="f1-podium">
+          <div class="f1-pos">
+            <div class="f1-pos-num">P2</div>
+            <div class="f1-pos-name">George Russell</div>
+            <div class="f1-pos-team">Mercedes</div>
+            <div class="f1-pos-gap">+19.5s</div>
+          </div>
+          <div class="f1-pos" style="transform:scale(1.1);">
+            <div class="f1-pos-num">P1</div>
+            <div class="f1-pos-name">Lewis Hamilton</div>
+            <div class="f1-pos-team">Ferrari</div>
+            <div class="f1-pos-gap">Winner</div>
+          </div>
+          <div class="f1-pos">
+            <div class="f1-pos-num">P3</div>
+            <div class="f1-pos-name">Lando Norris</div>
+            <div class="f1-pos-team">McLaren</div>
+            <div class="f1-pos-gap">+23.7s</div>
+          </div>
+        </div>
+
+        <ul>
+          <li>Hamilton's 106th career GP win, first in Ferrari colours, 686 days since his last victory at the 2024 Belgian GP</li>
+          <li>Ferrari ran an aggressive three-stop strategy, gaining a free stop under a Virtual Safety Car to seize the lead</li>
+          <li>First all-British podium since 1968 (Stewart, Hill, Surtees) — Hamilton, Russell and Norris shared the rostrum</li>
+          <li>Kimi Antonelli retired on Lap 62 of 66 after a late battle with Russell for P2 — a costly DNF in the title fight</li>
+        </ul>
+
+        <div class="stats-grid" style="margin-top:14px; grid-template-columns:repeat(3,1fr);">
+          <div class="stat-card">
+            <div class="stat-num">19.5s</div>
+            <div class="stat-label">Hamilton's winning margin over Russell at the flag</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">156 pts</div>
+            <div class="stat-label">Kimi Antonelli — Drivers' Championship leader after Round 7 of 22</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">41 pts</div>
+            <div class="stat-label">Antonelli's lead over 2nd-placed Hamilton (115 pts) in the standings</div>
+          </div>
+        </div>
+
+        <p class="market-note" style="margin-top:10px;">Next race: Austrian Grand Prix at Red Bull Ring, June 28, 2026. Mercedes still lead the Constructors' Championship with 262 points.</p>
+      </div>
+    </div>
+
+    <div class="ornament">— ✦ —</div>
+
+    <!-- SECTION 8: CFA PREP -->
+    <div class="section">
+      <div class="section-head"><span class="section-title">CFA Prep &nbsp;·&nbsp; Formula of the Day</span><span class="section-rule"></span></div>
+      <div class="cfa-box">
+        <div class="cfa-box-label">Today's Formula — Free Cash Flow to Firm (FCFF)</div>
+        <div class="cfa-formula">FCFF = NI + NCC + Int(1&minus;t) &minus; FCInv &minus; WCInv</div>
+        <div class="cfa-vars">
+          NI = net income &nbsp;|&nbsp; NCC = non-cash charges (e.g. depreciation) &nbsp;|&nbsp; Int(1&minus;t) = after-tax interest expense<br/>
+          FCInv = fixed capital investment (CapEx) &nbsp;|&nbsp; WCInv = increase in working capital
+        </div>
+        <div class="cfa-tip">Exam tip: FCFF is discounted at WACC, not cost of equity — pairing FCFF with cost of equity is a common L1 error.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <span>Compiled by the News for Moti Intelligence Desk</span>
+    <span>Printed for private circulation only &nbsp;·&nbsp; Not for redistribution</span>
+    <span>Mumbai, India &nbsp;·&nbsp; June 2026 &nbsp;·&nbsp; <a href="archive/index.html" style="color:var(--ink-light);text-decoration:underline;font-style:italic;">Archive</a></span>
+  </div>
+</div>
+</body>
+</html>
