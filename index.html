@@ -1,81 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>News for Moti</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=UnifrakturMaguntia&family=IM+Fell+English:ital@0;1&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{--ink:#1a1008;--ink-light:#3b2e1e;--rule:#1a1008;--paper:#f5efe2;--paper-mid:#ede3cc;--accent:#7a1c1c;--col-gap:24px}
-    body{background:#c8b89a;font-family:'Libre Baskerville',Georgia,serif;color:var(--ink);font-size:13px;line-height:1.55}
-    .page{max-width:1080px;margin:32px auto;background:var(--paper);padding:0 0 48px;box-shadow:0 4px 32px rgba(0,0,0,0.45),inset 0 0 120px rgba(180,150,90,0.08);position:relative}
+    :root{
+      --ink:#1a1008;--ink-light:#3b2e1e;--rule:#1a1008;
+      --paper:#f5efe2;--paper-mid:#ede3cc;--accent:#7a1c1c;
+      --col-gap:24px;--page-pad:40px;
+    }
+    body{background:#c8b89a;font-family:'Libre Baskerville',Georgia,serif;color:var(--ink);font-size:14px;line-height:1.6;-webkit-text-size-adjust:100%}
+
+    /* PAGE */
+    .page{max-width:1080px;margin:24px auto;background:var(--paper);padding:0 0 48px;box-shadow:0 4px 32px rgba(0,0,0,0.45);position:relative;overflow:hidden}
     .page::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 28px,rgba(120,90,40,0.03) 28px,rgba(120,90,40,0.03) 29px);pointer-events:none;z-index:0}
     .page>*{position:relative;z-index:1}
-    .masthead{border-bottom:3px double var(--rule);padding:20px 40px 14px;text-align:center}
-    .masthead-top{display:flex;justify-content:space-between;align-items:flex-end;font-family:'IM Fell English',Georgia,serif;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-light);border-bottom:1px solid var(--rule);padding-bottom:6px;margin-bottom:10px}
-    .masthead-title{font-family:'UnifrakturMaguntia',cursive;font-size:72px;line-height:1;color:var(--ink);letter-spacing:0.02em;margin:4px 0 6px}
-    .masthead-tagline{font-family:'IM Fell English',Georgia,serif;font-style:italic;font-size:11px;letter-spacing:0.12em;color:var(--ink-light);margin-bottom:10px}
-    .masthead-bottom{display:flex;justify-content:space-between;font-family:'IM Fell English',serif;font-size:10px;letter-spacing:0.05em;color:var(--ink-light);border-top:1px solid var(--rule);padding-top:6px}
-    .section-banner{background:var(--ink);color:var(--paper);text-align:center;font-family:'Playfair Display',serif;font-size:11px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;padding:4px 40px}
-    .body-wrap{padding:0 40px}
+
+    /* MASTHEAD */
+    .masthead{border-bottom:3px double var(--rule);padding:20px var(--page-pad) 14px;text-align:center}
+    .masthead-top{display:flex;justify-content:space-between;align-items:flex-end;font-family:'IM Fell English',serif;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-light);border-bottom:1px solid var(--rule);padding-bottom:6px;margin-bottom:10px;flex-wrap:wrap;gap:4px}
+    .masthead-title{font-family:'UnifrakturMaguntia',cursive;font-size:clamp(44px,8vw,76px);line-height:1;color:var(--ink);letter-spacing:0.02em;margin:4px 0 6px}
+    .masthead-tagline{font-family:'IM Fell English',serif;font-style:italic;font-size:11px;letter-spacing:0.12em;color:var(--ink-light);margin-bottom:10px}
+    .masthead-bottom{display:flex;justify-content:space-between;font-family:'IM Fell English',serif;font-size:10px;color:var(--ink-light);border-top:1px solid var(--rule);padding-top:6px;flex-wrap:wrap;gap:4px}
+
+    /* BANNER */
+    .section-banner{background:var(--ink);color:var(--paper);text-align:center;font-family:'Playfair Display',serif;font-size:11px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;padding:5px var(--page-pad)}
+
+    /* BODY */
+    .body-wrap{padding:0 var(--page-pad)}
     .section{border-bottom:2px solid var(--rule);padding:18px 0 14px}
     .section:last-child{border-bottom:none}
-    .section-head{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+    .section-head{display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:nowrap}
     .section-title{font-family:'Playfair Display',serif;font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);white-space:nowrap}
-    .section-rule{flex:1;height:1px;background:var(--ink);opacity:0.3}
+    .section-rule{flex:1;height:1px;background:var(--ink);opacity:0.3;min-width:10px}
+
+    /* COLUMNS */
     .cols-2{columns:2;column-gap:var(--col-gap)}
     .cols-3{columns:3;column-gap:var(--col-gap)}
-    .article{break-inside:avoid;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid rgba(26,16,8,0.15)}
+
+    /* ARTICLE */
+    .article{break-inside:avoid;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid rgba(26,16,8,0.13)}
     .article:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
-    .article-hed{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;line-height:1.25;color:var(--ink);margin-bottom:6px}
-    .article-hed.large{font-size:19px}
-    .article-source{font-family:'IM Fell English',serif;font-style:italic;font-size:10px;color:var(--ink-light);margin-bottom:5px;opacity:0.75}
+    .article-hed{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;line-height:1.25;color:var(--ink);margin-bottom:5px}
+    .article-hed.large{font-size:20px}
+    .article-source{font-family:'IM Fell English',serif;font-style:italic;font-size:10px;color:var(--ink-light);margin-bottom:6px;opacity:0.75}
     .article ul{list-style:none;padding:0}
-    .article ul li{padding-left:14px;position:relative;margin-bottom:4px;font-size:12px;line-height:1.5;color:var(--ink-light)}
+    .article ul li{padding-left:16px;position:relative;margin-bottom:5px;font-size:12.5px;line-height:1.55;color:var(--ink-light)}
     .article ul li::before{content:'—';position:absolute;left:0;color:var(--accent);font-size:11px}
+    .dive-deeper{display:inline-block;margin-top:8px;font-family:'IM Fell English',serif;font-style:italic;font-size:11px;color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(122,28,28,0.35);padding-bottom:1px}
+    .dive-deeper:hover{border-bottom-color:var(--accent)}
     .no-news{font-family:'IM Fell English',serif;font-style:italic;font-size:12px;color:var(--ink-light);opacity:0.65;padding:4px 0}
+
+    /* MARKETS */
     .markets-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--col-gap)}
     .market-block{break-inside:avoid}
+    .sub-head{font-family:'IM Fell English',serif;font-style:italic;font-size:11px;color:var(--ink-light);white-space:nowrap}
     .market-table{width:100%;border-collapse:collapse}
     .market-table tr{border-bottom:1px solid rgba(26,16,8,0.1)}
     .market-table tr:last-child{border-bottom:none}
     .market-table td{padding:6px 0;font-family:'Libre Baskerville',serif;font-size:11px;vertical-align:baseline}
-    .mt-name{font-family:'Playfair Display',serif;font-size:12px;font-weight:700;color:var(--ink);text-align:left;white-space:nowrap;padding-right:10px}
+    .mt-name{font-family:'Playfair Display',serif;font-size:12px;font-weight:700;color:var(--ink);text-align:left;padding-right:10px;white-space:nowrap}
     .mt-val{text-align:right;color:var(--ink-light);white-space:nowrap;padding-right:10px;font-variant-numeric:tabular-nums}
     .mt-chg{text-align:right;font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums;min-width:90px}
-    .up{color:#2a6b2a}
-    .dn{color:#8b1c1c}
+    .up{color:#2a6b2a}.dn{color:#8b1c1c}
     .market-note{font-family:'IM Fell English',serif;font-style:italic;font-size:10px;color:var(--ink-light);margin-top:8px;opacity:0.7}
+
+    /* ZERODHA */
+    .z-item{break-inside:avoid;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid rgba(26,16,8,0.1)}
+    .z-item:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0}
+    .z-text{font-size:12.5px;line-height:1.6;color:var(--ink-light)}
+
     /* IRAN TIMELINE */
     .timeline{position:relative;padding-left:20px;margin-top:8px}
-    .timeline::before{content:'';position:absolute;left:6px;top:0;bottom:0;width:1px;background:var(--accent);opacity:0.4}
-    .tl-item{position:relative;margin-bottom:10px;break-inside:avoid}
+    .timeline::before{content:'';position:absolute;left:6px;top:4px;bottom:4px;width:1px;background:var(--accent);opacity:0.4}
+    .tl-item{position:relative;margin-bottom:11px;break-inside:avoid}
     .tl-item::before{content:'';position:absolute;left:-16px;top:5px;width:7px;height:7px;border-radius:50%;background:var(--accent)}
-    .tl-date{font-family:'Playfair Display',serif;font-size:10px;font-weight:700;color:var(--accent);letter-spacing:0.05em}
-    .tl-text{font-size:11px;color:var(--ink-light);line-height:1.5;margin-top:1px}
-    .iran-current{border:1px solid var(--accent);padding:10px 12px;margin-top:10px;background:rgba(122,28,28,0.04)}
-    .iran-current-label{font-family:'Playfair Display',serif;font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+    .tl-date{font-family:'Playfair Display',serif;font-size:10px;font-weight:700;color:var(--accent);letter-spacing:0.04em}
+    .tl-text{font-size:11.5px;color:var(--ink-light);line-height:1.5;margin-top:2px}
+    .iran-current{border:1px solid var(--accent);padding:10px 14px;margin-top:12px;background:rgba(122,28,28,0.04)}
+    .iran-current-label{font-family:'Playfair Display',serif;font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+
     /* STATS */
     .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
     .stat-card{text-align:center;border:1px solid rgba(26,16,8,0.25);padding:10px 6px;break-inside:avoid}
     .stat-num{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--accent);line-height:1.1}
     .stat-label{font-family:'IM Fell English',serif;font-style:italic;font-size:9.5px;color:var(--ink-light);margin-top:4px;line-height:1.3}
-    /* F1 */
-    .f1-podium{display:flex;justify-content:space-around;margin-bottom:12px;text-align:center}
+
+    /* F1 PODIUM */
+    .f1-podium{display:flex;justify-content:space-around;margin-bottom:12px;text-align:center;gap:8px}
     .f1-pos{flex:1}
     .f1-pos-num{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:var(--accent)}
     .f1-pos-name{font-family:'Playfair Display',serif;font-size:12px;font-weight:700;color:var(--ink);margin-top:2px}
     .f1-pos-team{font-family:'IM Fell English',serif;font-style:italic;font-size:10px;color:var(--ink-light)}
     .f1-pos-gap{font-size:10px;color:var(--ink-light);margin-top:2px}
+
+    /* CFA */
     .cfa-box{border:1.5px solid var(--ink);padding:14px 18px;background:var(--paper-mid)}
     .cfa-box-label{font-family:'Playfair Display',serif;font-size:9px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
-    .cfa-formula{font-family:'Libre Baskerville',serif;font-size:15px;font-weight:700;color:var(--ink);margin-bottom:8px;letter-spacing:0.02em}
+    .cfa-formula{font-family:'Libre Baskerville',serif;font-size:15px;font-weight:700;color:var(--ink);margin-bottom:8px}
     .cfa-vars{font-size:11px;color:var(--ink-light);line-height:1.7;margin-bottom:6px}
     .cfa-tip{font-family:'IM Fell English',serif;font-style:italic;font-size:11px;color:var(--accent)}
+
+    /* ORNAMENT / FOOTER */
     .ornament{text-align:center;font-size:14px;color:var(--ink-light);opacity:0.4;margin:2px 0;letter-spacing:6px}
-    .footer{border-top:3px double var(--rule);margin:0 40px;padding:10px 0 0;display:flex;justify-content:space-between;font-family:'IM Fell English',serif;font-size:10px;font-style:italic;color:var(--ink-light);opacity:0.7}
-    .sub-head{font-family:'IM Fell English',serif;font-style:italic;font-size:11px;color:var(--ink-light);white-space:nowrap}
-    @media(max-width:720px){.masthead-title{font-size:44px}.masthead{padding:16px 20px 12px}.body-wrap{padding:0 20px}.cols-2,.cols-3,.markets-grid{columns:1;grid-template-columns:1fr}.stats-grid{grid-template-columns:repeat(2,1fr)}.footer{margin:0 20px}.section-banner{padding:4px 20px}.f1-podium{flex-direction:column;gap:10px}}
+    .footer{border-top:3px double var(--rule);margin:0 var(--page-pad);padding:10px 0 0;display:flex;justify-content:space-between;font-family:'IM Fell English',serif;font-size:10px;font-style:italic;color:var(--ink-light);opacity:0.7;flex-wrap:wrap;gap:6px}
+
+    /* ─── MOBILE ─── */
+    @media(max-width:680px){
+      :root{--page-pad:18px;--col-gap:0px}
+      body{font-size:15px}
+      .masthead{padding:16px var(--page-pad) 12px}
+      .masthead-top,.masthead-bottom{font-size:9px;gap:2px}
+      .masthead-top span:nth-child(2){display:none} /* hide "printed for private circulation" on tiny screens */
+      .cols-2,.cols-3{columns:1}
+      .markets-grid{grid-template-columns:1fr}
+      .market-block+.market-block{margin-top:20px}
+      .stats-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+      .f1-podium{flex-direction:column;align-items:center;gap:14px}
+      .f1-pos{width:100%;max-width:240px}
+      .footer{margin:0 var(--page-pad);font-size:9px}
+      .section-banner{padding:5px var(--page-pad);font-size:10px}
+      .article-hed{font-size:16px}
+      .article-hed.large{font-size:18px}
+      .cfa-formula{font-size:13px}
+      .iran-current{padding:8px 10px}
+      .stat-num{font-size:17px}
+    }
+    @media(max-width:400px){
+      .stats-grid{grid-template-columns:1fr}
+    }
   </style>
 </head>
 <body>
@@ -98,233 +154,279 @@
   <div class="section-banner">Today's Edition</div>
   <div class="body-wrap">
 
-    <!-- SECTION 1: MARKETS -->
+    <!-- 1: MARKETS -->
     <div class="section">
       <div class="section-head"><span class="section-title">Markets</span><span class="section-rule"></span></div>
       <div class="markets-grid">
-
         <div class="market-block">
-          <div class="section-head" style="margin-bottom:10px;">
-            <span class="sub-head">India &nbsp;·&nbsp; July 13, 2026</span>
-            <span class="section-rule"></span>
+          <div class="section-head" style="margin-bottom:10px">
+            <span class="sub-head">India &nbsp;·&nbsp; July 13, 2026</span><span class="section-rule"></span>
           </div>
           <table class="market-table">
             <tr><td class="mt-name">Sensex</td><td class="mt-val">77,616.40</td><td class="mt-chg up">+47.01 (+0.06%)</td></tr>
             <tr><td class="mt-name">Nifty 50</td><td class="mt-val">24,211.00</td><td class="mt-chg up">+4.10 (+0.02%)</td></tr>
-            <tr><td class="mt-name">Intraday low</td><td class="mt-val">76,857.43</td><td class="mt-chg dn">Gapped down 700 pts at open</td></tr>
+            <tr><td class="mt-name">Intraday low</td><td class="mt-val">76,857.43</td><td class="mt-chg dn">Gapped down 700+ pts at open</td></tr>
             <tr><td class="mt-name">Nifty IT</td><td class="mt-val">&mdash;</td><td class="mt-chg up">Led recovery</td></tr>
-            <tr><td class="mt-name">Nifty Metal</td><td class="mt-val">&mdash;</td><td class="mt-chg dn">Lagged</td></tr>
-            <tr><td class="mt-name">TCS / HCLTech / Infosys</td><td class="mt-val">&mdash;</td><td class="mt-chg up">Top Nifty gainers</td></tr>
+            <tr><td class="mt-name">INR / USD</td><td class="mt-val">95.56</td><td class="mt-chg dn">&minus;0.6% (near 1-month low)</td></tr>
           </table>
-          <p class="market-note">Dramatic intraday reversal — Sensex opened 700 pts lower after Iran re-closed the Strait of Hormuz, hit a low of 76,857, then clawed back nearly all losses on IT buying. TCS, HCLTech and Infosys among top gainers; Tata Steel, IndiGo and Eternal were laggards. Market breadth positive (2,207 vs 2,006) despite headline weakness. ~70 Q1 results due this week including major banks.</p>
+          <p class="market-note">Dramatic 700-pt gap-down at open after Iran re-closed Strait; IT buying (TCS, HCLTech, Infosys) drove a full recovery to flat. INR hit 95.60 intraday before closing at 95.56. ~70 Q1 FY27 results due this week.</p>
+          <a class="dive-deeper" href="https://aftermarketreport.zerodha.com/p/nifty-shrugs-off-gap-down-opening" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
         </div>
-
         <div class="market-block">
-          <div class="section-head" style="margin-bottom:10px;">
-            <span class="sub-head">United States &nbsp;·&nbsp; July 13, 2026</span>
-            <span class="section-rule"></span>
+          <div class="section-head" style="margin-bottom:10px">
+            <span class="sub-head">United States &nbsp;·&nbsp; July 13, 2026</span><span class="section-rule"></span>
           </div>
           <table class="market-table">
             <tr><td class="mt-name">S&amp;P 500</td><td class="mt-val">7,515.34</td><td class="mt-chg dn">&minus;0.79%</td></tr>
             <tr><td class="mt-name">Nasdaq</td><td class="mt-val">25,873.18</td><td class="mt-chg dn">&minus;1.55%</td></tr>
             <tr><td class="mt-name">Dow Jones</td><td class="mt-val">52,498.64</td><td class="mt-chg dn">&minus;138.37 (&minus;0.26%)</td></tr>
-            <tr><td class="mt-name">Nvidia</td><td class="mt-val">&mdash;</td><td class="mt-chg dn">&minus;3.52%</td></tr>
+            <tr><td class="mt-name">Crude (WTI)</td><td class="mt-val">~$74</td><td class="mt-chg dn">+3%+ on Strait closure</td></tr>
             <tr><td class="mt-name">Samsung</td><td class="mt-val">&mdash;</td><td class="mt-chg dn">&minus;10.7% (earnings miss)</td></tr>
-            <tr><td class="mt-name">DeepSeek AI chip</td><td class="mt-val">Reports</td><td class="mt-chg dn">Chip sector selloff catalyst</td></tr>
           </table>
-          <p class="market-note">Stocks fell after Trump reinstated the "Iranian blockade" on the Strait — lifting oil and sinking tech. Samsung's quarterly miss and reports of DeepSeek developing its own AI chip triggered semiconductor selling. S&P 500 EPS expected to rise 20.9% YoY in Q2 — elevated bar for earnings season. June CPI + Fed Chair Warsh's Congressional testimony on Tuesday create a pivotal macro moment.</p>
+          <p class="market-note">Stocks fell as Trump reinstated the "Iranian Blockade." Samsung quarterly miss and DeepSeek AI chip reports drove chip-sector selloff. SK Hynix ADRs fell 9.2% in premarket after surging 12.8% on Friday debut. S&P 500 Q2 EPS expected +20.9% YoY — high bar for earnings season.</p>
+          <a class="dive-deeper" href="https://aftermarketreport.zerodha.com/p/nifty-shrugs-off-gap-down-opening" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
         </div>
-
       </div>
     </div>
 
     <div class="ornament">— ✦ —</div>
 
-    <!-- SECTION 2: US–IRAN CONFLICT -->
+    <!-- 2: IRAN WAR -->
     <div class="section">
       <div class="section-head"><span class="section-title">The Iran War &nbsp;·&nbsp; Operation Epic Fury</span><span class="section-rule"></span></div>
-
       <div class="cols-2">
         <div class="article">
-          <div class="article-hed">Timeline of the Conflict &nbsp;·&nbsp; February – July 2026</div>
+          <div class="article-hed">Timeline of the Conflict &nbsp;·&nbsp; Feb – July 2026</div>
           <div class="article-source">Britannica / Wikipedia / Time / Reuters &nbsp;·&nbsp; Compiled July 14, 2026</div>
           <div class="timeline">
             <div class="tl-item">
               <div class="tl-date">Feb 28, 2026 — Operation Epic Fury Begins</div>
-              <div class="tl-text">US and Israeli forces launch coordinated strikes on Iranian military, nuclear and command-control infrastructure. Supreme Leader Khamenei killed in opening strikes alongside IRGC commander and armed forces chief. Iran retaliates within hours with drones and ballistic missiles.</div>
+              <div class="tl-text">US and Israeli forces launch coordinated strikes on Iranian military, nuclear and command-control infrastructure. Supreme Leader Khamenei killed in opening strikes alongside IRGC commander. Iran retaliates within hours.</div>
             </div>
             <div class="tl-item">
               <div class="tl-date">Feb 28 – Mar 2026 — Strait of Hormuz Closed</div>
-              <div class="tl-text">IRGC announces closure of the Strait of Hormuz to US- and Israel-allied shipping. Global oil prices spike sharply. India confirms "friendly nation" status allows passage for select tankers.</div>
+              <div class="tl-text">IRGC closes the Strait to US/Israel-allied shipping. Global oil prices spike. India confirmed as a "friendly nation" allowing select tanker passage.</div>
             </div>
             <div class="tl-item">
               <div class="tl-date">March 2026 — Regional Escalation</div>
-              <div class="tl-text">Iran retaliates via proxy forces across Iraq, Syria, Lebanon and Yemen. US strikes expand to missile storage, radar and drone sites. Humanitarian concerns mount after school hit in Minab, southern Iran.</div>
+              <div class="tl-text">Iran retaliates via proxy forces across Iraq, Syria, Lebanon and Yemen. US strikes expand. Humanitarian concerns after school hit in Minab, southern Iran.</div>
             </div>
             <div class="tl-item">
               <div class="tl-date">April 2026 — Fragmented Ceasefire</div>
-              <div class="tl-text">Fragmented ceasefire agreed — heavily conditioned, frequently violated. US maintains naval presence in the Gulf; Iran asserts Hormuz toll rights. Multiple lapse-and-renew cycles over April–May.</div>
+              <div class="tl-text">Conditional ceasefire agreed — frequently violated. US maintains naval Gulf presence; Iran asserts Hormuz toll rights. Multiple lapse-and-renew cycles.</div>
             </div>
             <div class="tl-item">
               <div class="tl-date">June 17, 2026 — Versailles MoU</div>
-              <div class="tl-text">US-Iran Memorandum of Understanding signed in Versailles — reaffirms Iranian non-pursuit of nuclear weapons; sets 60-day timeline for nuclear deal negotiations; reopens Strait to commercial vessels. Iran President Pezeshkian participates.</div>
+              <div class="tl-text">US-Iran MoU signed — Iran reaffirms non-pursuit of nuclear weapons; 60-day timeline for a nuclear deal; Strait reopened to commercial vessels.</div>
             </div>
             <div class="tl-item">
               <div class="tl-date">June 27-29, 2026 — Ceasefire Cracks</div>
-              <div class="tl-text">Iran launches missiles and drones at US military sites in Kuwait and Bahrain over the weekend. US responds with fresh strikes. Trump threatens "annihilation." New tit-for-tat pause agreed, Hormuz reopened.</div>
+              <div class="tl-text">Iran strikes US sites in Kuwait and Bahrain. US retaliates. Trump threatens "annihilation." New pause agreed; Strait reopened again.</div>
             </div>
             <div class="tl-item">
-              <div class="tl-date">July 6–7, 2026 — Iran Fires on Commercial Vessels</div>
-              <div class="tl-text">Iran fires on three commercial vessels in the Strait, testing limits of the MoU. US responds with strikes on Iranian coastal radar sites. Doha talks collapse — Iran denies meeting was scheduled.</div>
+              <div class="tl-date">July 6-7, 2026 — Commercial Vessels Fired On</div>
+              <div class="tl-text">Iran fires on three commercial vessels in the Strait. US strikes Iranian coastal radar sites. Doha talks collapse.</div>
             </div>
             <div class="tl-item">
               <div class="tl-date">July 13, 2026 — Hormuz Re-Closed</div>
-              <div class="tl-text">Trump declares the US is reinstating the "Iranian Blockade," positioning America as "Guardian of the Hormuz Strait" and proposing a 20% levy on cargo transiting under US protection. Iran closes Strait again. Oil spikes at open; Sensex gaps down 700 pts before recovering.</div>
+              <div class="tl-text">Trump reinstates the "Iranian Blockade," positioning US as "Guardian of the Hormuz Strait" with a proposed 20% cargo levy. Iran closes Strait. Crude surges 3%+; Sensex gaps down 700 pts before recovering.</div>
             </div>
           </div>
         </div>
-
         <div class="article">
           <div class="article-hed">Current Situation — July 14, 2026</div>
-          <div class="article-source">Bloomberg / Reuters / Britannica &nbsp;·&nbsp; July 13–14, 2026</div>
+          <div class="article-source">Bloomberg / Reuters &nbsp;·&nbsp; July 13–14, 2026</div>
           <div class="iran-current">
             <div class="iran-current-label">Status as of This Edition</div>
             <ul>
-              <li>Strait of Hormuz: Partially operational — US naval forces present; commercial passage contested; Iran asserting toll/routing control</li>
-              <li>Ceasefire: Versailles MoU technically in force but repeatedly violated by both sides; no permanent agreement</li>
-              <li>Nuclear track: 60-day MoU timeline for a deal is now expired with no confirmed deal reached — status uncertain</li>
-              <li>War cost: US cumulative expenditure estimated at ~$30bn; pending $87.6bn supplemental appropriation before Congress</li>
-              <li>Brent crude: ~$76-78/bbl — elevated vs pre-war ~$70 level; primary driver of India's FY27 inflation and rupee pressure</li>
-              <li>India impact: Confirmed "friendly nation" — tanker access more reliable than for other nations; but energy import bill and INR (at ~94/USD) remain under pressure</li>
+              <li>Strait of Hormuz: Re-closed; US naval forces present; 20% cargo levy proposed</li>
+              <li>Ceasefire: Versailles MoU technically in force but repeatedly violated; no permanent agreement</li>
+              <li>Nuclear track: 60-day MoU timeline expired; no deal confirmed</li>
+              <li>Brent crude: ~$74/bbl — elevated vs pre-war ~$70; key India inflation driver</li>
+              <li>INR: ~95.56/USD — weakened from ~83 pre-war; RBI 6-point support package active</li>
+              <li>India status: "Friendly nation" — tanker access more reliable; import bill and currency under pressure</li>
             </ul>
           </div>
-          <div class="article-hed" style="margin-top:12px;">Market Impact on India</div>
+          <div class="article-hed" style="margin-top:14px;">Market Impact on India</div>
           <ul>
-            <li>RBI April MPC revised FY27 GDP down to 6.6% and inflation up to 5.1% — Iran war energy costs explicitly cited</li>
-            <li>Rupee has weakened from ~83/USD (pre-war) to ~94/USD — RBI deployed six-point support package including FCNR(B) incentives, FII tax relief and FAR G-sec expansion</li>
-            <li>Nifty Metal and auto stocks most sensitive to oil-price spikes; IT and pharma act as defensives during flare-ups</li>
-            <li>Going forward this section will track: Hormuz status, crude price, ceasefire/talks update, and India-specific impact</li>
+            <li>RBI revised FY27 GDP down to 6.6%, inflation up to 5.1% — Iran energy costs explicitly cited</li>
+            <li>India June CPI confirmed at 4.38% — first breach of RBI's 4% target in 16 months, partly driven by energy pass-through</li>
+            <li>IT and pharma act as defensives during Strait-closure flare-ups; metals and auto most sensitive to oil spikes</li>
+            <li>Going forward this section tracks: Hormuz status, crude price, ceasefire/talks update, India impact</li>
           </ul>
+          <a class="dive-deeper" href="https://tradingeconomics.com/commodity/crude-oil" target="_blank" rel="noopener">Dive Deeper — Crude Oil &rarr;</a>
         </div>
       </div>
     </div>
 
     <div class="ornament">— ✦ —</div>
 
-    <!-- SECTION 3: ZERODHA DESK -->
+    <!-- 3: ZERODHA DESK -->
     <div class="section">
       <div class="section-head"><span class="section-title">The Zerodha Desk</span><span class="section-rule"></span></div>
-      <div class="article">
-        <p class="no-news">No new posts found from The Daily Brief or The Chatter within the last 48 hours. Will surface here as soon as a fresh post lands.</p>
+      <div class="cols-2">
+        <div>
+          <div class="article-hed" style="margin-bottom:10px;font-family:'Playfair Display',serif;font-size:13px;font-weight:700;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase">Top Stories in India</div>
+          <div class="z-item">
+            <div class="z-text">India's June CPI accelerated to <strong>4.38%</strong> from 3.93% in May — breaching the RBI's 4% target for the first time in 16 months. Food inflation rose to 5.32%; rural CPI (4.74%) exceeded urban (3.92%).</div>
+            <a class="dive-deeper" href="https://www.business-standard.com/economy/news/june-retail-inflation-marginally-rises-to-4-38-food-inflation-at-5-32-126071300742_1.html" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+          </div>
+          <div class="z-item">
+            <div class="z-text">India's merchandise trade deficit widened <strong>59% YoY</strong> to $30.43 billion in June — exports fell to $40.41bn while imports were $70.84bn. Compares with a $19.08bn deficit in June 2025.</div>
+            <a class="dive-deeper" href="https://economictimes.indiatimes.com/news/economy/foreign-trade/indias-trade-deficit-widens-to-30-43-bn-in-june-as-against-28-21-bn-in-may/articleshow/132358512.cms" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+          </div>
+          <div class="z-item">
+            <div class="z-text"><strong>HCL Technologies</strong> Q1 FY27 net profit rose 20% YoY to ₹4,624 Cr; revenue grew 14% to ₹34,579 Cr. Operating margin improved to 16.9%, despite restructuring charges. FY27 guidance retained at 1–4% CC revenue growth.</div>
+            <a class="dive-deeper" href="https://www.moneycontrol.com/news/business/earnings/hcl-tech-net-profit-jumps-20-to-rs-4-624-crore-in-june-quarter-it-firm-to-pay-dividend-rs-12-per-share-13972760.html" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+          </div>
+          <div class="z-item">
+            <div class="z-text"><strong>LTM partnered with Anthropic</strong> to integrate Claude, Claude Code and Claude Cowork into its BlueVerse AI platform — serving enterprise software engineering and app modernisation clients.</div>
+            <a class="dive-deeper" href="https://www.business-standard.com/companies/news/ltm-anthropic-partnership-claude-enterprise-ai-transformation-126071300386_1.html" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+          </div>
+        </div>
+        <div>
+          <div class="article-hed" style="margin-bottom:10px;font-family:'Playfair Display',serif;font-size:13px;font-weight:700;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase">Top Stories Globally</div>
+          <div class="z-item">
+            <div class="z-text">Crude oil surged <strong>more than 3%</strong> to around $74/bbl after renewed US strikes on Iran raised Strait of Hormuz supply-disruption fears. Conflicting claims about Strait status, fresh Iranian attacks on US allies, and reported damage to a Kuwait offshore platform compounded the concern.</div>
+            <a class="dive-deeper" href="https://tradingeconomics.com/commodity/crude-oil" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+          </div>
+          <div class="z-item">
+            <div class="z-text"><strong>SK Hynix</strong> shares plunged more than 15% in Seoul — their biggest single-day fall in nearly two decades — as investors locked in gains after the company's Nasdaq IPO debut. US ADRs fell 9.2% in premarket after surging 12.8% on Friday.</div>
+            <a class="dive-deeper" href="https://www.reuters.com/world/asia-pacific/sk-hynix-shares-fall-much-44-seoul-after-strong-nasdaq-debut-2026-07-13/" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+          </div>
+          <div class="z-item">
+            <div class="z-text"><strong>TSMC</strong> reported a 36% YoY rise in Q2 revenue to $39.63 billion, driven by robust AI chip demand. June revenue alone surged 68% YoY. Key customers include Nvidia.</div>
+            <a class="dive-deeper" href="https://www.investing.com/news/stock-market-news/tsmc-q2-revenue-surges-36-amid-robust-ai-demand-4787449" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+          </div>
+          <div class="z-item">
+            <div class="z-text"><strong>Volkswagen</strong> may need to cut 50,000 more jobs (potentially 100,000 total), CEO Oliver Blume warned staff, as profits come under pressure from tariffs, China competition and German manufacturing inefficiencies.</div>
+            <a class="dive-deeper" href="https://www.reuters.com/business/world-at-work/volkswagen-ceo-threatens-50000-more-job-cuts-memo-staff-2026-07-13/" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+          </div>
+          <div class="z-item">
+            <div class="z-text"><strong>Japan's GPIF</strong> — the world's largest pension fund at ~$1.8 trillion — plans to increase allocations to alternative assets including unlisted equities, real estate and infrastructure, toward its 5% cap (up from 1.7% currently).</div>
+            <a class="dive-deeper" href="https://www.investing.com/news/economy-news/japan-to-steer-18-trillion-pension-fund-toward-more-alternative-investments-4787326" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+          </div>
+        </div>
       </div>
+      <p class="market-note" style="margin-top:10px;">Source: <a href="https://aftermarketreport.zerodha.com/p/nifty-shrugs-off-gap-down-opening" target="_blank" rel="noopener" style="color:var(--ink-light)">Aftermarket Report by Zerodha · July 13, 2026</a></p>
     </div>
 
     <div class="ornament">— ✦ —</div>
 
-    <!-- SECTION 4: INDIA MACRO -->
+    <!-- 4: INDIA MACRO -->
     <div class="section">
       <div class="section-head"><span class="section-title">India Macro</span><span class="section-rule"></span></div>
       <div class="cols-2">
         <div class="article">
-          <div class="article-hed large">Sensex Stages 700-Point Intraday Recovery After Iran Strait Closure Shock</div>
-          <div class="article-source">HDFC Sky / Trading Economics &nbsp;·&nbsp; July 13, 2026</div>
+          <div class="article-hed large">June CPI at 4.38% — First RBI Target Breach in 16 Months</div>
+          <div class="article-source">Business Standard / MoSPI &nbsp;·&nbsp; July 13, 2026</div>
           <ul>
-            <li>Market opened 600-700 points lower after Trump reinstated the Iranian blockade of the Strait overnight, sending oil prices higher</li>
-            <li>Recovery driven by IT sector — TCS, HCLTech and Infosys led gains as earnings season optimism offset geopolitical anxiety</li>
-            <li>About 70 companies reporting Q1 FY27 results this week, including major banks over the weekend — earnings season now the primary market driver</li>
-            <li>Nifty Media +2%, Consumer Durables +1%, Auto +0.45% among positive sectors; Metal and FMCG the primary drags</li>
+            <li>Consumer inflation accelerated to 4.38% in June from 3.93% in May — food inflation rose to 5.32%, driven by vegetables and cereals</li>
+            <li>Rural CPI (4.74%) exceeded urban CPI (3.92%) — rural food inflation at 5.45% vs urban 5.09%</li>
+            <li>RBI had flagged this risk in its April MPC — with Iran energy costs feeding through and food prices remaining elevated, rate cut probability for August MPC has fallen significantly</li>
           </ul>
+          <a class="dive-deeper" href="https://www.business-standard.com/economy/news/june-retail-inflation-marginally-rises-to-4-38-food-inflation-at-5-32-126071300742_1.html" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
         </div>
         <div class="article">
-          <div class="article-hed">June CPI and Fed Chair Warsh's Testimony: Dual Macro Events on Tuesday</div>
-          <div class="article-source">Schwab / CNBC &nbsp;·&nbsp; July 13, 2026</div>
+          <div class="article-hed">Trade Deficit Widens 59% YoY to $30.43bn in June; IT Earnings Drive Q1 Optimism</div>
+          <div class="article-source">Economic Times / Moneycontrol &nbsp;·&nbsp; July 13, 2026</div>
           <ul>
-            <li>India June CPI data releases this week — expected to breach RBI's 4% target for first time in 16 months driven by food and energy inflation</li>
-            <li>US June CPI releases Tuesday the same day Fed Chair Kevin Warsh testifies to Congress — "fasten your seatbelts" per Schwab strategist</li>
-            <li>Warsh previously warned: "prices are too high" and has not ruled out rate hikes despite Iran-war-driven demand uncertainty</li>
-            <li>DeepSeek reportedly developing its own AI chip — if confirmed, a potential disruption to Nvidia's dominance that the market is just beginning to price</li>
+            <li>Merchandise trade deficit widened to $30.43bn in June — exports fell to $40.41bn while imports came in at $70.84bn; energy imports inflated by Iran-war-elevated crude</li>
+            <li>TCS and HCLTech Q1 FY27 results both beat expectations — earnings season optimism offset geopolitical anxiety and drove Monday's Sensex recovery</li>
+            <li>~70 Q1 results due this week including major banks — earnings season now the dominant market driver over macro noise</li>
           </ul>
+          <a class="dive-deeper" href="https://economictimes.indiatimes.com/news/economy/foreign-trade/indias-trade-deficit-widens-to-30-43-bn-in-june-as-against-28-21-bn-in-may/articleshow/132358512.cms" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
         </div>
       </div>
     </div>
 
     <div class="ornament">— ✦ —</div>
 
-    <!-- SECTION 5: INFRASTRUCTURE -->
+    <!-- 5: INFRASTRUCTURE -->
     <div class="section">
       <div class="section-head"><span class="section-title">Infrastructure</span><span class="section-rule"></span></div>
       <div class="article">
-        <p class="no-news">No fresh India infrastructure or renewable energy news found within the last 48 hours beyond ongoing Iran-war-related energy price impact (covered in the Iran section above). Adani Green's 20 GW milestone and the 204 GW solar manufacturing capacity, covered in prior edition, remain the most recent confirmed data points. Will populate as new developments break.</p>
+        <p class="no-news">No fresh India infrastructure or renewable energy news found within the last 48 hours beyond ongoing Iran-war energy price impact covered above. Adani Green's 20 GW milestone and 204 GW solar manufacturing capacity (covered in No. 17) remain the most recent confirmed data points. Will populate as new developments break.</p>
       </div>
     </div>
 
     <div class="ornament">— ✦ —</div>
 
-    <!-- SECTION 6: BANKING & FINANCIAL SERVICES -->
+    <!-- 6: BANKING & FS -->
     <div class="section">
       <div class="section-head"><span class="section-title">Banking &amp; Financial Services</span><span class="section-rule"></span></div>
-      <div class="article">
-        <div class="article-hed">Major Bank Q1 FY27 Results Due This Week; Sector in Focus</div>
-        <div class="article-source">Business Standard / HDFC Sky &nbsp;·&nbsp; July 13, 2026</div>
-        <ul>
-          <li>Major private sector bank results expected this week — HDFC Bank, Axis Bank and others due over the weekend per analyst calendars</li>
-          <li>L&T, Avenue Supermarts, Just Dial and HCLTech also reporting — a heavy week for stock-specific action across sectors</li>
-          <li>Market participants tracking crude-oil sensitivity of banking sector — rising energy prices inflate working capital demand and can elevate credit risk in fuel-dependent industries</li>
-        </ul>
-        <p class="no-news" style="margin-top:8px;">No specific HFC, MSME/NBFC, or MFI-sector news found within last 48 hours. Bank lending to NBFCs data (33.7% YoY in May) and India Ratings cost-of-funds warning remain most recent confirmed sector-level data points.</p>
+      <div class="cols-2">
+        <div class="article">
+          <div class="article-hed">Major Bank Q1 FY27 Results Due This Week</div>
+          <div class="article-source">Business Standard &nbsp;·&nbsp; July 13, 2026</div>
+          <ul>
+            <li>HDFC Bank, Axis Bank and other major private sector banks reporting Q1 FY27 results this week — a heavy earnings calendar</li>
+            <li>ICICI Prudential AMC Q1 net profit rose 25.5% YoY to ₹965 Cr; total income grew 20.2% to ₹1,745 Cr — strong asset management performance</li>
+            <li>Watch for bank NIM commentary given rising cost of funds pressure, Iran-driven energy inflation and weak rate transmission from RBI cuts</li>
+          </ul>
+          <a class="dive-deeper" href="https://www.ndtvprofit.com/markets/icici-prudential-amc-q1-results-profit-jumps-26-total-income-exceeds-rs-1-700-crore-11764986" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+        </div>
+        <div class="article">
+          <div class="article-hed">CPI Breach Complicates Rate Cut Outlook for NBFCs and HFCs</div>
+          <div class="article-source">India Ratings / RBI &nbsp;·&nbsp; July 13, 2026</div>
+          <ul>
+            <li>June CPI at 4.38% confirms India Ratings' earlier warning: NBFC and HFC cost of funds unlikely to soften despite RBI rate cuts — rate cut probability for August MPC has fallen</li>
+            <li>Rising crude-driven inflation reduces headroom for further RBI easing — constraining the transmission benefit NBFCs were counting on to relieve NIM pressure</li>
+            <li>Bank lending to NBFCs still surging (+33.7% YoY in May) but cost of capital normalisation looks further away</li>
+          </ul>
+        </div>
       </div>
     </div>
 
     <div class="ornament">— ✦ —</div>
 
-    <!-- SECTION 7: STATISTICS DASHBOARD -->
+    <!-- 7: STATISTICS -->
     <div class="section">
       <div class="section-head"><span class="section-title">Statistics &nbsp;·&nbsp; Sector Dashboard</span><span class="section-rule"></span></div>
       <div class="stats-grid">
         <div class="stat-card">
-          <div class="stat-num">~$76–78</div>
-          <div class="stat-label">Brent crude per barrel — elevated vs ~$70 pre-Iran-war; primary India macro risk</div>
+          <div class="stat-num">4.38%</div>
+          <div class="stat-label">India June CPI — first breach of RBI's 4% target in 16 months</div>
         </div>
         <div class="stat-card">
-          <div class="stat-num">76,857</div>
-          <div class="stat-label">Sensex intraday low on July 13 — 700-pt gap-down before full recovery to flat</div>
+          <div class="stat-num">$30.43bn</div>
+          <div class="stat-label">India June trade deficit — widened 59% YoY on elevated energy imports</div>
         </div>
         <div class="stat-card">
-          <div class="stat-num">20.9%</div>
-          <div class="stat-label">Expected S&P 500 Q2 EPS growth YoY — elevated bar for the earnings season</div>
+          <div class="stat-num">~$74</div>
+          <div class="stat-label">WTI crude price after 3%+ surge on Iran Strait closure</div>
         </div>
         <div class="stat-card">
-          <div class="stat-num">$30 Bn</div>
-          <div class="stat-label">Estimated US cumulative war expenditure; $87.6bn supplemental pending Congress</div>
+          <div class="stat-num">95.56</div>
+          <div class="stat-label">INR per USD at close July 13 — near 1-month low on Iran flare-up</div>
         </div>
         <div class="stat-card">
-          <div class="stat-num">60 days</div>
-          <div class="stat-label">MoU timeline for US-Iran nuclear deal — expired with no confirmed deal reached</div>
+          <div class="stat-num">20%</div>
+          <div class="stat-label">HCLTech Q1 FY27 net profit growth YoY to ₹4,624 Cr</div>
         </div>
         <div class="stat-card">
-          <div class="stat-num">~94</div>
-          <div class="stat-label">Rupee per USD — weakened from ~83 before the war started in February</div>
+          <div class="stat-num">$39.6bn</div>
+          <div class="stat-label">TSMC Q2 revenue — up 36% YoY on AI chip demand surge</div>
         </div>
         <div class="stat-card">
           <div class="stat-num">&minus;1.55%</div>
-          <div class="stat-label">Nasdaq decline July 13 — semiconductor selloff on Samsung miss and DeepSeek chip reports</div>
+          <div class="stat-label">Nasdaq decline July 13 — chip selloff on Samsung miss and DeepSeek AI chip reports</div>
         </div>
         <div class="stat-card">
-          <div class="stat-num">70</div>
-          <div class="stat-label">Companies reporting Q1 FY27 results this week — India earnings season in full swing</div>
+          <div class="stat-num">100,000</div>
+          <div class="stat-label">Potential total Volkswagen job cuts flagged by CEO Oliver Blume</div>
         </div>
       </div>
     </div>
 
     <div class="ornament">— ✦ —</div>
 
-    <!-- SECTION 8: FORMULA 1 -->
+    <!-- 8: F1 -->
     <div class="section">
-      <div class="section-head"><span class="section-title">Formula 1 &nbsp;·&nbsp; British Grand Prix &nbsp;·&nbsp; Silverstone &nbsp;·&nbsp; July 5, 2026</span><span class="section-rule"></span></div>
+      <div class="section-head"><span class="section-title">Formula 1 &nbsp;·&nbsp; British GP &nbsp;·&nbsp; Silverstone &nbsp;·&nbsp; July 5, 2026</span><span class="section-rule"></span></div>
       <div class="article">
-        <div class="article-hed large">Leclerc Wins Chaotic Silverstone GP — Antonelli DNF Tightens Championship to 25 Points</div>
+        <div class="article-hed large">Leclerc Wins Chaotic Silverstone Under Safety Car — Antonelli DNF</div>
         <div class="article-source">Formula1.com / RacingNews365 &nbsp;·&nbsp; July 5, 2026</div>
-
         <div class="f1-podium">
           <div class="f1-pos">
             <div class="f1-pos-num">P2</div>
@@ -332,11 +434,11 @@
             <div class="f1-pos-team">Mercedes</div>
             <div class="f1-pos-gap">&mdash;</div>
           </div>
-          <div class="f1-pos" style="transform:scale(1.1);">
+          <div class="f1-pos" style="transform:scale(1.08)">
             <div class="f1-pos-num">P1</div>
             <div class="f1-pos-name">Charles Leclerc</div>
             <div class="f1-pos-team">Ferrari</div>
-            <div class="f1-pos-gap">Winner (Safety Car finish)</div>
+            <div class="f1-pos-gap">Safety Car finish</div>
           </div>
           <div class="f1-pos">
             <div class="f1-pos-num">P3</div>
@@ -345,55 +447,53 @@
             <div class="f1-pos-gap">&mdash;</div>
           </div>
         </div>
-
         <ul>
-          <li>Leclerc leads into Lap 1 after Ferrari duo jump Antonelli off the line; race ends under Safety Car after Verstappen's late crash on Lap 48 of 52</li>
-          <li>Antonelli hit a left-front wheel shield failure on Lap 41 while running P1 — demoted to 16th by a 5-second track limits penalty; failed to score in Round 9</li>
-          <li>Fastest lap: Kimi Antonelli set the fastest lap of the race despite his issues</li>
-          <li>Sprint winner: Antonelli won Friday's Sprint ahead of Hamilton and Norris — added 8 points but net Silverstone weekend was a loss of 15 points to Russell</li>
-          <li>Leclerc's 9th career win, first at Silverstone, first of 2026; Ferrari gains 22 constructors' points on Mercedes</li>
+          <li>Leclerc leads from Lap 1 after Ferrari's front row start; race ends under Safety Car after Verstappen crash on Lap 48</li>
+          <li>Antonelli: wheel shield failure on Lap 41 while leading, demoted by 5s track-limits penalty — DNF effectively, did not score</li>
+          <li>Fastest lap: Antonelli — set despite the failure; Sprint winner (ahead of Hamilton and Norris on Friday)</li>
+          <li>Net weekend: Russell gained 15 points on Antonelli — championship gap tightened from 40 to 25 points</li>
+          <li>Next race: Belgian GP at Spa-Francorchamps, July 25-27, 2026</li>
         </ul>
-
-        <div class="stats-grid" style="margin-top:14px; grid-template-columns:repeat(3,1fr);">
+        <div class="stats-grid" style="margin-top:14px;grid-template-columns:repeat(3,1fr)">
           <div class="stat-card">
             <div class="stat-num">Antonelli</div>
-            <div class="stat-label">Fastest lap — set despite the wheel shield failure and subsequent issues</div>
+            <div class="stat-label">Fastest lap at Silverstone despite wheel shield failure</div>
           </div>
           <div class="stat-card">
             <div class="stat-num">179 pts</div>
-            <div class="stat-label">Antonelli leads; Russell 2nd (154 pts); Hamilton 3rd (147 pts) — 25-pt gap at top</div>
+            <div class="stat-label">Antonelli leads; Russell 154; Hamilton 147 — gap now 25 pts</div>
           </div>
           <div class="stat-card">
             <div class="stat-num">333 pts</div>
-            <div class="stat-label">Mercedes Constructors' lead; Ferrari 2nd, McLaren 3rd (97+82 pts)</div>
+            <div class="stat-label">Mercedes Constructors'; Ferrari 2nd; McLaren 3rd</div>
           </div>
         </div>
-        <p class="market-note" style="margin-top:10px;">Next race: Belgian Grand Prix (Circuit de Spa-Francorchamps), July 25-27, 2026.</p>
+        <a class="dive-deeper" href="https://www.formula1.com/en/latest/article/russell-seals-victory-in-thrilling-austrian-grand-prix-ahead-of-verstappen-and-antonelli.5kjw8LmvWRcsaFgjCr8aWw" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
       </div>
     </div>
 
     <div class="ornament">— ✦ —</div>
 
-    <!-- SECTION 9: CFA PREP -->
+    <!-- 9: CFA -->
     <div class="section">
       <div class="section-head"><span class="section-title">CFA Prep &nbsp;·&nbsp; Formula of the Day</span><span class="section-rule"></span></div>
       <div class="cfa-box">
-        <div class="cfa-box-label">Today's Formula — Receivables Turnover &amp; Days of Sales Outstanding</div>
+        <div class="cfa-box-label">Today's Formula — Receivables Turnover &amp; Days Sales Outstanding</div>
         <div class="cfa-formula">Receivables Turnover = Revenue &divide; Average Accounts Receivable</div>
         <div class="cfa-vars">
-          Days of Sales Outstanding (DSO) = 365 &divide; Receivables Turnover<br/>
+          Days Sales Outstanding (DSO) = 365 &divide; Receivables Turnover<br/>
           Average AR = (Beginning AR + Ending AR) &divide; 2
         </div>
-        <div class="cfa-tip">Exam tip: Lower DSO = faster collections = better liquidity. Use Revenue (not COGS) in the numerator — the reverse of Inventory Turnover where COGS is correct.</div>
+        <div class="cfa-tip">Exam tip: Use Revenue (not COGS) in the numerator — the reverse of Inventory Turnover. Lower DSO = faster collections = stronger liquidity. A rising DSO trend signals deteriorating receivables quality.</div>
       </div>
     </div>
 
-  </div>
+  </div><!-- /body-wrap -->
 
   <div class="footer">
     <span>Compiled by the News for Moti Intelligence Desk</span>
-    <span>Printed for private circulation only &nbsp;·&nbsp; Not for redistribution</span>
-    <span>Mumbai, India &nbsp;·&nbsp; July 2026 &nbsp;·&nbsp; <a href="archive/index.html" style="color:var(--ink-light);text-decoration:underline;font-style:italic;">Archive</a></span>
+    <span>Not for redistribution</span>
+    <span>Mumbai &nbsp;·&nbsp; July 2026 &nbsp;·&nbsp; <a href="archive/index.html" style="color:var(--ink-light);text-decoration:underline;font-style:italic;">Archive</a></span>
   </div>
 </div>
 </body>
