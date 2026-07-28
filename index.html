@@ -12,23 +12,19 @@
     .page{max-width:1080px;margin:24px auto;background:var(--paper);padding:0 0 48px;box-shadow:0 4px 32px rgba(0,0,0,0.45);position:relative;overflow:hidden}
     .page::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 28px,rgba(120,90,40,0.03) 28px,rgba(120,90,40,0.03) 29px);pointer-events:none;z-index:0}
     .page>*{position:relative;z-index:1}
-    /* MASTHEAD */
     .masthead{border-bottom:3px double var(--rule);padding:20px var(--page-pad) 14px;text-align:center}
     .masthead-top{display:flex;justify-content:space-between;align-items:flex-end;font-family:'IM Fell English',serif;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-light);border-bottom:1px solid var(--rule);padding-bottom:6px;margin-bottom:10px;flex-wrap:wrap;gap:4px}
     .masthead-title{font-family:'UnifrakturMaguntia',cursive;font-size:clamp(44px,8vw,76px);line-height:1;color:var(--ink);letter-spacing:0.02em;margin:4px 0 6px}
     .masthead-tagline{font-family:'IM Fell English',serif;font-style:italic;font-size:11px;letter-spacing:0.12em;color:var(--ink-light);margin-bottom:10px}
     .masthead-bottom{display:flex;justify-content:space-between;font-family:'IM Fell English',serif;font-size:10px;color:var(--ink-light);border-top:1px solid var(--rule);padding-top:6px;flex-wrap:wrap;gap:4px}
     .section-banner{background:var(--ink);color:var(--paper);text-align:center;font-family:'Playfair Display',serif;font-size:11px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;padding:5px var(--page-pad)}
-    /* BODY */
     .body-wrap{padding:0 var(--page-pad)}
     .section{border-bottom:2px solid var(--rule);padding:18px 0 14px}
     .section:last-child{border-bottom:none}
     .section-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
     .section-title{font-family:'Playfair Display',serif;font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);white-space:nowrap}
     .section-rule{flex:1;height:1px;background:var(--ink);opacity:0.3;min-width:10px}
-    /* COLUMNS */
     .cols-2{columns:2;column-gap:var(--col-gap)}
-    /* ARTICLE */
     .article{break-inside:avoid;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid rgba(26,16,8,0.13)}
     .article:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
     .article-hed{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;line-height:1.25;color:var(--ink);margin-bottom:5px}
@@ -40,7 +36,6 @@
     .dive-deeper{display:inline-block;margin-top:8px;font-family:'IM Fell English',serif;font-style:italic;font-size:11px;color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(122,28,28,0.35);padding-bottom:1px}
     .dive-deeper:hover{border-bottom-color:var(--accent)}
     .no-news{font-family:'IM Fell English',serif;font-style:italic;font-size:12px;color:var(--ink-light);opacity:0.65;padding:4px 0}
-    /* MARKETS */
     .markets-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--col-gap)}
     .sub-head{font-family:'IM Fell English',serif;font-style:italic;font-size:11px;color:var(--ink-light);white-space:nowrap}
     .market-table{width:100%;border-collapse:collapse}
@@ -52,22 +47,13 @@
     .mt-chg{text-align:right;font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums;min-width:90px}
     .up{color:#2a6b2a}.dn{color:#8b1c1c}
     .market-note{font-family:'IM Fell English',serif;font-style:italic;font-size:10px;color:var(--ink-light);margin-top:8px;opacity:0.7}
-    /* ZERODHA — true two-column grid */
     .z-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--col-gap)}
     .z-col-head{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid rgba(122,28,28,0.25)}
     .z-item{margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid rgba(26,16,8,0.1)}
     .z-item:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0}
     .z-text{font-size:12.5px;line-height:1.6;color:var(--ink-light)}
-    /* IRAN */
-    .timeline{position:relative;padding-left:20px;margin-top:8px}
-    .timeline::before{content:'';position:absolute;left:6px;top:4px;bottom:4px;width:1px;background:var(--accent);opacity:0.4}
-    .tl-item{position:relative;margin-bottom:11px;break-inside:avoid}
-    .tl-item::before{content:'';position:absolute;left:-16px;top:5px;width:7px;height:7px;border-radius:50%;background:var(--accent)}
-    .tl-date{font-family:'Playfair Display',serif;font-size:10px;font-weight:700;color:var(--accent);letter-spacing:0.04em}
-    .tl-text{font-size:11.5px;color:var(--ink-light);line-height:1.5;margin-top:2px}
-    .iran-current{border:1px solid var(--accent);padding:10px 14px;margin-top:12px;background:rgba(122,28,28,0.04)}
+    .iran-current{border:1px solid var(--accent);padding:10px 14px;margin-top:8px;background:rgba(122,28,28,0.04)}
     .iran-current-label{font-family:'Playfair Display',serif;font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
-    /* F1 */
     .f1-podium{display:flex;justify-content:space-around;margin-bottom:12px;text-align:center;gap:8px}
     .f1-pos{flex:1}
     .f1-pos-num{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:var(--accent)}
@@ -78,7 +64,6 @@
     .stat-card{text-align:center;border:1px solid rgba(26,16,8,0.25);padding:10px 6px}
     .stat-num{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--accent);line-height:1.1}
     .stat-label{font-family:'IM Fell English',serif;font-style:italic;font-size:9.5px;color:var(--ink-light);margin-top:4px;line-height:1.3}
-    /* CFA */
     .cfa-box{border:1.5px solid var(--ink);padding:14px 18px;background:var(--paper-mid)}
     .cfa-box-label{font-family:'Playfair Display',serif;font-size:9px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
     .cfa-formula{font-family:'Libre Baskerville',serif;font-size:15px;font-weight:700;color:var(--ink);margin-bottom:8px}
@@ -86,7 +71,6 @@
     .cfa-tip{font-family:'IM Fell English',serif;font-style:italic;font-size:11px;color:var(--accent)}
     .ornament{text-align:center;font-size:14px;color:var(--ink-light);opacity:0.4;margin:2px 0;letter-spacing:6px}
     .footer{border-top:3px double var(--rule);margin:0 var(--page-pad);padding:10px 0 0;display:flex;justify-content:space-between;font-family:'IM Fell English',serif;font-size:10px;font-style:italic;color:var(--ink-light);opacity:0.7;flex-wrap:wrap;gap:6px}
-    /* MOBILE */
     @media(max-width:680px){
       :root{--page-pad:18px;--col-gap:0px}
       body{font-size:15px}
@@ -94,7 +78,7 @@
       .masthead-top span:nth-child(2){display:none}
       .cols-2{columns:1}
       .markets-grid,.z-grid{grid-template-columns:1fr}
-      .z-col+.z-col{margin-top:20px}
+      .z-col+.z-col,.market-block+.market-block{margin-top:20px}
       .f1-podium{flex-direction:column;align-items:center;gap:14px}
       .f1-pos{width:100%;max-width:240px}
       .stats-mini{grid-template-columns:repeat(2,1fr);gap:10px}
@@ -110,18 +94,18 @@
     <div class="masthead-top">
       <span>Est. MMXXVI &nbsp;·&nbsp; Mumbai, India</span>
       <span>Printed for private circulation only</span>
-      <span>Vol. I &nbsp;·&nbsp; No. 19</span>
+      <span>Vol. I &nbsp;·&nbsp; No. 20</span>
     </div>
     <div class="masthead-title">News for Moti</div>
     <div class="masthead-tagline">Intelligence, Capital &amp; Infrastructure — Daily</div>
     <div class="masthead-bottom">
-      <span>Saturday, 25th July 2026</span>
+      <span>Tuesday, 28th July 2026</span>
       <span>&#10070; &nbsp; Eight Sections &nbsp; &#10070;</span>
       <span>Last 48 Hours Only</span>
     </div>
   </div>
 
-  <div class="section-banner">Today's Edition</div>
+  <div class="section-banner">Today's Edition &nbsp;·&nbsp; Vol. I, No. 20</div>
   <div class="body-wrap">
 
     <!-- 1: MARKETS -->
@@ -130,33 +114,31 @@
       <div class="markets-grid">
         <div>
           <div class="section-head" style="margin-bottom:10px">
-            <span class="sub-head">India &nbsp;·&nbsp; July 24, 2026 (most recent confirmed close)</span><span class="section-rule"></span>
+            <span class="sub-head">India &nbsp;·&nbsp; July 27, 2026 (confirmed close)</span><span class="section-rule"></span>
           </div>
           <table class="market-table">
-            <tr><td class="mt-name">Sensex</td><td class="mt-val">76,059.77</td><td class="mt-chg dn">&minus;331.62 (&minus;0.43%)</td></tr>
-            <tr><td class="mt-name">Nifty 50</td><td class="mt-val">23,767.45</td><td class="mt-chg dn">&minus;102.15 (&minus;0.43%)</td></tr>
-            <tr><td class="mt-name">5-session streak</td><td class="mt-val">&mdash;</td><td class="mt-chg dn">5th consecutive losing session</td></tr>
-            <tr><td class="mt-name">HCL Tech / Cipla</td><td class="mt-val">&mdash;</td><td class="mt-chg up">Top gainers</td></tr>
-            <tr><td class="mt-name">Eternal / M&amp;M / Bajaj Fin</td><td class="mt-val">&mdash;</td><td class="mt-chg dn">Top losers</td></tr>
-            <tr><td class="mt-name">INR / USD</td><td class="mt-val">96.63</td><td class="mt-chg dn">Near recent low</td></tr>
+            <tr><td class="mt-name">Sensex</td><td class="mt-val">76,835.78</td><td class="mt-chg up">+776.01 (+1.02%)</td></tr>
+            <tr><td class="mt-name">Nifty 50</td><td class="mt-val">23,995.95</td><td class="mt-chg up">+228.50 (+0.96%)</td></tr>
+            <tr><td class="mt-name">INR / USD</td><td class="mt-val">95.87</td><td class="mt-chg up">+0.7% (best day in 6 weeks)</td></tr>
+            <tr><td class="mt-name">Bank Nifty</td><td class="mt-val">&mdash;</td><td class="mt-chg up">Positive, above 50-day EMA</td></tr>
+            <tr><td class="mt-name">Crude (Brent)</td><td class="mt-val">~$89</td><td class="mt-chg dn">Down from $102 peak</td></tr>
           </table>
-          <p class="market-note">Fifth straight losing session — auto, metal and energy stocks under pressure from crude above $100. IT and pharma the only defensives holding up. FIIs sold ₹2,999 Cr on July 22; DIIs absorbed ₹2,947 Cr. Brent peaked at $102 before pulling back to ~$96.78 by Friday close.</p>
-          <a class="dive-deeper" href="https://hdfcsky.com/news/bse-nse-sensex-july-24-2026-close-report-sensex-nifty-decline-for-fifth-day-as-elevated-oil-iran-war-hurt-stocks" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+          <p class="market-note">Snapped the five-session losing streak — Nifty opened 161 pts gap-up, extended gains through the afternoon, touching 24,011 intraday before settling just below 24,000. Buying broad-based across financials, IT, metals. Rupee's best single-day gain in six weeks supported by RBI intervention + crude selloff + stop-loss unwinding on long dollar positions. F&O expiry today (July 28) likely to keep markets range-bound.</p>
+          <a class="dive-deeper" href="https://aftermarketreport.zerodha.com/p/easing-middle-east-tensions-propel" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
         </div>
         <div>
           <div class="section-head" style="margin-bottom:10px">
-            <span class="sub-head">United States &nbsp;·&nbsp; July 24, 2026</span><span class="section-rule"></span>
+            <span class="sub-head">United States &nbsp;·&nbsp; July 27, 2026</span><span class="section-rule"></span>
           </div>
           <table class="market-table">
-            <tr><td class="mt-name">S&amp;P 500</td><td class="mt-val">7,411.98</td><td class="mt-chg up">+0.05% (flat)</td></tr>
-            <tr><td class="mt-name">Nasdaq</td><td class="mt-val">24,975.82</td><td class="mt-chg dn">&minus;0.64%</td></tr>
-            <tr><td class="mt-name">Dow Jones</td><td class="mt-val">51,947.25</td><td class="mt-chg up">+235.60 (+0.46%)</td></tr>
-            <tr><td class="mt-name">Brent crude</td><td class="mt-val">$96.78</td><td class="mt-chg dn">&minus;4% on day; hit $102 Thu</td></tr>
-            <tr><td class="mt-name">Apple</td><td class="mt-val">&mdash;</td><td class="mt-chg up">+3.5% (boosted Dow)</td></tr>
-            <tr><td class="mt-name">Intel</td><td class="mt-val">&mdash;</td><td class="mt-chg dn">&minus;7.9% despite earnings beat</td></tr>
+            <tr><td class="mt-name">Dow Jones</td><td class="mt-val">52,210.08</td><td class="mt-chg up">+262.83 (+0.51%)</td></tr>
+            <tr><td class="mt-name">S&amp;P 500</td><td class="mt-val">7,413.18</td><td class="mt-chg up">+0.02% (flat)</td></tr>
+            <tr><td class="mt-name">Nasdaq</td><td class="mt-val">24,932.08</td><td class="mt-chg dn">&minus;0.18%</td></tr>
+            <tr><td class="mt-name">Brent crude</td><td class="mt-val">$84–89</td><td class="mt-chg dn">&minus;5%+ on Iran pause</td></tr>
+            <tr><td class="mt-name">Nvidia</td><td class="mt-val">&mdash;</td><td class="mt-chg dn">&minus;5% (AI chip caution)</td></tr>
           </table>
-          <p class="market-note">Stocks attempted to stabilise after Thursday's rout — Brent briefly hit $102 (highest since May) on Houthi attacks on Saudi tankers in the Red Sea, then retreated 4% to $96.78 on Pakistan-brokered US-Iran talk hopes. Mag 7 collectively shed ~$800bn on Thursday. Nasdaq's first back-to-back weekly loss since late March. All three indices down for the week.</p>
-          <a class="dive-deeper" href="https://finance.yahoo.com/markets/live/stock-market-today-friday-july-24-dow-sp-500-nasdaq-081854465.html" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+          <p class="market-note">Mixed close — Dow led by financials (XLF hit all-time high); Nasdaq dragged by Nvidia -5% on continued AI chip sentiment pressure. Oil fell 5%+ after the US and Iran both paused military strikes, easing the inflation/rates spiral. Market-moving week: Fed rate decision Wednesday, plus Apple, Meta, Microsoft, Amazon all reporting earnings.</p>
+          <a class="dive-deeper" href="https://247wallst.com/investing/2026/07/27/stock-market-live-july-27-2026-sp-500-spy-rallying-on-u-s-iran-war-pause/" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
         </div>
       </div>
     </div>
@@ -168,82 +150,81 @@
       <div class="section-head"><span class="section-title">The Iran War &nbsp;·&nbsp; Operation Epic Fury</span><span class="section-rule"></span></div>
       <div class="cols-2">
         <div class="article">
-          <div class="article-hed">Current Situation — July 25, 2026</div>
-          <div class="article-source">CNBC / Reuters / Bloomberg &nbsp;·&nbsp; July 24–25, 2026</div>
+          <div class="article-hed large">US and Iran Pause Attacks — Diplomacy Via Oman Resumes</div>
+          <div class="article-source">Bloomberg / CNBC / Schwab &nbsp;·&nbsp; July 27, 2026</div>
+          <ul>
+            <li>Both the US and Iran paused military strikes over the weekend — Trump decided against a "major escalation" and both sides agreed to stand down while diplomatic channels are explored</li>
+            <li>Oman has reportedly re-entered as a possible facilitator for talks, with China's backing of Pakistan's earlier mediation proposal now complemented by the Gulf state's traditional intermediary role</li>
+            <li>Markets responded sharply: Brent fell from $96.78 to ~$84-89 range within 24 hours — the fastest crude decline since the Versailles MoU in June</li>
+            <li>US 10-year Treasury yield fell to ~4.64%, retreating from a six-month high of 4.7%+ hit last week as crude/inflation fears peak</li>
+          </ul>
+          <a class="dive-deeper" href="https://www.bloomberg.com/news/articles/2026-07-26/oil-tumbles-as-us-and-iran-pause-military-strikes-markets-wrap" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+        </div>
+        <div class="article">
+          <div class="article-hed">Current Situation — July 28, 2026</div>
+          <div class="article-source">Bloomberg / Reuters &nbsp;·&nbsp; July 27–28, 2026</div>
           <div class="iran-current">
             <div class="iran-current-label">Status as of This Edition</div>
             <ul>
-              <li>Strait of Hormuz: Partially operational; US naval blockade in force with proposed 20% cargo levy; Iran challenging US-defined "guardian" role</li>
-              <li>New front: Yemen's Houthi militants (Iran-backed) attacked two Saudi Arabian tankers in the Red Sea on July 23 — widening the conflict zone beyond the Gulf</li>
-              <li>Brent crude: Peaked at $102/bbl on July 24, pulled back to ~$96.78 on Pakistan's China-backed mediation proposal for fresh US-Iran talks</li>
-              <li>Diplomacy: Pakistan reportedly weighing a role in brokering talks between US and Iran, with China backing the initiative — earliest signs of a new diplomatic track</li>
-              <li>INR: ~96.63/USD — continued weakening; RBI support package active</li>
-              <li>India impact: Energy import bill surging; CPI already at 4.38%; crude at $100+ puts further pressure on RBI's rate-cut headroom</li>
+              <li>Attacks paused: US and Iran both standing down — first genuine de-escalation since the Versailles MoU breach in late June</li>
+              <li>Strait of Hormuz: Talks involving Oman on transit arrangements; 20% US cargo levy proposal still notionally active but not enforced during pause</li>
+              <li>Brent crude: ~$86-89/bbl — down sharply from $102 peak; still +50%+ YTD; India's import bill relief meaningful but not decisive</li>
+              <li>INR: 95.87/USD — strengthened 0.7% on the day; still significantly weaker than pre-war ~83 level</li>
+              <li>India impact: Rate cut headroom for RBI partially restored if crude holds below $90 — August MPC a live decision again</li>
+              <li>Risk: Every prior ceasefire/pause in this conflict has broken down — market pricing in hope, not certainty</li>
             </ul>
           </div>
-          <a class="dive-deeper" href="https://www.cnbc.com/2026/07/23/stock-market-today-live-updates.html" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
-        </div>
-        <div class="article">
-          <div class="article-hed">Houthis Attack Saudi Tankers; $800bn Wiped from Mag 7 in Single Session</div>
-          <div class="article-source">CNBC / Bloomberg &nbsp;·&nbsp; July 23–24, 2026</div>
-          <ul>
-            <li>Yemen's Tehran-backed Houthi group claimed attacks on two Saudi Arabian tankers in the Red Sea on July 23 — a new escalation that widens the conflict zone to the Red Sea shipping corridor</li>
-            <li>Brent crude surged to $102/bbl — the highest since May — as the dual Strait/Red Sea threat reignited supply-disruption fears across global energy markets</li>
-            <li>Alphabet fell 7% and Tesla dropped 14% after earnings — AI capex concerns compounded by oil-price inflation hit the Magnificent Seven collectively; ~$800bn in market cap erased in one session on Thursday</li>
-            <li>US 10-year Treasury yield briefly rose above 4.7% — highest since Jan 2025 — before retreating Friday on Pakistan's mediation news and crude pullback</li>
-            <li>Wells Fargo strategist: oil at these levels will "weaken consumers and the economy while also complicating life for central banks in their fight against inflation"</li>
-          </ul>
-          <a class="dive-deeper" href="https://www.bloomberg.com/news/articles/2026-07-24/s-p-500-futures-steady-as-big-tech-rebounds-oil-dips-below-100" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+          <a class="dive-deeper" href="https://www.schwab.com/learn/story/stock-market-update-open" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
         </div>
       </div>
     </div>
 
     <div class="ornament">— ✦ —</div>
 
-    <!-- 3: ZERODHA DESK — true two-col grid -->
+    <!-- 3: ZERODHA DESK -->
     <div class="section">
       <div class="section-head"><span class="section-title">The Zerodha Desk</span><span class="section-rule"></span></div>
       <div class="z-grid">
         <div class="z-col">
           <div class="z-col-head">Top Stories in India</div>
           <div class="z-item">
-            <div class="z-text">India's Sensex and Nifty extended losses for a <strong>fifth straight session</strong> on July 24 as Brent crude topped $100 and FIIs continued selling. IT and pharma were the only sectors in the green; auto, metal and energy led losses.</div>
-            <a class="dive-deeper" href="https://hdfcsky.com/news/bse-nse-sensex-july-24-2026-close-report-sensex-nifty-decline-for-fifth-day-as-elevated-oil-iran-war-hurt-stocks" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+            <div class="z-text">The <strong>Indian rupee</strong> posted its best single-day gain in more than six weeks on July 27, strengthening 0.7% to close at 95.87 against the dollar — supported by RBI intervention, crude oil's sharp decline, and stop-loss unwinding on long dollar positions.</div>
+            <a class="dive-deeper" href="https://www.thehindubusinessline.com/markets/forex/rupee-logs-best-day-in-over-6-weeks-as-rbi-intervention-magnifies-oil-slump-impact/article71272320.ece" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
           </div>
           <div class="z-item">
-            <div class="z-text"><strong>IKEA plans to more than double its India investment</strong> to over ₹21,000 Cr by 2030 — expanding its store network, deepening local sourcing and enhancing its omnichannel presence. A strong endorsement of India's long-run consumer market.</div>
-            <a class="dive-deeper" href="https://www.ndtvprofit.com/business/ikea-to-double-investment-in-india-over-rs-21-000-crore-by-2030-11771779" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+            <div class="z-text"><strong>AU Small Finance Bank</strong> Q1 FY27 net profit rose 37% YoY to ₹796 Cr — net interest income grew 32% to ₹2,695 Cr, NIM expanded 47 bps to 5.9%, loan growth at 23%. Stock rose 5% on the results. A standout result in the small finance bank space.</div>
+            <a class="dive-deeper" href="https://www.moneycontrol.com/news/business/markets/au-small-finance-bank-shares-rise-5-as-q1-net-profit-jumps-37-on-lower-provisions-margin-expansion-13984857.html" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
           </div>
           <div class="z-item">
-            <div class="z-text"><strong>Raymond Realty</strong> signed a JDA for a premium residential project in Mumbai's Parel — GDV of ~₹8,500 Cr, its largest development outside Thane and its 8th Mumbai JV. South Mumbai luxury demand remains robust despite macro headwinds.</div>
-            <a class="dive-deeper" href="https://www.ndtvprofit.com/business/raymond-realty-signs-8th-mumbai-jv-worth-rs-8-500-crore-in-parel-11773958" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+            <div class="z-text"><strong>Tata Power</strong> Q1 FY27 net profit rose 11% YoY to ₹1,176 Cr; revenue up 6% to ₹19,051 Cr. Steady growth continuing even as fuel input costs remain elevated from Iran-war energy pricing.</div>
+            <a class="dive-deeper" href="https://economictimes.indiatimes.com/markets/stocks/earnings/tata-power-q1-results-net-profit-rises-11-yoy-to-rs-1176-crore-revenue-up-6/articleshow/132660751.cms" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
           </div>
           <div class="z-item">
-            <div class="z-text"><strong>Nayara Energy</strong> cut petrol prices by ₹5/litre and diesel by ₹3/litre — the first private OMC fuel price reduction since the Iran war began in February 2026. A rare relief signal for consumers amid the crude-driven inflation spiral.</div>
-            <a class="dive-deeper" href="https://aftermarketreport.zerodha.com/p/domestic-demand-plays-drive-nifty" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+            <div class="z-text"><strong>HDFC Bank</strong> concluded its internal review into the MSRDC deposit arrangement — found "business overreach," not mala fide conduct. CEO, CFO and one other senior executive fined ₹1 lakh each. Board issued warning letters.</div>
+            <a class="dive-deeper" href="https://economictimes.indiatimes.com/industry/banking/finance/banking/hdfc-bank-fines-ceo-cfo-1-lakh-each-after-msrdc-review-finds-business-overreach/articleshow/132658985.cms" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
           </div>
         </div>
         <div class="z-col">
           <div class="z-col-head">Top Stories Globally</div>
           <div class="z-item">
-            <div class="z-text">Brent crude <strong>hit $102/bbl</strong> on July 24 — the highest since May — after Houthi attacks on Saudi tankers in the Red Sea added a second chokepoint risk beyond the Strait of Hormuz. Prices fell 4% on Friday on Pakistan-China mediation hopes, settling at $96.78.</div>
-            <a class="dive-deeper" href="https://tradingeconomics.com/commodity/crude-oil" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+            <div class="z-text"><strong>Brent crude fell toward $89/bbl</strong> after the US and Iran paused strikes — Oman-facilitated Strait talks adding to hopes. International benchmark has still risen more than 50% this year. The speed of the pullback (from $102 to ~$87 in three days) underscores how much of the crude spike was conflict premium rather than supply fundamentals.</div>
+            <a class="dive-deeper" href="https://tradingeconomics.com/commodity/brent-crude-oil" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
           </div>
           <div class="z-item">
-            <div class="z-text"><strong>Alphabet fell 7%, Tesla dropped 14%</strong> after earnings — AI capital spending concerns hit both stocks and dragged the Magnificent Seven to a combined ~$800bn market-cap loss in a single session on Thursday. The question is whether AI spending is being monetised fast enough to justify the costs.</div>
-            <a class="dive-deeper" href="https://finance.yahoo.com/markets/live/stock-market-today-friday-july-24-dow-sp-500-nasdaq-081854465.html" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+            <div class="z-text"><strong>Changxin Technology Group</strong> shares surged nearly 466% on their STAR Market debut, giving the Chinese chipmaker a market cap of ~3.3 trillion yuan — now the most valuable China-listed company. The company holds a 7.67% share of the global DRAM market, raised ¥57.92bn ($8.6bn) in Asia's biggest IPO of the year.</div>
+            <a class="dive-deeper" href="https://www.cnbc.com/2026/07/27/cxmt-china-market-debut-chipmaker-ipo.html" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
           </div>
           <div class="z-item">
-            <div class="z-text"><strong>China Q2 GDP grew 4.3% YoY</strong> — its weakest since Q4 2022, missing the 4.5% forecast. Soft domestic demand, weak private investment and a prolonged property downturn weigh even as AI-led exports hold up.</div>
-            <a class="dive-deeper" href="https://tradingeconomics.com/china/gdp-growth-annual" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+            <div class="z-text"><strong>Hong Kong exports</strong> rose 53.4% YoY to a record $641.1bn in June — the fastest annual expansion since March 1984, driven by electrical machinery, telecoms equipment and power generation. A striking data point given the global trade uncertainty.</div>
+            <a class="dive-deeper" href="https://tradingeconomics.com/hong-kong/exports-yoy" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
           </div>
           <div class="z-item">
-            <div class="z-text"><strong>Stripe and Advent International</strong> jointly offered to acquire PayPal for $60.50/share — a ~28% premium valuing the company at $53bn+, backed by ~$50bn in committed bank financing. A landmark fintech consolidation bid if it proceeds.</div>
-            <a class="dive-deeper" href="https://www.thehindubusinessline.com/companies/stripe-advent-offer-to-buy-paypal-for-53-billion/article71223987.ece" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+            <div class="z-text"><strong>China's industrial profits</strong> grew 15.1% YoY in June — slowing from 21.1% in May — as weak domestic demand weighs despite resilient AI-related exports. H1 2026 profit growth: +18.7% YoY overall.</div>
+            <a class="dive-deeper" href="https://www.reuters.com/world/asia-pacific/chinas-industrial-profit-rises-187-first-half-2026-2026-07-27/" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
           </div>
         </div>
       </div>
-      <p class="market-note" style="margin-top:10px;">Source: <a href="https://aftermarketreport.zerodha.com" target="_blank" rel="noopener" style="color:var(--ink-light)">Aftermarket Report by Zerodha</a> &nbsp;·&nbsp; July 24, 2026</p>
+      <p class="market-note" style="margin-top:10px;">Source: <a href="https://aftermarketreport.zerodha.com/p/easing-middle-east-tensions-propel" target="_blank" rel="noopener" style="color:var(--ink-light)">Aftermarket Report by Zerodha &nbsp;·&nbsp; July 27, 2026</a></p>
     </div>
 
     <div class="ornament">— ✦ —</div>
@@ -253,24 +234,25 @@
       <div class="section-head"><span class="section-title">India Macro</span><span class="section-rule"></span></div>
       <div class="cols-2">
         <div class="article">
-          <div class="article-hed large">Crude Above $100 Forces RBI Into a Corner — Rate Cuts Now Off the Table</div>
-          <div class="article-source">Trading Economics / IMF WEO July 2026 &nbsp;·&nbsp; July 24, 2026</div>
+          <div class="article-hed large">Fed Decision and Mag-7 Earnings: The Week That Could Reprice Everything</div>
+          <div class="article-source">247 Wall St / Schwab &nbsp;·&nbsp; July 27–28, 2026</div>
           <ul>
-            <li>Brent crossing $100 materially changes the rate-cut calculus — with CPI already at 4.38% and energy pass-through accelerating, August MPC rate cut probability has effectively gone to near zero</li>
-            <li>IMF July 2026 WEO revised India growth to 6.4% for 2026 — among the fastest major economies — but flagged that "higher oil prices together with protracted uncertainty are expected to weigh on activity"</li>
-            <li>INR at 96.63/USD — weakest level in recent weeks — adds an imported inflation dimension beyond crude alone, making the RBI's dual mandate increasingly difficult to balance</li>
+            <li>The Fed announces its rate decision on Wednesday — consensus is a hold, but markets are pricing a non-trivial probability of a hike given the crude-driven inflation spike earlier in the month</li>
+            <li>Apple, Meta, Microsoft and Amazon all report this week — AI capex commentary will be the critical read-through for Indian IT companies and global tech sentiment</li>
+            <li>India's F&amp;O monthly expiry is today (July 28) — Nifty's ability to hold above 24,000 post-expiry will be the near-term technical test</li>
+            <li>RBI Governor Malhotra reaffirmed that price stability is the primary mandate: "We will do whatever is required first to maintain price stability" — rate cut in August still possible if crude stays below $90</li>
           </ul>
-          <a class="dive-deeper" href="https://www.imf.org/-/media/files/publications/weo/2026/update/july/english/text.pdf" target="_blank" rel="noopener">Dive Deeper (IMF WEO) &rarr;</a>
+          <a class="dive-deeper" href="https://www.thehindubusinessline.com/money-and-banking/we-are-committed-to-ensuring-financial-stability/article71270328.ece" target="_blank" rel="noopener">Dive Deeper (RBI Governor) &rarr;</a>
         </div>
         <div class="article">
-          <div class="article-hed">S&amp;P Global: Materials Prices "Higher for Longer" Through 2028 Despite MoU</div>
-          <div class="article-source">S&amp;P Global Market Intelligence &nbsp;·&nbsp; July 2026</div>
+          <div class="article-hed">BEL Q1 Beats on Revenue; Coal India Margins Under Pressure</div>
+          <div class="article-source">Aftermarket Report / Zerodha &nbsp;·&nbsp; July 27, 2026</div>
           <ul>
-            <li>S&P Global's Materials Price Index peaked in Q2 2026 — 27% above end-2025 levels — and is forecast to remain elevated even by 2028, with prices only declining 5.3% from Q4 2026 to Q4 2027</li>
-            <li>Scenario depends critically on ceasefire durability — any re-escalation poses "significant upside risk to oil, chemicals and key industrial materials"</li>
-            <li>Pakistan reportedly exploring a China-backed mediation channel for US-Iran talks — the earliest diplomatic signal since Doha collapsed in early July; markets priced in the hope quickly on Friday</li>
+            <li>Bharat Electronics (BEL) Q1 FY27 net profit +8.2% YoY to ₹1,048 Cr; revenue +25.3% to ₹5,533 Cr — defence electronics demand robust; EBITDA margin contracted to 25.1% from 28.1%</li>
+            <li>Coal India Q1 FY27 net profit +0.6% to ₹8,852 Cr; revenue +7.8% to ₹46,255 Cr; EBITDA margins shrinking (26.1% vs 29.3% YoY) — cost inflation squeezing even quasi-monopoly profitability</li>
+            <li>Maruti Suzuki to raise prices across its model range by up to ₹30,000 from August 2026 — citing sustained input cost increases it can no longer absorb; first price hike since early 2026</li>
           </ul>
-          <a class="dive-deeper" href="https://www.spglobal.com/market-intelligence/en/news-insights/research/2026/07/commodity-price-watch-july-2026" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+          <a class="dive-deeper" href="https://aftermarketreport.zerodha.com/p/easing-middle-east-tensions-propel" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
         </div>
       </div>
     </div>
@@ -281,7 +263,7 @@
     <div class="section">
       <div class="section-head"><span class="section-title">Infrastructure</span><span class="section-rule"></span></div>
       <div class="article">
-        <p class="no-news">No fresh India infrastructure or renewable energy news found within the last 48 hours beyond the crude-oil and energy-import impact covered above. Adani Green's 20 GW milestone (July 8), 204 GW solar manufacturing capacity and Mumbai-Ahmedabad HSR 80% progress remain the most recent confirmed sector data points.</p>
+        <p class="no-news">No fresh India infrastructure or renewable energy news within the last 48 hours beyond what is covered in the macro section (Tata Power Q1, BEL defence electronics). Adani Green 20 GW, 204 GW solar module capacity and Mumbai-Ahmedabad HSR 80% progress remain the most recent confirmed sector data points.</p>
       </div>
     </div>
 
@@ -292,23 +274,24 @@
       <div class="section-head"><span class="section-title">Banking &amp; Financial Services</span><span class="section-rule"></span></div>
       <div class="cols-2">
         <div class="article">
-          <div class="article-hed">MCX and BSE Extend Losses on RBI Capital Exposure Norms</div>
-          <div class="article-source">Aftermarket Report / Business Standard &nbsp;·&nbsp; July 2026</div>
+          <div class="article-hed">AU Small Finance Bank Q1: NIM at 5.9%, Loans +23% — Best SFB Print of the Season</div>
+          <div class="article-source">Moneycontrol &nbsp;·&nbsp; July 27, 2026</div>
           <ul>
-            <li>Shares of MCX and BSE fell for a fourth consecutive session as RBI's revised capital exposure norms (effective July 1) weighed on exchange trading volumes</li>
-            <li>RITES rose 7% after securing a $35.82mn international contract to supply and commission diesel-electric locomotives — strengthening its international order book</li>
-            <li>Info Edge surged ~11% after reporting 14.4% YoY billings growth to ₹737 Cr for Q1 FY27 — Naukri.com billings +17.5%; 99acres +16.6%</li>
+            <li>AU Small Finance Bank Q1 FY27 net profit +37% YoY to ₹796 Cr — NIM expanded 47 bps to 5.9%, NII +32% to ₹2,695 Cr, loan growth 23%; lower provisions the additional earnings lever</li>
+            <li>NIM expansion at 5.9% is materially above sector average — management cited improved portfolio mix and pricing discipline as key drivers; stock rose 5%</li>
+            <li>Contrasts sharply with larger bank NIM compression — a sign that select small finance banks have better structural pricing power than large-cap banking in the current rate environment</li>
           </ul>
-          <a class="dive-deeper" href="https://aftermarketreport.zerodha.com/p/markets-retreat-as-final-hour-selling" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+          <a class="dive-deeper" href="https://www.moneycontrol.com/news/business/markets/au-small-finance-bank-shares-rise-5-as-q1-net-profit-jumps-37-on-lower-provisions-margin-expansion-13984857.html" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
         </div>
         <div class="article">
-          <div class="article-hed">NBFC/HFC Cost of Funds Under Fresh Pressure; $100 Crude Kills Rate-Cut Hope</div>
-          <div class="article-source">India Ratings / RBI &nbsp;·&nbsp; July 2026</div>
+          <div class="article-hed">HDFC Bank MSRDC Review Concludes; IDFC First Bank Eyes 1.7-1.8% ROA Over Time</div>
+          <div class="article-source">ET / The Chatter by Zerodha &nbsp;·&nbsp; July 27, 2026</div>
           <ul>
-            <li>Crude above $100 and CPI at 4.38% effectively removes near-term RBI rate-cut scope — confirming India Ratings' earlier warning that NBFC and HFC borrowing cost relief was unlikely despite the April and June cuts</li>
-            <li>Bank lending to NBFCs still growing strongly (+33.7% YoY in May) but margins under pressure as transmission stalls and cost of funds remains elevated</li>
-            <li>August RBI MPC (likely Aug 5-7) now expected to hold — watch for hawkish tone revision given crude and inflation trajectory</li>
+            <li>HDFC Bank closed the MSRDC episode with fines of ₹1 lakh each on CEO, CFO and one senior executive — "business overreach" finding limits reputational damage; RBI's response to the internal findings will be the next watch item</li>
+            <li>IDFC First Bank MD &amp; CEO V Vaidyanathan: "Our vision is for the bank's ROA to structurally reach 1.7-1.8% over time" — corporate banking mix shift will temporarily weigh on NIM but the long-run profitability target is ambitious for a mid-cap private bank</li>
+            <li>Crude pullback to $86-89 partially restores NBFC/HFC rate-cut hope — every $10 drop in Brent reduces India's inflation trajectory by an estimated 15-20 bps</li>
           </ul>
+          <a class="dive-deeper" href="https://thechatter.zerodha.com/p/the-chatter-idfc-tata-consumer-bank" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
         </div>
       </div>
     </div>
@@ -320,27 +303,25 @@
       <div class="section-head"><span class="section-title">Consumer Trends &nbsp;·&nbsp; India &amp; Global</span><span class="section-rule"></span></div>
       <div class="cols-2">
         <div class="article">
-          <div class="article-hed large">India Urban Consumption Rebounds in Q1 FY27 Even as Oil Squeeze Arrives</div>
-          <div class="article-source">FMCG CEO commentary / India Retailing &nbsp;·&nbsp; July 2026</div>
+          <div class="article-hed large">Maruti Price Hike Signals Input Cost Pass-Through Has Begun</div>
+          <div class="article-source">Aftermarket Report / Zerodha &nbsp;·&nbsp; July 27, 2026</div>
           <ul>
-            <li>Urban FMCG demand has emerged from its year-long slump — Q1 FY27 commentary from ITC, HUL and Britannia points to a "comeback year" for the urban consumer, driven by GST rationalisation, income tax relief in Budget FY26 and easing food inflation earlier in the year</li>
-            <li>Rural demand remains the sturdier foundation — outpacing urban for six consecutive quarters — but the urban recovery is the new incremental growth driver for FMCG volumes</li>
-            <li>Risk: Crude above $100 and fuel prices at elevated levels risk eroding the disposable income gains from earlier tax and GST relief — FMCG companies watching the August CPI print closely</li>
-            <li>IKEA's ₹21,000 Cr India investment doubling by 2030 is perhaps the strongest international vote of confidence in India's long-run household consumption story</li>
+            <li>Maruti Suzuki's decision to raise prices by up to ₹30,000 from August is the clearest signal yet that India's largest consumer goods companies are ending the "absorb and defer" period — cost pressures from raw materials and energy are now being passed on</li>
+            <li>Hindustan Unilever and Nestlé India Q1 FY27 earnings showed modest volume growth but management commentary flagged that rural demand recovery remains fragile — a monsoon deficit in key agricultural states is the primary risk to rural FMCG volumes in Q2 FY27</li>
+            <li>India's monsoon deficit has narrowed to 23% since June 1 (from 37% at end-June) — improvement reduces the risk of a rural consumption reversal but the 21 subdivisions still classified as deficient are exactly those driving agricultural incomes</li>
           </ul>
-          <a class="dive-deeper" href="https://www.cpm-int.com/in-blog/indian-retail-and-fmcg-sector-trends-and-growth-insights-2026" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+          <a class="dive-deeper" href="https://aftermarketreport.zerodha.com/p/nifty-continues-to-consolidate-near" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
         </div>
         <div class="article">
-          <div class="article-hed">Global Consumer Confidence at 12-Week High — But Oil Spike Arrives After Survey Window</div>
-          <div class="article-source">Tampa Free Press / University of Michigan / Deloitte &nbsp;·&nbsp; July 2026</div>
+          <div class="article-hed">Global: US Consumers Still Spending Despite Caution; AI and Oil the Twin Pivots</div>
+          <div class="article-source">Deloitte / 247 Wall St &nbsp;·&nbsp; July 27, 2026</div>
           <ul>
-            <li>Global Index of Consumer Sentiment four-week moving average rose to 99.5 for the week of July 19 — the 12th consecutive weekly increase — approaching the neutral 100 benchmark but still below pre-conflict levels</li>
-            <li>Critical caveat: The survey data largely predates the July 7 resumption of maritime attacks and the subsequent crude spike above $100 — the confidence readings likely overstate current sentiment</li>
-            <li>University of Michigan US Consumer Sentiment: rose to 54.4 in July (from 49.5 in June); over 70% of responses came before the July 7 Strait escalation — meaning the current index doesn't yet capture the $100 crude impact on households</li>
-            <li>US consumer spending remains resilient despite "cautious" sentiment — June jobs came in at 57,000, roughly half expectations, but household debt growth remains measured; "consumers who continue to spend, rather than highly confident consumers who spend without restraint"</li>
-            <li>World Cup factor: Prediction markets saw their highest monthly volumes ever in June on the back of World Cup contracts — a new discretionary spend category worth watching as the tournament concludes</li>
+            <li>Deloitte's State of the US Consumer (June-July 2026): "AI-related investments are expected to be key to US economic growth in 2026 and 2027, but oil prices will largely determine how strong or slow that growth will ultimately be" — a clean summation of the macro tension defining global consumer confidence this quarter</li>
+            <li>Apple earnings Thursday are the closest proxy for US consumer health — Wall Street is looking for $108bn in revenue and $1.89 EPS; the bigger question is iPhone demand trajectory amid elevated fuel prices and a softening jobs market</li>
+            <li>US consumer spending has remained resilient despite cautious sentiment — described by US Bank analysts as "cautious consumers who continue to spend, rather than highly confident consumers who spend without restraint"; household debt growth measured</li>
+            <li>Crude's pullback from $102 to $87 in three days is the single biggest near-term positive for global consumer confidence — if it holds, University of Michigan sentiment for August should show a meaningful recovery from July's 54.4 (which was recorded mostly before the $100 spike)</li>
           </ul>
-          <a class="dive-deeper" href="https://www.tampafp.com/global-consumer-confidence-reaches-12-week-high-as-energy-risks-resurface/" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+          <a class="dive-deeper" href="https://www.deloitte.com/us/en/insights/topics/economy/consumer-pulse/state-of-the-us-consumer.html" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
         </div>
       </div>
     </div>
@@ -349,52 +330,52 @@
 
     <!-- 8: F1 -->
     <div class="section">
-      <div class="section-head"><span class="section-title">Formula 1 &nbsp;·&nbsp; Belgian GP &nbsp;·&nbsp; Spa-Francorchamps &nbsp;·&nbsp; July 19, 2026</span><span class="section-rule"></span></div>
+      <div class="section-head"><span class="section-title">Formula 1 &nbsp;·&nbsp; Hungarian GP &nbsp;·&nbsp; Hungaroring &nbsp;·&nbsp; July 26, 2026</span><span class="section-rule"></span></div>
       <div class="article">
-        <div class="article-hed large">Antonelli Wins Spa — Russell DNF on Lap 1 Doubles Championship Lead to 45–50 Pts</div>
-        <div class="article-source">Formula1.com / The Race / RacingNews365 &nbsp;·&nbsp; July 19, 2026</div>
+        <div class="article-hed large">Norris Wins Hungary as Piastri Retires from the Lead — McLaren's First 2026 Victory</div>
+        <div class="article-source">Formula1.com / RacingNews365 / The Race &nbsp;·&nbsp; July 26, 2026</div>
         <div class="f1-podium">
           <div class="f1-pos">
             <div class="f1-pos-num">P2</div>
-            <div class="f1-pos-name">Charles Leclerc</div>
-            <div class="f1-pos-team">Ferrari</div>
-            <div class="f1-pos-gap">+1.952s</div>
+            <div class="f1-pos-name">Max Verstappen</div>
+            <div class="f1-pos-team">Red Bull</div>
+            <div class="f1-pos-gap">+15.0s</div>
           </div>
           <div class="f1-pos" style="transform:scale(1.08)">
             <div class="f1-pos-num">P1</div>
-            <div class="f1-pos-name">Kimi Antonelli</div>
-            <div class="f1-pos-team">Mercedes</div>
-            <div class="f1-pos-gap">Winner — 6th of 2026</div>
+            <div class="f1-pos-name">Lando Norris</div>
+            <div class="f1-pos-team">McLaren</div>
+            <div class="f1-pos-gap">Winner — McLaren's 1st of 2026</div>
           </div>
           <div class="f1-pos">
             <div class="f1-pos-num">P3</div>
-            <div class="f1-pos-name">Max Verstappen</div>
-            <div class="f1-pos-team">Red Bull</div>
+            <div class="f1-pos-name">Kimi Antonelli</div>
+            <div class="f1-pos-team">Mercedes</div>
             <div class="f1-pos-gap">&mdash;</div>
           </div>
         </div>
         <ul>
-          <li>Antonelli started pole but lost the lead twice — first to Verstappen through Eau Rouge on Lap 1, then to Leclerc via a VSC pit — before hunting both down and winning by 1.952s</li>
-          <li>Russell retired on the opening lap after contact with Hamilton — his third non-score in six races; Hamilton received a 5s penalty but salvaged P4</li>
-          <li>Lando Norris recovered from P13 to P7 — a strong drive in adversity; Arvid Lindblad P9 for more championship points</li>
-          <li>Toto Wolff: Russell's deficit to Antonelli is "50% power unit problem, 50% driver" — the first public acknowledgement of a car discrepancy between teammates</li>
-          <li>Next race: Hungarian GP at Hungaroring — race weekend happening now (July 24-26)</li>
+          <li>Norris started pole, ran wide at Turn 2 handing the lead to Piastri — spent the first half trapped behind his teammate before Piastri and Carlos Sainz made contact at mid-distance, retiring Piastri (gearbox) and handing Norris the lead</li>
+          <li>Verstappen recovered from an undercut by Hamilton to take P2 in an impressive drive — Red Bull was arguably the 4th-fastest car at Hungary yet still made the podium</li>
+          <li>Leclerc P4 (promoted from P5 after Hamilton's 5s pit lane speeding penalty); Hamilton P5; Russell recovered from anti-stall drop to 21st to finish P7</li>
+          <li>Norris: "There was luck on my side — but the pace and confidence I had got me over the line." First win of 2026 for both Norris and McLaren; Norris is the reigning world champion</li>
+          <li>Next race: Belgian GP at Spa-Francorchamps — already held (Antonelli won); next upcoming race is the Summer Break, then the Dutch GP at Zandvoort, August 28-30</li>
         </ul>
         <div class="stats-mini">
           <div class="stat-card">
-            <div class="stat-num">6th win</div>
-            <div class="stat-label">Antonelli's 2026 victory count — 6 wins from 10 rounds</div>
+            <div class="stat-num">+15s</div>
+            <div class="stat-label">Norris's winning margin over Verstappen at the flag</div>
           </div>
           <div class="stat-card">
-            <div class="stat-num">~45–50 pts</div>
-            <div class="stat-label">Antonelli's championship lead over Russell after Spa</div>
+            <div class="stat-num">Antonelli</div>
+            <div class="stat-label">Still leads Drivers' Championship — P3 in Hungary extends his cushion vs Russell (P7)</div>
           </div>
           <div class="stat-card">
-            <div class="stat-num">Hamilton 4th</div>
-            <div class="stat-label">P4 after 5s penalty; 3rd in Drivers' Championship</div>
+            <div class="stat-num">Summer break</div>
+            <div class="stat-label">Next race: Dutch GP, Zandvoort, August 28-30, 2026</div>
           </div>
         </div>
-        <a class="dive-deeper" href="https://www.formula1.com/en/latest/article/antonelli-beats-leclerc-to-belgian-grand-prix-win-to-extend-title-lead-as-russell-retires.MAqSJSgXvRP6dLbwiRbWI" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+        <a class="dive-deeper" href="https://www.formula1.com/en/latest/article/norris-beats-verstappen-and-antonelli-to-victory-in-dramatic-hungarian-gp.5JQmohRAKABD2asRsMWogj" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
       </div>
     </div>
 
@@ -404,13 +385,13 @@
     <div class="section">
       <div class="section-head"><span class="section-title">CFA Prep &nbsp;·&nbsp; Formula of the Day</span><span class="section-rule"></span></div>
       <div class="cfa-box">
-        <div class="cfa-box-label">Today's Formula — Price-to-Earnings (Justified P/E)</div>
-        <div class="cfa-formula">Justified P/E = (Dividend Payout Ratio) &divide; (Required Return &minus; Growth Rate)</div>
+        <div class="cfa-box-label">Today's Formula — Free Cash Flow to Equity (FCFE)</div>
+        <div class="cfa-formula">FCFE = Net Income + Depreciation &minus; &Delta;Working Capital &minus; Capex + Net Borrowing</div>
         <div class="cfa-vars">
-          P/E = D<sub>1</sub>/E<sub>1</sub> &divide; (r &minus; g) &nbsp;|&nbsp; where D<sub>1</sub>/E<sub>1</sub> = payout ratio, r = required return on equity, g = sustainable dividend growth rate<br/>
-          Also written as: P/E = (1 &minus; b) &divide; (r &minus; ROE &times; b) &nbsp;|&nbsp; where b = retention ratio
+          Net Borrowing = new debt issued &minus; debt repaid &nbsp;|&nbsp; &Delta;WC = increase in working capital (cash outflow)<br/>
+          Also: FCFE = CFO &minus; Capex + Net Borrowing &nbsp;(from the cash flow statement)
         </div>
-        <div class="cfa-tip">Exam tip: A higher justified P/E is supported by a higher payout ratio, lower required return, or higher growth. Rising oil prices increase required return (via risk premium) and compress justified P/E — exactly what's happening to Indian equities right now.</div>
+        <div class="cfa-tip">Exam tip: FCFE is the cash available to equity holders after debt obligations are met — it differs from FCFF which is pre-debt-service. If a company has FCFE consistently below dividends paid, it is either drawing down cash or borrowing to fund payouts — a red flag in valuation.</div>
       </div>
     </div>
 
