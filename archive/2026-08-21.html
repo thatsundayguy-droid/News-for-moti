@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>News for Moti</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=UnifrakturMaguntia&family=IM+Fell+English:ital@0;1&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--ink:#1a1008;--ink-light:#3b2e1e;--rule:#1a1008;--paper:#f5efe2;--paper-mid:#ede3cc;--accent:#7a1c1c;--col-gap:24px;--page-pad:40px}
+    body{background:#c8b89a;font-family:'Libre Baskerville',Georgia,serif;color:var(--ink);font-size:14px;line-height:1.6;-webkit-text-size-adjust:100%}
+    .page{max-width:1080px;margin:24px auto;background:var(--paper);padding:0 0 48px;box-shadow:0 4px 32px rgba(0,0,0,0.45);position:relative;overflow:hidden}
+    .page::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 28px,rgba(120,90,40,0.03) 28px,rgba(120,90,40,0.03) 29px);pointer-events:none;z-index:0}
+    .page>*{position:relative;z-index:1}
+    .masthead{border-bottom:3px double var(--rule);padding:20px var(--page-pad) 14px;text-align:center}
+    .masthead-top{display:flex;justify-content:space-between;align-items:flex-end;font-family:'IM Fell English',serif;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-light);border-bottom:1px solid var(--rule);padding-bottom:6px;margin-bottom:10px;flex-wrap:wrap;gap:4px}
+    .masthead-title{font-family:'UnifrakturMaguntia',cursive;font-size:clamp(44px,8vw,76px);line-height:1;color:var(--ink);letter-spacing:0.02em;margin:4px 0 6px}
+    .masthead-tagline{font-family:'IM Fell English',serif;font-style:italic;font-size:11px;letter-spacing:0.12em;color:var(--ink-light);margin-bottom:10px}
+    .masthead-bottom{display:flex;justify-content:space-between;font-family:'IM Fell English',serif;font-size:10px;color:var(--ink-light);border-top:1px solid var(--rule);padding-top:6px;flex-wrap:wrap;gap:4px}
+    .section-banner{background:var(--ink);color:var(--paper);text-align:center;font-family:'Playfair Display',serif;font-size:11px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;padding:5px var(--page-pad)}
+    .body-wrap{padding:0 var(--page-pad)}
+    .section{border-bottom:2px solid var(--rule);padding:18px 0 14px}
+    .section:last-child{border-bottom:none}
+    .section-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+    .section-title{font-family:'Playfair Display',serif;font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);white-space:nowrap}
+    .section-rule{flex:1;height:1px;background:var(--ink);opacity:0.3;min-width:10px}
+    .cols-2{columns:2;column-gap:var(--col-gap)}
+    .article{break-inside:avoid;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid rgba(26,16,8,0.13)}
+    .article:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+    .article-hed{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;line-height:1.25;color:var(--ink);margin-bottom:5px}
+    .article-hed.large{font-size:20px}
+    .article-source{font-family:'IM Fell English',serif;font-style:italic;font-size:10px;color:var(--ink-light);margin-bottom:6px;opacity:0.75}
+    .article ul{list-style:none;padding:0}
+    .article ul li{padding-left:16px;position:relative;margin-bottom:5px;font-size:12.5px;line-height:1.55;color:var(--ink-light)}
+    .article ul li::before{content:'—';position:absolute;left:0;color:var(--accent);font-size:11px}
+    .dive-deeper{display:inline-block;margin-top:8px;font-family:'IM Fell English',serif;font-style:italic;font-size:11px;color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(122,28,28,0.35);padding-bottom:1px}
+    .dive-deeper:hover{border-bottom-color:var(--accent)}
+    .no-news{font-family:'IM Fell English',serif;font-style:italic;font-size:12px;color:var(--ink-light);opacity:0.65;padding:4px 0}
+    .markets-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--col-gap)}
+    .sub-head{font-family:'IM Fell English',serif;font-style:italic;font-size:11px;color:var(--ink-light);white-space:nowrap}
+    .market-table{width:100%;border-collapse:collapse}
+    .market-table tr{border-bottom:1px solid rgba(26,16,8,0.1)}
+    .market-table tr:last-child{border-bottom:none}
+    .market-table td{padding:6px 0;font-family:'Libre Baskerville',serif;font-size:11px;vertical-align:baseline}
+    .mt-name{font-family:'Playfair Display',serif;font-size:12px;font-weight:700;color:var(--ink);text-align:left;padding-right:10px;white-space:nowrap}
+    .mt-val{text-align:right;color:var(--ink-light);white-space:nowrap;padding-right:10px;font-variant-numeric:tabular-nums}
+    .mt-chg{text-align:right;font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums;min-width:90px}
+    .up{color:#2a6b2a}.dn{color:#8b1c1c}
+    .market-note{font-family:'IM Fell English',serif;font-style:italic;font-size:10px;color:var(--ink-light);margin-top:8px;opacity:0.7}
+    .z-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--col-gap)}
+    .z-col-head{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid rgba(122,28,28,0.25)}
+    .z-item{margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid rgba(26,16,8,0.1)}
+    .z-item:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0}
+    .z-text{font-size:12.5px;line-height:1.6;color:var(--ink-light)}
+    .iran-current{border:1px solid var(--accent);padding:10px 14px;margin-top:8px;background:rgba(122,28,28,0.04)}
+    .iran-current-label{font-family:'Playfair Display',serif;font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+    .f1-podium{display:flex;justify-content:space-around;margin-bottom:12px;text-align:center;gap:8px}
+    .f1-pos{flex:1}
+    .f1-pos-num{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:var(--accent)}
+    .f1-pos-name{font-family:'Playfair Display',serif;font-size:12px;font-weight:700;color:var(--ink);margin-top:2px}
+    .f1-pos-team{font-family:'IM Fell English',serif;font-style:italic;font-size:10px;color:var(--ink-light)}
+    .f1-pos-gap{font-size:10px;color:var(--ink-light);margin-top:2px}
+    .stats-mini{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+    .stat-card{text-align:center;border:1px solid rgba(26,16,8,0.25);padding:10px 6px}
+    .stat-num{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--accent);line-height:1.1}
+    .stat-label{font-family:'IM Fell English',serif;font-style:italic;font-size:9.5px;color:var(--ink-light);margin-top:4px;line-height:1.3}
+    .cfa-box{border:1.5px solid var(--ink);padding:14px 18px;background:var(--paper-mid)}
+    .cfa-box-label{font-family:'Playfair Display',serif;font-size:9px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+    .cfa-formula{font-family:'Libre Baskerville',serif;font-size:15px;font-weight:700;color:var(--ink);margin-bottom:8px}
+    .cfa-vars{font-size:11px;color:var(--ink-light);line-height:1.7;margin-bottom:6px}
+    .cfa-tip{font-family:'IM Fell English',serif;font-style:italic;font-size:11px;color:var(--accent)}
+    .ornament{text-align:center;font-size:14px;color:var(--ink-light);opacity:0.4;margin:2px 0;letter-spacing:6px}
+    .footer{border-top:3px double var(--rule);margin:0 var(--page-pad);padding:10px 0 0;display:flex;justify-content:space-between;font-family:'IM Fell English',serif;font-size:10px;font-style:italic;color:var(--ink-light);opacity:0.7;flex-wrap:wrap;gap:6px}
+    @media(max-width:680px){
+      :root{--page-pad:18px;--col-gap:0px}
+      body{font-size:15px}
+      .masthead{padding:16px var(--page-pad) 12px}
+      .masthead-top span:nth-child(2){display:none}
+      .cols-2{columns:1}
+      .markets-grid,.z-grid{grid-template-columns:1fr}
+      .f1-podium{flex-direction:column;align-items:center;gap:14px}
+      .f1-pos{width:100%;max-width:240px}
+      .stats-mini{grid-template-columns:repeat(2,1fr);gap:10px}
+      .footer{font-size:9px}
+      .article-hed.large{font-size:18px}
+    }
+    @media(max-width:400px){.stats-mini{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="masthead">
+    <div class="masthead-top">
+      <span>Est. MMXXVI &nbsp;·&nbsp; Mumbai, India</span>
+      <span>Printed for private circulation only</span>
+      <span>Vol. I &nbsp;·&nbsp; No. 21</span>
+    </div>
+    <div class="masthead-title">News for Moti</div>
+    <div class="masthead-tagline">Intelligence, Capital &amp; Infrastructure — Daily</div>
+    <div class="masthead-bottom">
+      <span>Sunday, 16th August 2026 &nbsp;·&nbsp; Independence Day Weekend</span>
+      <span>&#10070; &nbsp; Eight Sections &nbsp; &#10070;</span>
+      <span>Last 48 Hours Only</span>
+    </div>
+  </div>
+
+  <div class="section-banner">Today's Edition &nbsp;·&nbsp; Vol. I, No. 21</div>
+  <div class="body-wrap">
+
+    <!-- 1: MARKETS -->
+    <div class="section">
+      <div class="section-head"><span class="section-title">Markets</span><span class="section-rule"></span></div>
+      <div class="markets-grid">
+        <div>
+          <div class="section-head" style="margin-bottom:10px">
+            <span class="sub-head">India &nbsp;·&nbsp; Aug 14, 2026 (last close — markets shut Aug 15–16)</span><span class="section-rule"></span>
+          </div>
+          <table class="market-table">
+            <tr><td class="mt-name">Sensex</td><td class="mt-val">78,009.25</td><td class="mt-chg dn">&minus;71 (&minus;0.09%)</td></tr>
+            <tr><td class="mt-name">Nifty 50</td><td class="mt-val">24,366</td><td class="mt-chg dn">Flat; settled where it opened</td></tr>
+            <tr><td class="mt-name">Weekly move</td><td class="mt-val">&mdash;</td><td class="mt-chg dn">&minus;0.6% for the week</td></tr>
+            <tr><td class="mt-name">Bharti Airtel</td><td class="mt-val">&mdash;</td><td class="mt-chg up">+2.5% (top gainer)</td></tr>
+            <tr><td class="mt-name">Asian Paints</td><td class="mt-val">&mdash;</td><td class="mt-chg dn">&minus;1.7% (top laggard)</td></tr>
+            <tr><td class="mt-name">Reliance Industries</td><td class="mt-val">&mdash;</td><td class="mt-chg dn">&minus;0.6% (MSCI weight cut)</td></tr>
+          </table>
+          <p class="market-note">Markets closed August 15 (Independence Day) and August 16 (Sunday) — reopening Monday August 18. Nifty has traded in a tight 24,300–24,600 range for several weeks. Reliance fell on MSCI's decision to reduce its weight in the flagship index. RBI's proposed loan-pricing changes weighed on banking stocks. Forex reserves surged $14.14bn to $707bn in the week to August 7 — FCNR(B) scheme attracting ~$40bn.</p>
+          <a class="dive-deeper" href="https://aftermarketreport.zerodha.com/p/nifty-ends-another-tentative-week" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+        </div>
+        <div>
+          <div class="section-head" style="margin-bottom:10px">
+            <span class="sub-head">United States &nbsp;·&nbsp; Aug 14, 2026 (week ending)</span><span class="section-rule"></span>
+          </div>
+          <table class="market-table">
+            <tr><td class="mt-name">S&amp;P 500</td><td class="mt-val">7,785.76</td><td class="mt-chg up">3rd straight weekly gain; touched record 7,800 on Thu</td></tr>
+            <tr><td class="mt-name">Nasdaq</td><td class="mt-val">26,729.16</td><td class="mt-chg up">+0.1% for week; AI spending momentum</td></tr>
+            <tr><td class="mt-name">Dow Jones</td><td class="mt-val">53,732.41</td><td class="mt-chg dn">&minus;0.6% for week; healthcare drag</td></tr>
+            <tr><td class="mt-name">Brent crude</td><td class="mt-val">$82.40</td><td class="mt-chg up">+1.42% on Friday; up ~5% for week</td></tr>
+            <tr><td class="mt-name">Reddit (RDDT)</td><td class="mt-val">&mdash;</td><td class="mt-chg up">+12%+ (S&P 500 inclusion)</td></tr>
+          </table>
+          <p class="market-note">S&P 500 slipped 0.2% Friday from its record high after July retail sales fell 0.6% MoM — worst drop since October 2025. University of Michigan August sentiment fell to 51, missing the 55 forecast. VIX near multi-month lows at ~14-15. Reddit joins S&P 500 before market open Monday August 18, replacing AvalonBay Communities.</p>
+          <a class="dive-deeper" href="https://finance.yahoo.com/markets/live/stock-market-today-friday-august-14-dow-sp-500-nasdaq-102635519.html" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ornament">— ✦ —</div>
+
+    <!-- 2: IRAN WAR -->
+    <div class="section">
+      <div class="section-head"><span class="section-title">The Iran War &nbsp;·&nbsp; Operation Epic Fury</span><span class="section-rule"></span></div>
+      <div class="cols-2">
+        <div class="article">
+          <div class="article-hed">Strait Talks Stall; US Escalates Economic Pressure on Iran</div>
+          <div class="article-source">Trading Economics / IEA &nbsp;·&nbsp; August 14, 2026</div>
+          <ul>
+            <li>WTI crude rose above $81/bbl, gaining nearly 5% for the week — the US stepped up economic pressure on Iran to reopen the Strait of Hormuz, while Iran and Oman have yet to finalise an agreement despite earlier optimism</li>
+            <li>The IEA warned of the widest global oil supply deficit in five years — with Strait transit disruptions persisting, the structural supply shortfall is becoming embedded in the medium-term outlook</li>
+            <li>Crude's $82-83 range is above the $74-78 level seen at the height of the summer ceasefire but well below the $102 peak of late July — market pricing in partial diplomacy credit but not full reopening</li>
+          </ul>
+          <a class="dive-deeper" href="https://tradingeconomics.com/commodity/crude-oil" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+        </div>
+        <div class="article">
+          <div class="article-hed">Current Situation — August 16, 2026</div>
+          <div class="article-source">IEA / Reuters &nbsp;·&nbsp; August 14–16, 2026</div>
+          <div class="iran-current">
+            <div class="iran-current-label">Status as of This Edition</div>
+            <ul>
+              <li>Strait of Hormuz: Partial transit; Oman-brokered talks ongoing but no deal yet — Iran holding out on US economic demands</li>
+              <li>Ceasefire: Both sides technically observing the July 27 attack pause; no new strikes reported in the last 48 hours</li>
+              <li>Brent crude: ~$82-83/bbl — elevated but off the $102 peak; IEA flagging five-year-high supply deficit</li>
+              <li>India forex reserves: $707bn — near record; FCNR(B) attracted ~$40bn inflow, cushioning the rupee</li>
+              <li>India WPI: Eased to 9.78% in July on cooling food and fuel — small relief after June's spike</li>
+              <li>India impact: Rate-cut window reopening slowly — August MPC (likely Aug 5-7, decision already passed; watch September) will depend on crude trajectory</li>
+            </ul>
+          </div>
+          <a class="dive-deeper" href="https://tradingeconomics.com/commodity/crude-oil" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ornament">— ✦ —</div>
+
+    <!-- 3: ZERODHA DESK -->
+    <div class="section">
+      <div class="section-head"><span class="section-title">The Zerodha Desk</span><span class="section-rule"></span></div>
+      <div class="z-grid">
+        <div class="z-col">
+          <div class="z-col-head">Top Stories in India</div>
+          <div class="z-item">
+            <div class="z-text"><strong>India's forex reserves jumped $14.14bn to $707bn</strong> in the week ended August 7 — one of the largest weekly expansions on record. The FCNR(B) scheme has attracted around $40bn so far, supporting the rupee and building a war chest against geopolitical risk.</div>
+            <a class="dive-deeper" href="https://www.ndtvprofit.com/economy/indias-forex-kitty-jumps-14-14-billion-to-707-billion-in-one-of-the-biggest-weekly-expansions-11910252" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+          </div>
+          <div class="z-item">
+            <div class="z-text"><strong>WPI inflation eased to 9.78% in July</strong> — first monthly drop under the new 2022-23 base year — as food and fuel costs cooled slightly. Breaks an upward trend driven by the West Asia conflict, though the level remains elevated relative to pre-war norms.</div>
+            <a class="dive-deeper" href="https://www.thehindu.com/business/Economy/wpi-inflation-eases-marginally-to-978-in-july-food-fuel-and-power-prices-cool/article71344649.ece" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+          </div>
+          <div class="z-item">
+            <div class="z-text"><strong>TCS and Rolls-Royce</strong> completed an industry-first fully simulated flight cycle of a modern aero gas turbine using 100% hydrogen — covering take-off, cruise and landing. A landmark milestone in hydrogen-powered aviation, validating combustion, fuel-system and engine-control technologies at scale.</div>
+            <a class="dive-deeper" href="https://www.ndtvprofit.com/business/tcs-rolls-royce-test-aircraft-engine-on-100-percent-hydrogen-in-industry-first-flight-cycle-11908832" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+          </div>
+          <div class="z-item">
+            <div class="z-text"><strong>Bharat Dynamics</strong> Q1 FY27 net profit surged sixfold YoY to ₹119 Cr from ₹18.3 Cr; revenue jumped 131% YoY to ₹572 Cr. A sharp improvement in the defence manufacturer's operating performance as order execution accelerates.</div>
+            <a class="dive-deeper" href="https://www.ndtvprofit.com/markets/bharat-dynamics-q1-result-net-profit-increases-sixfold-to-rs-119-crore-revenue-doubles-11909135" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+          </div>
+        </div>
+        <div class="z-col">
+          <div class="z-col-head">Top Stories Globally</div>
+          <div class="z-item">
+            <div class="z-text"><strong>WTI crude rose above $81/bbl</strong>, up nearly 5% for the week, as the US escalated economic pressure on Iran to reopen the Strait and the IEA warned of the widest global oil supply deficit in five years. Iran-Oman talks continue but no agreement yet.</div>
+            <a class="dive-deeper" href="https://tradingeconomics.com/commodity/crude-oil" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+          </div>
+          <div class="z-item">
+            <div class="z-text"><strong>US retail sales fell 0.6% MoM in July</strong> — sharply missing the 0.1% increase expected and the worst drop since May 2025 — signalling softer consumer demand. Weaker spending at nonstore retailers, auto dealers and electronics stores drove the miss.</div>
+            <a class="dive-deeper" href="https://tradingeconomics.com/united-states/retail-sales" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+          </div>
+          <div class="z-item">
+            <div class="z-text"><strong>Reddit joins the S&P 500</strong> on August 18, replacing AvalonBay Communities — shares surged 12%+ in premarket on the announcement. Index inclusion drives forced buying from passive and index-tracking funds.</div>
+            <a class="dive-deeper" href="https://www.reuters.com/business/finance/reddit-surges-sp-500-inclusion-set-replace-avalonbay-2026-08-14/" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+          </div>
+          <div class="z-item">
+            <div class="z-text"><strong>TerraPower and SK Innovation</strong> signed a preliminary global agreement to collaborate on SMR (small modular reactor) projects — potentially allowing SK to participate in TerraPower's Natrium sodium-cooled reactor projects in the US. The Wyoming Natrium plant received a US construction permit in March and targets 2031 commercial operations.</div>
+            <a class="dive-deeper" href="https://www.reuters.com/business/energy/us-terrapower-south-koreas-sk-innovation-sign-preliminary-deal-global-smr-2026-08-14/" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+          </div>
+        </div>
+      </div>
+      <p class="market-note" style="margin-top:10px;">Source: <a href="https://aftermarketreport.zerodha.com/p/nifty-ends-another-tentative-week" target="_blank" rel="noopener" style="color:var(--ink-light)">Aftermarket Report by Zerodha &nbsp;·&nbsp; August 14, 2026</a></p>
+    </div>
+
+    <div class="ornament">— ✦ —</div>
+
+    <!-- 4: INDIA MACRO -->
+    <div class="section">
+      <div class="section-head"><span class="section-title">India Macro</span><span class="section-rule"></span></div>
+      <div class="cols-2">
+        <div class="article">
+          <div class="article-hed large">Nifty Stuck in 24,300–24,600 as Markets Await a Catalyst</div>
+          <div class="article-source">Zerodha Aftermarket / Bajaj Broking &nbsp;·&nbsp; August 14, 2026</div>
+          <ul>
+            <li>Nifty has traded in a tight 24,300–24,600 range for several weeks — Bajaj Broking notes that holding above 24,000 and forming a "higher high and higher low" is needed to signal a pullback toward 24,300-24,350; a break below 23,823-23,891 would open downside to 23,500-23,600</li>
+            <li>Bank Nifty consolidating in the 56,500-58,700 range for six straight weeks — RBI's proposed loan-pricing changes (reducing banks' flexibility on loan yields) the latest headwind for financial stocks</li>
+            <li>Sensex recorded a weekly decline of ~0.6% — five sessions in a row saw Sensex fall 490 points cumulatively; 23 BSE 500 stocks declined daily through the week</li>
+            <li>Reliance Industries fell on MSCI's decision to reduce its weight in the flagship index during its periodic review — a technical but meaningful negative flow signal for India's most-held large-cap</li>
+          </ul>
+          <a class="dive-deeper" href="https://www.goodreturns.in/news/stock-market-outlook-today-july-28-2026-sensex-nifty-likely-to-remain-range-bound-ahead-of-fo-expiry-1524643.html" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+        </div>
+        <div class="article">
+          <div class="article-hed">RBI Governor: AI Can Extend the Frontier of Bankable India at a Fraction of the Cost</div>
+          <div class="article-source">The Chatter by Zerodha / RBI &nbsp;·&nbsp; August 14, 2026</div>
+          <ul>
+            <li>RBI Governor Sanjay Malhotra in a detailed speech: "AI changes the economics of credit delivery fundamentally. Traditional underwriting relies on financial history — precisely the data that is thin or absent for a new-to-credit borrower, a gig worker, or a small enterprise without formal books"</li>
+            <li>AI models trained on alternative data — cash flows, GST filings, utility payments, digital footprints — can "extend the frontier of 'bankable' India considerably further than manual underwriting ever could, at a fraction of the marginal cost per loan"</li>
+            <li>Apollo Hospitals MD Suneeta Reddy: international patient revenue grew 24% YoY; new Gurugram hospital could see international patients contribute up to 30% of revenue; Navi Mumbai airport opening expected to boost inflows</li>
+          </ul>
+          <a class="dive-deeper" href="https://thechatter.zerodha.com/p/the-chatter-rbis-governor-canara" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ornament">— ✦ —</div>
+
+    <!-- 5: INFRASTRUCTURE -->
+    <div class="section">
+      <div class="section-head"><span class="section-title">Infrastructure</span><span class="section-rule"></span></div>
+      <div class="cols-2">
+        <div class="article">
+          <div class="article-hed">TCS-Rolls-Royce Complete World's First 100% Hydrogen Aero Engine Flight Cycle</div>
+          <div class="article-source">NDTV Profit &nbsp;·&nbsp; August 2026</div>
+          <ul>
+            <li>TCS and Rolls-Royce completed an industry-first fully simulated flight cycle — take-off, cruise and landing — of a modern aero gas turbine running on 100% hydrogen</li>
+            <li>Validates critical hydrogen combustion, fuel-system and engine-control technologies; a meaningful step toward decarbonising long-haul aviation beyond short-range electric flights</li>
+            <li>TCS's role as the technology partner underlines India's positioning in deep-tech aviation R&amp;D beyond conventional IT services</li>
+          </ul>
+          <a class="dive-deeper" href="https://www.ndtvprofit.com/business/tcs-rolls-royce-test-aircraft-engine-on-100-percent-hydrogen-in-industry-first-flight-cycle-11908832" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+        </div>
+        <div class="article">
+          <div class="article-hed">TerraPower-SK Innovation SMR Partnership; Pony.ai Expands European Robotaxis via Uber</div>
+          <div class="article-source">Reuters &nbsp;·&nbsp; August 14, 2026</div>
+          <ul>
+            <li>TerraPower (Bill Gates-backed) and SK Innovation signed a preliminary global SMR collaboration — allowing SK to participate in TerraPower's Natrium (sodium-cooled) reactor projects; Wyoming plant targets 2031 commercial operations</li>
+            <li>SMR partnerships between US technology developers and Asian industrial conglomerates are becoming the template for the next generation of nuclear buildout — directly relevant to DFI-financed clean energy infrastructure</li>
+            <li>Pony.ai plans to deploy 2,000+ robotaxis across Europe with Uber — expanding from Zagreb to four additional European cities, a significant scale-up of commercial autonomous ride-hailing</li>
+          </ul>
+          <a class="dive-deeper" href="https://www.reuters.com/business/energy/us-terrapower-south-koreas-sk-innovation-sign-preliminary-deal-global-smr-2026-08-14/" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ornament">— ✦ —</div>
+
+    <!-- 6: BANKING & FS -->
+    <div class="section">
+      <div class="section-head"><span class="section-title">Banking &amp; Financial Services</span><span class="section-rule"></span></div>
+      <div class="cols-2">
+        <div class="article">
+          <div class="article-hed">RBI Loan-Pricing Proposal Weighs on Banks; Bharat Dynamics Q1 Profit Surges Sixfold</div>
+          <div class="article-source">Zerodha / NDTV Profit &nbsp;·&nbsp; August 14, 2026</div>
+          <ul>
+            <li>RBI's proposed loan-pricing changes — which would reduce banks' flexibility on setting loan yields — weighed on banking stocks through the week; full policy details await official notification</li>
+            <li>Bharat Dynamics (defence PSU) Q1 FY27 net profit surged sixfold to ₹119 Cr; revenue +131% YoY to ₹572 Cr — defence electronics and missile systems order execution accelerating under India's indigenisation push</li>
+            <li>Ashok Leyland Q1 FY27 standalone net profit +2.5% to ₹609 Cr; revenue +10.4% to ₹9,634 Cr — EBITDA margin contracted to 10.1% from 11.1%; cost pressures compressing margins even as top-line grows</li>
+          </ul>
+          <a class="dive-deeper" href="https://www.ndtvprofit.com/markets/bharat-dynamics-q1-result-net-profit-increases-sixfold-to-rs-119-crore-revenue-doubles-11909135" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+        </div>
+        <div class="article">
+          <div class="article-hed">Forex Reserves at $707bn; Aurobindo Pharma Arm Gets FDA Warning Letter</div>
+          <div class="article-source">NDTV Profit / Economic Times &nbsp;·&nbsp; August 2026</div>
+          <ul>
+            <li>India's forex reserves at $707bn — cumulative $24.65bn increase over two weeks — FCNR(B) scheme the primary driver, attracting ~$40bn in foreign currency deposits; RBI building strategic buffer against oil-import pressure</li>
+            <li>Aurobindo Pharma: USFDA issued a warning letter to Eugia Pharma Specialities Unit-I in Telangana after OAI classification — the unit contributes ~2% of group revenue; existing US supplies unaffected</li>
+            <li>India's pharma export performance remains a key offset to the trade deficit widening from energy imports — any FDA warning at scale gets attention at the macro level</li>
+          </ul>
+          <a class="dive-deeper" href="https://www.ndtvprofit.com/economy/indias-forex-kitty-jumps-14-14-billion-to-707-billion-in-one-of-the-biggest-weekly-expansions-11910252" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ornament">— ✦ —</div>
+
+    <!-- 7: CONSUMER TRENDS -->
+    <div class="section">
+      <div class="section-head"><span class="section-title">Consumer Trends &nbsp;·&nbsp; India &amp; Global</span><span class="section-rule"></span></div>
+      <div class="cols-2">
+        <div class="article">
+          <div class="article-hed large">India: Apollo's 24% International Patient Revenue Growth — Medical Tourism Back</div>
+          <div class="article-source">The Chatter by Zerodha &nbsp;·&nbsp; August 14, 2026</div>
+          <ul>
+            <li>Apollo Hospitals MD Suneeta Reddy: "We saw 24% revenue growth from international patients. Going forward, I expect this momentum to increase — especially with the opening of our hospital in Gurugram, where there is potential for international patients to contribute up to 30% of revenue"</li>
+            <li>The Navi Mumbai airport opening is expected to further boost international patient inflows — medical tourism as a high-margin consumer services segment is recovering strongly post-conflict disruption</li>
+            <li>India's WPI easing to 9.78% in July offers marginal comfort to consumer purchasing power — but the relief is modest; core urban consumption still under pressure from elevated fuel and utility costs</li>
+          </ul>
+          <a class="dive-deeper" href="https://thechatter.zerodha.com/p/the-chatter-rbis-governor-canara" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+        </div>
+        <div class="article">
+          <div class="article-hed">Global: US Consumer Confidence Falls to 51 in August; Retail Sales Worst Drop in 10 Months</div>
+          <div class="article-source">University of Michigan / Trading Economics &nbsp;·&nbsp; August 14, 2026</div>
+          <ul>
+            <li>University of Michigan's preliminary August Consumer Sentiment fell to 51 — below the 55 forecast and a deterioration from July's 54.4 — as inflation remained "top of mind" for respondents despite crude's pullback from $102</li>
+            <li>US retail sales fell 0.6% MoM in July — the worst drop since May 2025 — with weaker spending at nonstore retailers, auto dealers, electronics stores and gasoline stations all contributing; first decline since October 2025</li>
+            <li>The data challenges the "resilient US consumer" narrative: even with an S&amp;P 500 near record highs, the household sector is visibly pulling back — elevated gasoline prices and a softening jobs market (57,000 new jobs in June) are the primary drags</li>
+            <li>TerraPower-SK Innovation's SMR agreement is an important signal for the energy transition consumer: if Natrium hits 2031 commercial operations, it could eventually stabilise electricity costs for industrial and household users in ways gas-dependent grids cannot</li>
+          </ul>
+          <a class="dive-deeper" href="https://tradingeconomics.com/united-states/retail-sales" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ornament">— ✦ —</div>
+
+    <!-- 8: F1 -->
+    <div class="section">
+      <div class="section-head"><span class="section-title">Formula 1 &nbsp;·&nbsp; Preview &nbsp;·&nbsp; Dutch GP &nbsp;·&nbsp; Zandvoort &nbsp;·&nbsp; Aug 21-23, 2026</span><span class="section-rule"></span></div>
+      <div class="article">
+        <div class="article-hed large">F1 Returns from Summer Break — Final Ever Dutch GP at Zandvoort with a Sprint</div>
+        <div class="article-source">ESPN / Sky Sports / Wikipedia &nbsp;·&nbsp; August 16, 2026</div>
+
+        <ul>
+          <li>The Dutch Grand Prix (August 21-23, Race: Sunday August 23) is the first race back after the summer break — and the <em>last ever</em> Dutch GP at Zandvoort under the circuit's current contract; the race exits the calendar for 2027</li>
+          <li>First time Zandvoort features an F1 Sprint — Sprint Qualifying on Friday, Sprint race Saturday, full Qualifying Saturday, Grand Prix Sunday; the circuit's 36th and final championship appearance in its current era</li>
+          <li>Championship standings heading in: Antonelli leads Hamilton by <strong>50 points</strong> and Russell by <strong>59 points</strong> — a significant cushion after Russell's anti-stall drop at Hungary; Mercedes Constructors' still leading</li>
+          <li>Lando Norris won the last race (Hungary) in McLaren's first 2026 victory — now a genuine threat after the team's upgrade package; Zandvoort suits Ferrari on paper (few straights) but McLaren's pace in similar track types (Hungary) makes Norris a serious contender</li>
+          <li>Russell's engagement to Carmen Montero Mundt was announced over the summer break — starting the second half of the season with personal and professional stakes both elevated</li>
+        </ul>
+
+        <div class="stats-mini">
+          <div class="stat-card">
+            <div class="stat-num">50 pts</div>
+            <div class="stat-label">Antonelli's lead over Hamilton in Drivers' Championship</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">Last ever</div>
+            <div class="stat-label">Dutch GP at Zandvoort — circuit exits F1 calendar after 2026</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">Sprint</div>
+            <div class="stat-label">First sprint format at the Dutch GP — Friday Sprint Qualifying, Saturday Sprint race</div>
+          </div>
+        </div>
+        <a class="dive-deeper" href="https://www.espn.com/f1/story/_/id/49409520/dutch-grand-prix-2026-circuit-zandvoort-race-f1-start-s-how-watch-schedule-usa-tv-channel-live-stream-predictions-results" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+      </div>
+    </div>
+
+    <div class="ornament">— ✦ —</div>
+
+    <!-- 9: CFA -->
+    <div class="section">
+      <div class="section-head"><span class="section-title">CFA Prep &nbsp;·&nbsp; Formula of the Day</span><span class="section-rule"></span></div>
+      <div class="cfa-box">
+        <div class="cfa-box-label">Today's Formula — DuPont 3-Factor ROE Decomposition</div>
+        <div class="cfa-formula">ROE = Net Profit Margin &times; Asset Turnover &times; Equity Multiplier</div>
+        <div class="cfa-vars">
+          Net Profit Margin = Net Income &divide; Revenue &nbsp;|&nbsp; Asset Turnover = Revenue &divide; Average Total Assets<br/>
+          Equity Multiplier = Average Total Assets &divide; Average Shareholders' Equity &nbsp;(= 1 + Debt-to-Equity)
+        </div>
+        <div class="cfa-tip">Exam tip: DuPont disaggregates ROE into profitability, efficiency and leverage — if ROE is high due to a high equity multiplier (heavy leverage), it is less durable than the same ROE achieved through margin or turnover improvement. Compare the three components across companies, not just the headline ROE.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <span>Compiled by the News for Moti Intelligence Desk</span>
+    <span>Not for redistribution</span>
+    <span>Mumbai &nbsp;·&nbsp; August 2026 &nbsp;·&nbsp; <a href="archive/index.html" style="color:var(--ink-light);text-decoration:underline;font-style:italic;">Archive</a></span>
+  </div>
+</div>
+</body>
+</html>
