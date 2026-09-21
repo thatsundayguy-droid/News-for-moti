@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>News for Moti</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=UnifrakturMaguntia&family=IM+Fell+English:ital@0;1&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--ink:#1a1008;--ink-light:#3b2e1e;--rule:#1a1008;--paper:#f5efe2;--paper-mid:#ede3cc;--accent:#7a1c1c;--col-gap:24px;--page-pad:40px}
+    body{background:#c8b89a;font-family:'Libre Baskerville',Georgia,serif;color:var(--ink);font-size:14px;line-height:1.6;-webkit-text-size-adjust:100%}
+    .page{max-width:1080px;margin:24px auto;background:var(--paper);padding:0 0 48px;box-shadow:0 4px 32px rgba(0,0,0,0.45);position:relative;overflow:hidden}
+    .page::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 28px,rgba(120,90,40,0.03) 28px,rgba(120,90,40,0.03) 29px);pointer-events:none;z-index:0}
+    .page>*{position:relative;z-index:1}
+    .masthead{border-bottom:3px double var(--rule);padding:20px var(--page-pad) 14px;text-align:center}
+    .masthead-top{display:flex;justify-content:space-between;align-items:flex-end;font-family:'IM Fell English',serif;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-light);border-bottom:1px solid var(--rule);padding-bottom:6px;margin-bottom:10px;flex-wrap:wrap;gap:4px}
+    .masthead-title{font-family:'UnifrakturMaguntia',cursive;font-size:clamp(44px,8vw,76px);line-height:1;color:var(--ink);letter-spacing:0.02em;margin:4px 0 6px}
+    .masthead-tagline{font-family:'IM Fell English',serif;font-style:italic;font-size:11px;letter-spacing:0.12em;color:var(--ink-light);margin-bottom:10px}
+    .masthead-bottom{display:flex;justify-content:space-between;font-family:'IM Fell English',serif;font-size:10px;color:var(--ink-light);border-top:1px solid var(--rule);padding-top:6px;flex-wrap:wrap;gap:4px}
+    .section-banner{background:var(--ink);color:var(--paper);text-align:center;font-family:'Playfair Display',serif;font-size:11px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;padding:5px var(--page-pad)}
+    .body-wrap{padding:0 var(--page-pad)}
+    .section{border-bottom:2px solid var(--rule);padding:18px 0 14px}
+    .section:last-child{border-bottom:none}
+    .section-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+    .section-title{font-family:'Playfair Display',serif;font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);white-space:nowrap}
+    .section-rule{flex:1;height:1px;background:var(--ink);opacity:0.3;min-width:10px}
+    .cols-2{columns:2;column-gap:var(--col-gap)}
+    .article{break-inside:avoid;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid rgba(26,16,8,0.13)}
+    .article:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+    .article-hed{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;line-height:1.25;color:var(--ink);margin-bottom:5px}
+    .article-hed.large{font-size:20px}
+    .article-source{font-family:'IM Fell English',serif;font-style:italic;font-size:10px;color:var(--ink-light);margin-bottom:6px;opacity:0.75}
+    .article ul{list-style:none;padding:0}
+    .article ul li{padding-left:16px;position:relative;margin-bottom:5px;font-size:12.5px;line-height:1.55;color:var(--ink-light)}
+    .article ul li::before{content:'--';position:absolute;left:0;color:var(--accent);font-size:11px}
+    .dive-deeper{display:inline-block;margin-top:8px;font-family:'IM Fell English',serif;font-style:italic;font-size:11px;color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(122,28,28,0.35);padding-bottom:1px}
+    .dive-deeper:hover{border-bottom-color:var(--accent)}
+    .no-news{font-family:'IM Fell English',serif;font-style:italic;font-size:12px;color:var(--ink-light);opacity:0.65;padding:4px 0}
+    .markets-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--col-gap)}
+    .sub-head{font-family:'IM Fell English',serif;font-style:italic;font-size:11px;color:var(--ink-light)}
+    .market-table{width:100%;border-collapse:collapse}
+    .market-table tr{border-bottom:1px solid rgba(26,16,8,0.1)}
+    .market-table tr:last-child{border-bottom:none}
+    .market-table td{padding:6px 0;font-family:'Libre Baskerville',serif;font-size:11px;vertical-align:baseline}
+    .mt-name{font-family:'Playfair Display',serif;font-size:12px;font-weight:700;color:var(--ink);text-align:left;padding-right:10px;white-space:nowrap}
+    .mt-val{text-align:right;color:var(--ink-light);white-space:nowrap;padding-right:10px;font-variant-numeric:tabular-nums}
+    .mt-chg{text-align:right;font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums;min-width:90px}
+    .up{color:#2a6b2a}.dn{color:#8b1c1c}
+    .market-note{font-family:'IM Fell English',serif;font-style:italic;font-size:10px;color:var(--ink-light);margin-top:8px;opacity:0.7}
+    .z-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--col-gap)}
+    .z-col-head{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid rgba(122,28,28,0.25)}
+    .z-item{margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid rgba(26,16,8,0.1)}
+    .z-item:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0}
+    .z-text{font-size:12.5px;line-height:1.6;color:var(--ink-light)}
+    .iran-current{border:1px solid var(--accent);padding:10px 14px;margin-top:8px;background:rgba(122,28,28,0.04)}
+    .iran-current-label{font-family:'Playfair Display',serif;font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+    .stats-mini{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+    .stat-card{text-align:center;border:1px solid rgba(26,16,8,0.25);padding:10px 6px}
+    .stat-num{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--accent);line-height:1.1}
+    .stat-label{font-family:'IM Fell English',serif;font-style:italic;font-size:9.5px;color:var(--ink-light);margin-top:4px;line-height:1.3}
+    .cfa-box{border:1.5px solid var(--ink);padding:14px 18px;background:var(--paper-mid)}
+    .cfa-box-label{font-family:'Playfair Display',serif;font-size:9px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+    .cfa-formula{font-family:'Libre Baskerville',serif;font-size:15px;font-weight:700;color:var(--ink);margin-bottom:8px}
+    .cfa-vars{font-size:11px;color:var(--ink-light);line-height:1.7;margin-bottom:6px}
+    .cfa-tip{font-family:'IM Fell English',serif;font-style:italic;font-size:11px;color:var(--accent)}
+    .ornament{text-align:center;font-size:14px;color:var(--ink-light);opacity:0.4;margin:2px 0;letter-spacing:6px}
+    .footer{border-top:3px double var(--rule);margin:0 var(--page-pad);padding:10px 0 0;display:flex;justify-content:space-between;font-family:'IM Fell English',serif;font-size:10px;font-style:italic;color:var(--ink-light);opacity:0.7;flex-wrap:wrap;gap:6px}
+    @media(max-width:680px){
+      :root{--page-pad:18px;--col-gap:0px}
+      body{font-size:15px}
+      .masthead{padding:16px var(--page-pad) 12px}
+      .masthead-top span:nth-child(2){display:none}
+      .cols-2{columns:1}
+      .markets-grid,.z-grid{grid-template-columns:1fr}
+      .stats-mini{grid-template-columns:repeat(2,1fr);gap:10px}
+      .footer{font-size:9px}
+      .article-hed.large{font-size:18px}
+    }
+    @media(max-width:400px){.stats-mini{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="masthead">
+    <div class="masthead-top">
+      <span>Est. MMXXVI &nbsp;&#183;&nbsp; Mumbai, India</span>
+      <span>Printed for private circulation only</span>
+      <span>Vol. I &nbsp;&#183;&nbsp; No. 23</span>
+    </div>
+    <div class="masthead-title">News for Moti</div>
+    <div class="masthead-tagline">Intelligence, Capital &amp; Infrastructure -- Daily</div>
+    <div class="masthead-bottom">
+      <span>Friday, 18th September 2026</span>
+      <span>&#10070; &nbsp; Eight Sections &nbsp; &#10070;</span>
+      <span>Last 48 Hours Only</span>
+    </div>
+  </div>
+
+  <div class="section-banner">Today's Edition &nbsp;&#183;&nbsp; Vol. I, No. 23</div>
+  <div class="body-wrap">
+
+    <!-- 1: MARKETS -->
+    <div class="section">
+      <div class="section-head"><span class="section-title">Markets</span><span class="section-rule"></span></div>
+      <div class="markets-grid">
+        <div>
+          <div class="section-head" style="margin-bottom:10px">
+            <span class="sub-head">India &nbsp;&#183;&nbsp; September 17, 2026 (confirmed close)</span><span class="section-rule"></span>
+          </div>
+          <table class="market-table">
+            <tr><td class="mt-name">Sensex</td><td class="mt-val">74,314.59</td><td class="mt-chg dn">-21.86 (-0.03%)</td></tr>
+            <tr><td class="mt-name">Nifty 50</td><td class="mt-val">23,270.60</td><td class="mt-chg up">+53.00 (+0.23%)</td></tr>
+            <tr><td class="mt-name">10-yr G-sec yield</td><td class="mt-val">7.02%+</td><td class="mt-chg dn">Crossed 7% for first time in 3 months</td></tr>
+            <tr><td class="mt-name">FII (5-session)</td><td class="mt-val">-Rs 6,841 Cr</td><td class="mt-chg dn">Sellers for sixth straight session</td></tr>
+            <tr><td class="mt-name">DII (5-session)</td><td class="mt-val">+Rs 13,206 Cr</td><td class="mt-chg up">Strong counter-buying</td></tr>
+            <tr><td class="mt-name">NSE IPO</td><td class="mt-val">Rs 1,700-1,785/sh</td><td class="mt-chg up">Open Sep 17-21; Rs 22,569 Cr issue</td></tr>
+          </table>
+          <p class="market-note">Nifty opened 23 pts gap-down on the Fed hike, swung sharply through the session and closed barely in green. Breadth improved (1,750 advancing vs 869 declining) but only 25.3% of Nifty 500 stocks are above their 50-day average. Tata Sons listed on NSE from Monday after board cleared the listing; Tata group stocks surged 2.3-5.5% on Chandrasekaran reappointment news. NSE IPO -- India's second-largest ever -- open through September 21 at Rs 1,700-1,785/share, valuing the exchange at ~$46bn.</p>
+          <a class="dive-deeper" href="https://aftermarketreport.zerodha.com/p/market-struggles-at-higher-levels" target="_blank" rel="noopener">Dive Deeper (Zerodha) &rarr;</a>
+        </div>
+        <div>
+          <div class="section-head" style="margin-bottom:10px">
+            <span class="sub-head">United States &nbsp;&#183;&nbsp; September 16-17, 2026</span><span class="section-rule"></span>
+          </div>
+          <table class="market-table">
+            <tr><td class="mt-name">Fed funds rate</td><td class="mt-val">3.75-4.00%</td><td class="mt-chg dn">+25 bps -- first hike since July 2023</td></tr>
+            <tr><td class="mt-name">S&P 500 (Wed)</td><td class="mt-val">-0.4%</td><td class="mt-chg dn">Fell on hike day; rebounded Thursday +1.19%</td></tr>
+            <tr><td class="mt-name">Dow (Thu)</td><td class="mt-val">+8.81%</td><td class="mt-chg up">Biggest single-day gain in months</td></tr>
+            <tr><td class="mt-name">Nasdaq (Thu)</td><td class="mt-val">-0.01%</td><td class="mt-chg dn">Flat; chip stocks +3% helped offset losses</td></tr>
+            <tr><td class="mt-name">10-yr UST yield</td><td class="mt-val">~5.0%</td><td class="mt-chg dn">Eight-day rising streak snapped Thursday</td></tr>
+            <tr><td class="mt-name">Brent crude</td><td class="mt-val">~$104</td><td class="mt-chg dn">Slipped from session highs; still +9% WoW</td></tr>
+          </table>
+          <p class="market-note">The Fed hiked unanimously to 3.75-4.00%. Warsh: "Inflation is too high, and has been for too long." Sixteen of 18 FOMC members projected at least one further hike this year. The S&P fell 0.4% on the day of the hike -- first time that has happened on the first hike of a tightening cycle since 1997, per market observers. Markets rebounded sharply Thursday as oil softened and yields pulled back from the highest level since 2007. Bank of Japan rate decision due today.</p>
+          <a class="dive-deeper" href="https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-sept-17-2026" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ornament">-- &#10070; --</div>
+
+    <!-- 2: IRAN WAR -->
+    <div class="section">
+      <div class="section-head"><span class="section-title">The Iran War &nbsp;&#183;&nbsp; Operation Epic Fury</span><span class="section-rule"></span></div>
+      <div class="cols-2">
+        <div class="article">
+          <div class="article-hed large">Brent at $104 -- Oil Remains the Dominant Inflation Force Globally</div>
+          <div class="article-source">Reuters / IEA &nbsp;&#183;&nbsp; September 17, 2026</div>
+          <ul>
+            <li>Brent slipped toward $104/bbl Thursday as additional Saudi crude cargoes moved through Oman, easing short-term supply concerns -- but both benchmarks remain comfortably above $100, up roughly 9% for the week</li>
+            <li>The IEA forecast global oil demand to fall 2.5 million barrels per day in 2026 -- the biggest annual decline since the COVID-19 pandemic -- as elevated fuel prices and tighter supplies hit consumption worldwide</li>
+            <li>US 10-year Treasury yield hit the closely watched 5% level before Thursday's retreat -- the dual pressure of a $40 trillion debt stock and sustained triple-digit crude is what drove the Fed to hike despite a supply-side inflation driver the rate tool cannot fix</li>
+          </ul>
+          <a class="dive-deeper" href="https://www.reuters.com/business/energy/oil-prices-extend-losses-fears-middle-east-supply-disruptions-ease-2026-09-17/" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+        </div>
+        <div class="article">
+          <div class="article-hed">Current Situation -- September 18, 2026</div>
+          <div class="article-source">Reuters / Bloomberg &nbsp;&#183;&nbsp; September 17-18, 2026</div>
+          <div class="iran-current">
+            <div class="iran-current-label">Status as of This Edition</div>
+            <ul>
+              <li>Brent crude: ~$104/bbl -- highest since before the July ceasefire attempt; up roughly 9% for the week</li>
+              <li>Strait of Hormuz: Partial transit; Saudi cargoes moving via Oman, but full unrestricted passage not restored</li>
+              <li>India G-sec: 10-year yield crossed 7% for first time in 3+ months -- energy-driven inflation pressuring bond markets</li>
+              <li>India forex: $785.71bn at September 4 -- all-time high after a record $44.9bn weekly surge; provides meaningful buffer</li>
+              <li>IEA: Global oil demand to fall 2.5 mn bpd in 2026 -- biggest demand destruction since COVID</li>
+              <li>Fed hike impact on India: Higher US rates tighten INR liquidity and raise the floor for Indian bond yields; RBI October MPC now the key watch-point</li>
+            </ul>
+          </div>
+          <a class="dive-deeper" href="https://tradingeconomics.com/commodity/brent-crude-oil" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ornament">-- &#10070; --</div>
+
+    <!-- 3: ZERODHA DESK -->
+    <div class="section">
+      <div class="section-head"><span class="section-title">The Zerodha Desk</span><span class="section-rule"></span></div>
+      <div class="z-grid">
+        <div class="z-col">
+          <div class="z-col-head">Top Stories in India</div>
+          <div class="z-item">
+            <div class="z-text"><strong>Tata Sons board cleared the company's listing</strong> and approved a fresh five-year term for N Chandrasekaran as executive chairman, ending years of speculation. Tata Trusts chairman Noel Tata was reportedly outvoted on the listing proposal at the three-hour board meeting. Tata group stocks surged 2.3-5.5% on Thursday.</div>
+            <a class="dive-deeper" href="https://www.business-standard.com/companies/news/tata-sons-to-go-public-board-clears-5-year-extension-for-n-chandrasekaran-126091700629_1.html" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+          </div>
+          <div class="z-item">
+            <div class="z-text"><strong>Brookfield will invest up to $600 million in ACME Cleantech Ventures</strong> -- its entry into India's low-carbon fuels sector. Funding will help ACME develop green ammonia and green methanol projects in India and Oman, backed by supply agreements with Yara International, IHI Corporation and Mitsubishi Gas Chemical.</div>
+            <a class="dive-deeper" href="https://www.reuters.com/business/brookfield-invest-up-600-million-indias-acme-green-fuels-business-2026-09-17/" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+          </div>
+          <div class="z-item">
+            <div class="z-text"><strong>EQT plans $50 billion in India investment by 2030</strong> -- $30bn toward data centres (including Adani Connex) and $5bn toward renewable energy to power them. EQT managed EUR 341bn in assets globally as of June 2026.</div>
+            <a class="dive-deeper" href="https://www.thehindubusinessline.com/companies/eqt-plans-50-billion-india-investment-including-adani-connex/article71475655.ece" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+          </div>
+          <div class="z-item">
+            <div class="z-text"><strong>India's rice production may fall ~10 million tonnes this year</strong> to roughly 144 million tonnes -- a 6.5% decline from last year's record 154 mn, marking the first annual fall in a decade and steepest drop since 2009-10. Below-normal rainfall during crop maturation is the primary cause.</div>
+            <a class="dive-deeper" href="https://www.thehindubusinessline.com/economy/agri-business/indias-rice-production-faces-biggest-drop-in-two-decades/article71475839.ece" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+          </div>
+        </div>
+        <div class="z-col">
+          <div class="z-col-head">Top Stories Globally</div>
+          <div class="z-item">
+            <div class="z-text"><strong>Salesforce forecast FY2030 revenue of $63bn</strong> -- ahead of the $61.4bn analyst estimate -- signalling confidence despite rising AI tool competition. The outlook includes revenue from Informatica, acquired last November. A constructive data point for Indian IT companies exposed to enterprise software clients.</div>
+            <a class="dive-deeper" href="https://www.ndtvprofit.com/business/salesforce-sees-63-billion-in-revenue-in-fiscal-year-2030-12057530" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+          </div>
+          <div class="z-item">
+            <div class="z-text"><strong>Anthropic launched Claude Docs</strong> -- allowing users to create, edit and collaborate on documents inside Claude, directly competing with Microsoft Office productivity suites. Rolling out initially to Pro and Max subscribers. Part of Anthropic's push to turn Claude from a chatbot into a broader knowledge-work platform.</div>
+            <a class="dive-deeper" href="https://www.ndtvprofit.com/business/anthropic-launches-claude-docs-in-direct-challenge-to-microsoft-office-12056267" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+          </div>
+          <div class="z-item">
+            <div class="z-text"><strong>Bank of England held rates at 3.75%</strong> in a 6-3 vote, with three members favouring a 25 bps hike. The MPC flagged higher energy prices from the prolonged Middle East conflict as an inflation risk. UK CPI already at 3.1% in August and expected to rise further in coming quarters.</div>
+            <a class="dive-deeper" href="https://tradingeconomics.com/united-kingdom/interest-rate" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+          </div>
+          <div class="z-item">
+            <div class="z-text"><strong>Offshore yuan strengthened to ~6.70/USD</strong> as China expanded yuan clearing to the Singapore dollar, New Zealand dollar and Thai baht. 12 banks cleared 996 million yuan on the first day, part of a broader push to internationalise the currency. A slow but structural shift in global FX architecture.</div>
+            <a class="dive-deeper" href="https://tradingeconomics.com/china/currency" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+          </div>
+        </div>
+      </div>
+      <p class="market-note" style="margin-top:10px;">Source: <a href="https://aftermarketreport.zerodha.com/p/market-struggles-at-higher-levels" target="_blank" rel="noopener" style="color:var(--ink-light)">Aftermarket Report by Zerodha &nbsp;&#183;&nbsp; September 17, 2026</a></p>
+    </div>
+
+    <div class="ornament">-- &#10070; --</div>
+
+    <!-- 4: INDIA MACRO -->
+    <div class="section">
+      <div class="section-head"><span class="section-title">India Macro</span><span class="section-rule"></span></div>
+      <div class="cols-2">
+        <div class="article">
+          <div class="article-hed large">Fed Hikes to 3.75-4%; G-Sec Yield Crosses 7%; NSE IPO Opens</div>
+          <div class="article-source">RBI / BSE / Trading Economics &nbsp;&#183;&nbsp; September 16-17, 2026</div>
+          <ul>
+            <li>The Fed's first rate hike in three years -- to 3.75-4.00% -- has immediate read-throughs for India: higher US rates tighten global dollar liquidity, pressure the INR, and lift the floor for Indian bond yields; the 10-year G-sec crossing 7% for the first time in 3+ months is the direct transmission signal</li>
+            <li>NSE IPO open September 17-21 at Rs 1,700-1,785/share, raising Rs 22,569 Cr -- India's second-largest IPO after Hyundai Motor India's Rs 27,870 Cr issue in 2024; values the exchange at approximately $46bn</li>
+            <li>India's forex reserves at an all-time high of $785.71bn as of September 4 -- the $44.9bn single-week surge (the largest ever) was driven by foreign currency assets; provides a meaningful buffer against oil and rate-driven capital outflows</li>
+          </ul>
+          <a class="dive-deeper" href="https://aftermarketreport.zerodha.com/p/oil-eases-from-highs-helping-markets" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+        </div>
+        <div class="article">
+          <div class="article-hed">India Semiconductor Mission 2.0 at $13.5bn; US Threatens Tariffs on Russian Energy Buyers</div>
+          <div class="article-source">Hindu Business Line / Business Standard &nbsp;&#183;&nbsp; September 17, 2026</div>
+          <ul>
+            <li>PM Modi at Semicon India 2026: India Semiconductor Mission 2.0 has expanded its outlay to $13.5bn from $8bn in the first phase -- "The world is looking for new and trusted manufacturing destinations. India is steadily preparing itself"</li>
+            <li>US Congress cleared legislation allowing Trump to impose tariffs of up to 100% on major buyers of Russian energy -- including India and China; India's MEA responded that it will take "all necessary measures to protect its trade and economic interests and ensure energy security"</li>
+            <li>FII outflows: Rs 6,841 Cr over the last five sessions; DII counter-buying Rs 13,206 Cr; the domestic bid continues to cushion the index against sustained foreign selling</li>
+          </ul>
+          <a class="dive-deeper" href="https://www.business-standard.com/external-affairs-defence-security/news/india-committed-to-ensure-energy-security-mea-on-us-russia-sanctions-act-126091700261_1.html" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ornament">-- &#10070; --</div>
+
+    <!-- 5: INFRASTRUCTURE -->
+    <div class="section">
+      <div class="section-head"><span class="section-title">Infrastructure</span><span class="section-rule"></span></div>
+      <div class="cols-2">
+        <div class="article">
+          <div class="article-hed">Brookfield Enters India Green Fuels via $600mn ACME Cleantech Investment</div>
+          <div class="article-source">Reuters &nbsp;&#183;&nbsp; September 17, 2026</div>
+          <ul>
+            <li>Brookfield's $600mn commitment to ACME Cleantech marks its entry into India's low-carbon fuels sector -- green ammonia and green methanol projects in India and Oman, with offtake secured from Yara, IHI and Mitsubishi Gas Chemical</li>
+            <li>Green ammonia and methanol are emerging as the primary alternative fuel vectors for hard-to-abate industries (shipping, fertiliser, steel) -- ACME's projects are among the earliest at meaningful scale in India</li>
+            <li>Directly relevant for BII's I&amp;C portfolio thesis: blended finance into green industrials using DFI capital to crowd in private institutional capital (Brookfield) is exactly the model the sector is building toward</li>
+          </ul>
+          <a class="dive-deeper" href="https://www.reuters.com/business/brookfield-invest-up-600-million-indias-acme-green-fuels-business-2026-09-17/" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+        </div>
+        <div class="article">
+          <div class="article-hed">EQT Plans $50bn India Investment -- $30bn for Data Centres, $5bn for Renewables</div>
+          <div class="article-source">Hindu Business Line &nbsp;&#183;&nbsp; September 17, 2026</div>
+          <ul>
+            <li>EQT will invest $50bn in India by 2030: $30bn toward data centres (including a significant stake in Gautam Adani's Adani Connex data centre business) and $5bn toward renewable energy to power the AI/cloud infrastructure</li>
+            <li>The EQT-Adani Connex deal is a landmark: one of the world's largest private equity firms anchoring a strategic bet on India's AI infrastructure buildout through a partnership with the country's largest infrastructure group</li>
+            <li>Reinforces the AI infrastructure-to-renewables supply chain: every $1 of data centre capex creates a derived demand for clean power, which in turn creates a derived demand for grid infrastructure, storage and transmission</li>
+          </ul>
+          <a class="dive-deeper" href="https://www.thehindubusinessline.com/companies/eqt-plans-50-billion-india-investment-including-adani-connex/article71475655.ece" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ornament">-- &#10070; --</div>
+
+    <!-- 6: BANKING & FS -->
+    <div class="section">
+      <div class="section-head"><span class="section-title">Banking &amp; Financial Services</span><span class="section-rule"></span></div>
+      <div class="cols-2">
+        <div class="article">
+          <div class="article-hed">NSE IPO -- Rs 22,569 Cr at Rs 1,785 Upper Band; India's Second-Largest Ever</div>
+          <div class="article-source">Business Standard / Hindu Business Line &nbsp;&#183;&nbsp; September 17, 2026</div>
+          <ul>
+            <li>NSE set a price band of Rs 1,700-1,785/share for its IPO (open September 17-21), raising Rs 22,569 Cr -- India's second-largest IPO after Hyundai Motor India's Rs 27,870 Cr issue in 2024</li>
+            <li>Implied valuation: approximately $46bn for the National Stock Exchange -- one of the world's most profitable exchange businesses by net income margin</li>
+            <li>FII flows: Rs 6,841 Cr in net sales over 5 sessions; DII counter-buying Rs 13,206 Cr; FIIs held a 12.3% long ratio in index futures (heavily short) while retail positioning was strongly long -- a structural divergence in near-term directional conviction</li>
+          </ul>
+          <a class="dive-deeper" href="https://aftermarketreport.zerodha.com/p/oil-eases-from-highs-helping-markets" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+        </div>
+        <div class="article">
+          <div class="article-hed">UPI MDR Framework Introduces 0.02% Fee for Securities Transactions</div>
+          <div class="article-source">Aftermarket Report / Zerodha &nbsp;&#183;&nbsp; September 16, 2026</div>
+          <ul>
+            <li>Government's new UPI MDR framework introduces a lower fee for payments related to mutual funds, securities, stockbrokers and dealers: 0.02%, capped at Rs 300 per transaction vs the standard 0.4% MDR on person-to-merchant payments</li>
+            <li>Directionally significant: enables revenue generation for UPI infrastructure providers from high-volume financial transaction flows, addressing the cross-subsidy concern that has hung over UPI's long-term economics</li>
+            <li>For NBFCs, HFCs and MFIs distributing through digital channels, lower-cost UPI settlement for loan repayments and disbursements is a structural cost reduction opportunity</li>
+          </ul>
+          <a class="dive-deeper" href="https://aftermarketreport.zerodha.com/p/all-eyes-on-fed-as-nifty-recovers" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ornament">-- &#10070; --</div>
+
+    <!-- 7: CONSUMER TRENDS -->
+    <div class="section">
+      <div class="section-head"><span class="section-title">Consumer Trends &nbsp;&#183;&nbsp; India &amp; Global</span><span class="section-rule"></span></div>
+      <div class="cols-2">
+        <div class="article">
+          <div class="article-hed large">India: Rice Output to Fall 6.5% -- Food Inflation Risk Rising into Kharif Season</div>
+          <div class="article-source">Hindu Business Line &nbsp;&#183;&nbsp; September 17, 2026</div>
+          <ul>
+            <li>India's rice production could fall roughly 10 million tonnes to 144 mn tonnes in 2026 -- a 6.5% decline from last year's record, the first annual fall in a decade and the steepest since 2009-10; below-normal rainfall during maturation cited as the cause</li>
+            <li>Rice is India's largest staple crop by caloric consumption; a 6.5% supply shock maps directly to CPI food inflation -- and given that the current CPI is already 4.38% (above RBI target), a rice supply shortfall arriving into festive season is a compounding inflation risk</li>
+            <li>HCLTech launched HCLTech Pulse targeting mid-market enterprises ($500mn-$5bn revenue) -- the implicit consumer thesis is that mid-size enterprises in India will be the next wave of AI adoption, generating incremental revenue for Indian IT beyond the global large-cap client base</li>
+          </ul>
+          <a class="dive-deeper" href="https://www.thehindubusinessline.com/economy/agri-business/indias-rice-production-faces-biggest-drop-in-two-decades/article71475839.ece" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+        </div>
+        <div class="article">
+          <div class="article-hed">Global: IEA Forecasts 2.5mn bpd Demand Destruction -- Energy Inflation Is Destroying Its Own Demand</div>
+          <div class="article-source">IEA / Bloomberg &nbsp;&#183;&nbsp; September 17, 2026</div>
+          <ul>
+            <li>The IEA's forecast of 2.5mn barrels per day demand destruction in 2026 -- the largest since COVID -- is confirmation that triple-digit oil is now actively destroying the consumption it is nominally being driven by; this is a reflexive dynamic that historically precedes eventual crude price correction</li>
+            <li>For global consumer confidence, the mechanism is clear: $104 crude translates to higher petrol prices, higher utility bills and reduced disposable income -- the University of Michigan's 51 August reading (below pre-war levels) is the demand signal</li>
+            <li>The Fed's hike into this environment -- as one analyst noted, "a rate hike does not increase the supply of gas and energy" -- reflects the risk that energy inflation bleeds into wage and service inflation if left unaddressed; the hike was a second-round inflation prevention measure, not a demand management tool</li>
+          </ul>
+          <a class="dive-deeper" href="https://aftermarketreport.zerodha.com/p/oil-eases-from-highs-helping-markets" target="_blank" rel="noopener">Dive Deeper &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ornament">-- &#10070; --</div>
+
+    <!-- 8: F1 -->
+    <div class="section">
+      <div class="section-head"><span class="section-title">Formula 1 &nbsp;&#183;&nbsp; Spanish GP &nbsp;&#183;&nbsp; Madring &nbsp;&#183;&nbsp; September 13, 2026</span><span class="section-rule"></span></div>
+      <div class="article">
+        <div class="article-hed large">Antonelli Wins Spain for 8th Victory of 2026 -- 81-Point Lead With 9 Rounds Left</div>
+        <div class="article-source">Formula1.com / RacingNews365 &nbsp;&#183;&nbsp; September 13, 2026</div>
+        <ul>
+          <li>Antonelli won the inaugural Spanish Grand Prix at Madring (Madrid's new circuit) -- his 8th win from 14 rounds; also won the Spanish Sprint, making it a clean sweep of the weekend's scoring sessions</li>
+          <li>The win extended his championship lead to 81 points over Russell (292 to 211); Mercedes leads Constructors' with 503 points, 145 clear of Ferrari</li>
+          <li>Verstappen P2 (+4.351s), Norris P3 (+5.089s) -- Red Bull their strongest showing in weeks; Ferrari's Hamilton and Leclerc both outside the top 3</li>
+          <li>Antonelli could mathematically clinch the title as early as the Singapore GP (October 9-11) if he maximises points in Baku and Singapore Sprint -- more likely outcome is Interlagos with three races remaining</li>
+          <li>Next race: Azerbaijan GP at Baku City Circuit, September 24-26; 9 rounds and 1 Sprint remaining; 233 drivers' points still available</li>
+        </ul>
+        <div class="stats-mini">
+          <div class="stat-card">
+            <div class="stat-num">292 pts</div>
+            <div class="stat-label">Antonelli leads -- 8 wins, 6 poles, 12 podiums from 14 rounds</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">81 pts</div>
+            <div class="stat-label">Lead over Russell; Hamilton 3rd, Norris 4th in the Drivers' standings</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">503 pts</div>
+            <div class="stat-label">Mercedes Constructors' lead -- 145 pts clear of Ferrari; 403 pts still available</div>
+          </div>
+        </div>
+        <a class="dive-deeper" href="https://www.formula1.com/en/racing/2026" target="_blank" rel="noopener">Dive Deeper (F1 2026 standings) &rarr;</a>
+      </div>
+    </div>
+
+    <div class="ornament">-- &#10070; --</div>
+
+    <!-- 9: CFA -->
+    <div class="section">
+      <div class="section-head"><span class="section-title">CFA Prep &nbsp;&#183;&nbsp; Formula of the Day</span><span class="section-rule"></span></div>
+      <div class="cfa-box">
+        <div class="cfa-box-label">Today's Formula -- Free Cash Flow to the Firm (FCFF)</div>
+        <div class="cfa-formula">FCFF = EBIT x (1 - T) + D&amp;A - delta WC - Capex</div>
+        <div class="cfa-vars">
+          EBIT = earnings before interest and tax &nbsp;|&nbsp; T = tax rate &nbsp;|&nbsp; D&amp;A = depreciation and amortisation<br/>
+          delta WC = change in working capital (increase = cash outflow) &nbsp;|&nbsp; Capex = capital expenditure<br/>
+          Also expressed as: FCFF = Net Income + D&amp;A + Interest x (1-T) - delta WC - Capex
+        </div>
+        <div class="cfa-tip">Exam tip: FCFF is pre-debt-service (available to both equity and debt holders), while FCFE is post-debt. When a firm carries significant debt and rates are rising (as now), the gap between FCFF and FCFE widens -- a heavily levered firm may have healthy FCFF but negative FCFE after debt obligations.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <span>Compiled by the News for Moti Intelligence Desk</span>
+    <span>Not for redistribution</span>
+    <span>Mumbai &nbsp;&#183;&nbsp; September 2026 &nbsp;&#183;&nbsp; <a href="archive/index.html" style="color:var(--ink-light);text-decoration:underline;font-style:italic;">Archive</a></span>
+  </div>
+</div>
+</body>
+</html>
