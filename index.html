@@ -3,329 +3,755 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>News for Moti &mdash; Vol. I, No. 26</title>
+<title>News for Moti &mdash; Vol. I, No. 27</title>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&display=swap');
+
   :root {
-    --ink:#1a1008; --ink-light:#3b2e1e; --rule:#1a1008;
-    --paper:#f5efe2; --paper-mid:#ede3cc; --accent:#7a1c1c;
-    --col-gap:24px; --page-pad:40px;
+    --ink: #1a1008;
+    --ink-light: #3b2e1e;
+    --rule: #1a1008;
+    --paper: #f5efe2;
+    --paper-mid: #ede3cc;
+    --accent: #7a1c1c;
+    --col-gap: 24px;
+    --page-pad: 40px;
   }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  body{background:var(--paper);color:var(--ink);font-family:'Georgia',serif;font-size:16px;line-height:1.6;}
-  a{color:var(--accent);text-decoration:none;}
-  a:hover{text-decoration:underline;}
 
-  /* MASTHEAD */
-  .masthead{text-align:center;padding:28px var(--page-pad) 12px;border-bottom:4px double var(--rule);}
-  .masthead h1{font-size:clamp(2rem,7vw,4.2rem);letter-spacing:0.04em;font-weight:700;line-height:1.1;font-family:'Georgia',serif;}
-  .masthead .tagline{font-size:0.82rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-light);margin:4px 0 8px;}
-  .masthead .meta-bar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-light);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:5px 0;margin-top:8px;}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  /* LAYOUT */
-  .page{max-width:1120px;margin:0 auto;padding:20px var(--page-pad) 40px;}
-  .section{margin-bottom:32px;}
-  .section-label{font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-light);border-bottom:1px solid var(--rule);padding-bottom:3px;margin-bottom:14px;}
-  .cols-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--col-gap);}
-  .cols-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--col-gap);}
-
-  /* ARTICLES */
-  .article{margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid var(--paper-mid);}
-  .article:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
-  .article h2{font-size:1.08rem;font-weight:700;line-height:1.3;margin-bottom:5px;}
-  .article h2.lead{font-size:1.22rem;}
-  .article p{font-size:0.91rem;color:var(--ink-light);margin-bottom:6px;}
-  .article ul{font-size:0.91rem;color:var(--ink-light);padding-left:16px;margin-bottom:6px;}
-  .article ul li{margin-bottom:3px;}
-  .dive{font-size:0.78rem;letter-spacing:0.04em;font-style:italic;}
-
-  /* MARKET TICKER */
-  .ticker{background:var(--paper-mid);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:7px var(--page-pad);display:flex;gap:28px;flex-wrap:wrap;font-size:0.8rem;letter-spacing:0.04em;}
-  .ticker span{white-space:nowrap;}
-  .up{color:#1a6b2a;font-weight:600;}
-  .dn{color:#7a1c1c;font-weight:600;}
-
-  /* ZERODHA DESK */
-  .zerodha-desk{background:var(--paper-mid);border:1px solid var(--rule);padding:14px 18px;margin-bottom:18px;}
-  .zerodha-desk .desk-head{font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-light);margin-bottom:10px;font-style:italic;}
-  .zerodha-desk .desk-cols{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
-  .zerodha-desk h3{font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:700;border-bottom:1px solid var(--rule);padding-bottom:4px;margin-bottom:8px;}
-  .zerodha-desk ul{font-size:0.87rem;color:var(--ink-light);padding-left:14px;}
-  .zerodha-desk ul li{margin-bottom:5px;}
-
-  /* IRAN CONFLICT */
-  .conflict-box{border:1px solid var(--accent);padding:12px 16px;background:#fdf5f0;margin-bottom:14px;}
-  .conflict-box .cb-label{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
-  .conflict-box p{font-size:0.89rem;color:var(--ink-light);margin-bottom:4px;}
-
-  /* CFA CORNER */
-  .cfa-box{background:var(--paper-mid);border-left:3px solid var(--accent);padding:12px 16px;font-size:0.9rem;}
-  .cfa-box .cfa-label{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;}
-  .cfa-box .formula{font-family:'Courier New',monospace;font-size:0.88rem;background:var(--paper);padding:6px 10px;margin:6px 0;border:1px solid var(--paper-mid);}
-  .cfa-box p{font-size:0.87rem;color:var(--ink-light);}
-
-  /* STAT CALLOUT */
-  .stat-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px;}
-  .stat-chip{background:var(--paper-mid);border:1px solid var(--rule);padding:6px 12px;font-size:0.8rem;white-space:nowrap;}
-  .stat-chip strong{display:block;font-size:1.05rem;}
-
-  /* FOOTER */
-  footer{text-align:center;font-size:0.72rem;color:var(--ink-light);letter-spacing:0.08em;border-top:2px double var(--rule);padding:14px var(--page-pad);}
-
-  /* RESPONSIVE */
-  @media(max-width:680px){
-    :root{--page-pad:16px;}
-    .cols-2,.cols-3,.zerodha-desk .desk-cols{grid-template-columns:1fr;}
-    .ticker{gap:14px;}
-    .masthead h1{font-size:2.1rem;}
-    .stat-row{gap:8px;}
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 15px;
+    line-height: 1.65;
   }
-  @media(max-width:400px){
-    :root{--page-pad:10px;}
-    body{font-size:15px;}
+
+  /* ---- MASTHEAD ---- */
+  .masthead {
+    border-top: 4px double var(--rule);
+    border-bottom: 4px double var(--rule);
+    text-align: center;
+    padding: 10px var(--page-pad) 8px;
+    margin-bottom: 0;
+  }
+  .masthead-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 4px;
+  }
+  .masthead h1 {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: clamp(42px, 8vw, 84px);
+    line-height: 1;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    margin: 2px 0 4px;
+  }
+  .masthead-rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 6px 0;
+  }
+  .masthead-dateline {
+    font-family: 'Source Serif 4', serif;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+  }
+  .edition-tag {
+    font-family: 'Playfair Display', serif;
+    font-size: 11px;
+    font-style: italic;
+    color: var(--accent);
+    margin-top: 4px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ---- PAGE WRAPPER ---- */
+  .page {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 var(--page-pad) var(--page-pad);
+  }
+
+  /* ---- SECTION LABELS ---- */
+  .section-label {
+    font-family: 'Source Serif 4', serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 3px;
+    margin: 28px 0 14px;
+    display: block;
+  }
+
+  /* ---- COLUMN GRID ---- */
+  .cols-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0 var(--col-gap);
+  }
+  .cols-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0 var(--col-gap);
+  }
+  .cols-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0 var(--col-gap);
+  }
+  .col-span-2 { grid-column: span 2; }
+  .col-span-3 { grid-column: span 3; }
+
+  /* ---- COLUMN DIVIDERS ---- */
+  .cols-3 > * + *, .cols-2 > * + *, .cols-4 > * + * {
+    border-left: 1px solid var(--ink-light);
+    padding-left: var(--col-gap);
+  }
+
+  /* ---- ARTICLE TYPOGRAPHY ---- */
+  .headline {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    line-height: 1.18;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .hl-xl  { font-size: clamp(22px, 3vw, 30px); }
+  .hl-lg  { font-size: clamp(18px, 2.4vw, 24px); }
+  .hl-md  { font-size: clamp(15px, 2vw, 19px); }
+  .hl-sm  { font-size: 14px; }
+
+  .deck {
+    font-family: 'Source Serif 4', serif;
+    font-size: 12.5px;
+    font-style: italic;
+    color: var(--ink-light);
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+
+  .byline {
+    font-size: 9.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 8px;
+    font-family: 'Source Serif 4', serif;
+  }
+
+  p {
+    margin-bottom: 10px;
+    text-align: justify;
+    hyphens: auto;
+    font-size: 14px;
+    line-height: 1.68;
+  }
+  p:last-child { margin-bottom: 0; }
+
+  .article { margin-bottom: 20px; }
+  .article + .article { border-top: 1px solid var(--paper-mid); padding-top: 14px; }
+
+  /* ---- PULL QUOTE ---- */
+  .pull-quote {
+    border-top: 2px solid var(--accent);
+    border-bottom: 2px solid var(--accent);
+    margin: 14px 0;
+    padding: 10px 4px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 14.5px;
+    line-height: 1.4;
+    color: var(--accent);
+    text-align: center;
+  }
+
+  /* ---- DATA TABLE ---- */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    margin: 10px 0;
+  }
+  .data-table th {
+    font-family: 'Source Serif 4', serif;
+    font-size: 9.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-bottom: 1.5px solid var(--ink);
+    padding: 3px 6px 3px 0;
+    text-align: left;
+    color: var(--ink-light);
+  }
+  .data-table td {
+    padding: 4px 6px 4px 0;
+    border-bottom: 1px solid var(--paper-mid);
+    font-family: 'Libre Baskerville', serif;
+  }
+  .data-table td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .up   { color: #2a6e2a; }
+  .down { color: var(--accent); }
+
+  /* ---- HORIZONTAL RULE ---- */
+  .h-rule {
+    border: none;
+    border-top: 1px solid var(--ink-light);
+    margin: 16px 0;
+  }
+  .h-rule-dbl {
+    border: none;
+    border-top: 3px double var(--ink);
+    margin: 24px 0;
+  }
+
+  /* ---- REFER LINK ---- */
+  .refer {
+    display: inline;
+    font-family: 'Source Serif 4', serif;
+    font-size: 11px;
+    font-style: italic;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--accent);
+  }
+  .refer:hover { border-bottom-style: solid; }
+
+  /* ---- FOOTER ---- */
+  .footer {
+    border-top: 3px double var(--rule);
+    margin-top: 28px;
+    padding-top: 10px;
+    font-size: 10px;
+    color: var(--ink-light);
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Source Serif 4', serif;
+    letter-spacing: 0.06em;
+  }
+
+  /* ---- MARKET TICKER BAR ---- */
+  .ticker-bar {
+    background: var(--ink);
+    color: var(--paper);
+    display: flex;
+    gap: 24px;
+    padding: 6px var(--page-pad);
+    font-family: 'Source Serif 4', serif;
+    font-size: 11px;
+    overflow-x: auto;
+    flex-wrap: wrap;
+  }
+  .ticker-item { white-space: nowrap; }
+  .ticker-item .label { opacity: 0.7; margin-right: 4px; }
+  .ticker-up { color: #7ecf7e; }
+  .ticker-dn { color: #f08080; }
+
+  /* ---- CFA BOX ---- */
+  .cfa-box {
+    border: 1.5px solid var(--ink);
+    padding: 14px 16px;
+    margin-top: 8px;
+    background: var(--paper-mid);
+  }
+  .cfa-box .formula {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 13px;
+    background: var(--paper);
+    border: 1px solid var(--paper-mid);
+    padding: 8px 12px;
+    margin: 8px 0;
+    text-align: center;
+    line-height: 1.8;
+  }
+
+  /* ---- RESPONSIVE ---- */
+  @media (max-width: 680px) {
+    :root { --page-pad: 16px; --col-gap: 16px; }
+    .cols-3, .cols-4 { grid-template-columns: 1fr; }
+    .cols-2 { grid-template-columns: 1fr; }
+    .cols-3 > * + *, .cols-2 > * + *, .cols-4 > * + * {
+      border-left: none;
+      padding-left: 0;
+      border-top: 1px solid var(--paper-mid);
+      padding-top: 14px;
+      margin-top: 4px;
+    }
+    .col-span-2, .col-span-3 { grid-column: span 1; }
+    .masthead-top { flex-direction: column; gap: 2px; }
+  }
+  @media (max-width: 400px) {
+    .masthead h1 { font-size: 36px; }
   }
 </style>
 </head>
 <body>
 
-<!-- MASTHEAD -->
-<div class="masthead">
-  <div class="tagline">All the news that's fit to print &mdash; curated for Moti</div>
-  <h1>News for Moti</h1>
-  <div class="meta-bar">
-    <span>Vol. I, No. 26</span>
-    <span>Monday, September 29, 2026</span>
-    <span>Oil &amp; Yields Edition</span>
-  </div>
+<!-- TICKER BAR -->
+<div class="ticker-bar">
+  <span class="ticker-item"><span class="label">NIFTY</span><span class="ticker-dn">22,780 &darr;1.56%</span></span>
+  <span class="ticker-item"><span class="label">SENSEX</span><span class="ticker-dn">75,084 &darr;1.48%</span></span>
+  <span class="ticker-item"><span class="label">BANK NIFTY</span><span class="ticker-dn">54,471 &darr;1.99%</span></span>
+  <span class="ticker-item"><span class="label">BRENT</span><span class="ticker-dn">$99.87 +2.09%</span></span>
+  <span class="ticker-item"><span class="label">GOLD</span><span class="ticker-up">$4,126 &uarr;0.28%</span></span>
+  <span class="ticker-item"><span class="label">USD/INR</span><span class="ticker-dn">96.45</span></span>
+  <span class="ticker-item"><span class="label">US 10-YR</span><span class="ticker-dn">5.26%</span></span>
+  <span class="ticker-item"><span class="label">S&amp;P 500</span><span class="ticker-dn">7,684 &darr;0.77%</span></span>
 </div>
 
-<!-- TICKER -->
-<div class="ticker">
-  <span>Sensex <span class="dn">~72,555 &darr;</span></span>
-  <span>Nifty <span class="dn">~22,716 &darr;</span></span>
-  <span>7 straight weekly losses &bull; Sep 26</span>
-  <span>Brent <span class="dn">~$108 &uarr;</span></span>
-  <span>USD/INR <span class="dn">96.15 &uarr;</span></span>
-  <span>US 10-yr <span class="dn">5.2% &uarr;</span></span>
-  <span>F1 Baku &bull; Russell wins</span>
+<!-- MASTHEAD -->
+<div class="masthead">
+  <div class="masthead-top">
+    <span>Vol. I, No. 27 &nbsp;&bull;&nbsp; Established 2026</span>
+    <span>Tuesday, September 30, 2026</span>
+    <span>For Moti &mdash; With Love</span>
+  </div>
+  <h1>News for Moti</h1>
+  <hr class="masthead-rule">
+  <div class="masthead-dateline">Tuesday, September 30, 2026 &nbsp;&bull;&nbsp; F&amp;O Expiry Edition &nbsp;&bull;&nbsp; Markets close Friday for Gandhi Jayanti</div>
+  <div class="edition-tag">The Festive Countdown Edition &mdash; 12 days to Navratri, 40 to Diwali</div>
 </div>
 
 <div class="page">
 
-  <!-- ========== SECTION 1: INDIA MARKETS ========== -->
-  <div class="section">
-    <div class="section-label">India Markets</div>
-    <div class="cols-2">
-      <div>
-        <div class="article">
-          <h2 class="lead">Seventh straight weekly loss as crude hits $108 and rupee slips to 96</h2>
-          <p>Indian markets are in a sustained correction. Nifty 50 traded near <strong>22,716</strong> intraday Monday, down sharply from last week's close of 23,140. Sensex hovered around 72,555, with both indices down over 5.8% over seven consecutive losing weeks.</p>
-          <p>Three forces are compounding the pressure: Brent crude near $108/bbl is crimping India's import bill, the rupee has weakened to 96.15 against the dollar, and rising US Treasury yields (10-yr at 5.2%) are triggering FII outflows. FIIs sold a net &#8377;18,531 crore in September alone. Domestic institutions (DIIs) absorbed much of this -- buying &#8377;16,398 crore last week -- but haven't been able to stop the slide.</p>
-          <ul>
-            <li>Nifty Bank down over 1% -- HDFC Bank and Axis Bank leading losses.</li>
-            <li>Nifty Pharma outperforming: Sun Pharma and Dr. Reddy's in green.</li>
-            <li>Market breadth: 1,881 decliners vs. 425 advancers on Sep 28. Fear &amp; Greed Index: 21 (Extreme Fear).</li>
-          </ul>
-          <p class="dive"><a href="https://sundayguardianlive.com/business/indian-stock-market-latest-news-september-26-sensex-nifty-end-seventh-straight-week-lower-key-levels-to-watch-293213/">Dive Deeper &rarr;</a></p>
-        </div>
-      </div>
-      <div>
-        <div class="article">
-          <h2>NSE listed at &#8377;1,817 -- modest 1.8% premium on debut</h2>
-          <p>National Stock Exchange made its long-awaited BSE debut on September 24, closing at <strong>&#8377;1,817</strong> -- a 1.8% premium over the &#8377;1,785 issue price. After 10 years of delays, the listing was greeted with tempered enthusiasm -- a muted premium for India's largest-ever IPO at &#8377;22,562 crore. The stock reflects NSE's near-monopoly position in derivatives but also the pricing-in of that premium by large QIB investors (12.68x subscribed) ahead of listing.</p>
-          <p class="dive"><a href="https://www.karmactive.com/nse-ipo-bse-listing-debut-price-september-2026/">Dive Deeper &rarr;</a></p>
-        </div>
-        <div class="article">
-          <h2>Industrial production at 8% YoY in August -- a bright spot</h2>
-          <p>India's industrial production growth accelerated to <strong>8%</strong> year-over-year in August, a positive signal amid the market turbulence. Exports surged to $82.68 billion in August -- up 25.4% YoY -- driven by electronics, petroleum products, and engineering goods accounting for 85% of merchandise export growth.</p>
-          <p class="dive"><a href="https://blitzindiamedia.com/news/india-weekly-news-september-2026/">Dive Deeper &rarr;</a></p>
-        </div>
-      </div>
+<!-- ============================================================
+     SECTION 1: INDIA MARKETS
+     ============================================================ -->
+<span class="section-label">India Markets</span>
+<div class="cols-3">
+
+  <div>
+    <div class="article">
+      <div class="headline hl-xl">Eighth Straight Weekly Fall: Nifty Searches for a Floor</div>
+      <div class="deck">Monthly F&amp;O expiry today adds to volatility as the index hovers near six-month lows, battered by crude above $100 and stubborn US yields.</div>
+      <div class="byline">Market Desk</div>
+      <p>India's equity benchmarks extended their losing streak into an eighth consecutive week through Monday, September 28, with the Nifty 50 closing at 22,780 -- a decline of 1.56% -- and Bank Nifty plunging 1.99% to 54,471. The breadth was brutal: decliners outnumbered advancers 1,881 to 425 in the Nifty 500, and only 20.7% of index stocks traded above their 50-day moving average. India VIX surged to 14.77, signalling elevated near-term uncertainty.</p>
+      <p>Today, Tuesday September 30, is the monthly F&amp;O expiry -- traditionally a session of amplified price swings as positions are squared off and rolled forward. Technical analysts watch 23,000 as the key support; a sustained break opens the path to 22,600 while resistance sits firmly at 23,400--23,500.</p>
+      <a href="https://stockpil.com/india-markets-today-2026-09-28" class="refer">Dive Deeper &rarr;</a>
+    </div>
+
+    <div class="article">
+      <div class="headline hl-md">Pharma Stands Alone; PSU Banks Crushed</div>
+      <p>Among 15 sectoral indices on Monday, all 15 closed in the red -- but the damage was uneven. Nifty IT shed just 0.26%, while Nifty PSU Bank collapsed 3.24% as rate-hike fears punished borrowers. Pharma held above all major moving averages, with Dr. Reddy's gaining 1.67%. Tata Motors declined 3.00%, Bajaj Finance and HDFC Bank weighed on the Sensex. Tata Teleservices surged 5.05% on 26 times typical volume.</p>
+      <a href="https://www.business-standard.com/amp/markets/news/stock-market-live-updates-september-29-sensex-today-nifty50-gift-nifty-crude-oil-price-ipo-today-126092900092_1.html" class="refer">Dive Deeper &rarr;</a>
     </div>
   </div>
 
-  <!-- ========== SECTION 2: ZERODHA DESK ========== -->
-  <div class="section">
-    <div class="section-label">Zerodha Desk</div>
-    <div class="zerodha-desk">
-      <div class="desk-head">After Market Report &mdash; Sep 28, 2026 &bull; Nifty closed 22,780 &darr;285 &bull; Decliners 1,881 / Advancers 425 &bull; Fear &amp; Greed: 21 (Extreme Fear)</div>
-      <div class="desk-cols">
-        <div>
-          <h3>Top Stories in India</h3>
-          <ul>
-            <li><strong>Industrial output</strong> accelerated to 8% YoY in August -- broad-based expansion.</li>
-            <li><strong>Consumer appliances</strong> facing 5-8% price hikes as input costs rise; ACs worst hit.</li>
-            <li><strong>Godrej Properties</strong> announced a &#8377;6,000 crore luxury housing project.</li>
-            <li><strong>Sun Pharma</strong> secured a global licensing deal for a cholesterol drug -- positive for exports.</li>
-            <li><strong>Russian crude imports</strong> fell to lowest since April, as India diversifies sourcing.</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Top Stories Globally</h3>
-          <ul>
-            <li><strong>WTI crude</strong> spiked 4%+ as US-Iran negotiations stalled and Trump rejected Iran's 7-day Hormuz offer.</li>
-            <li><strong>Gold</strong> fell to its lowest since August 5 as the dollar strengthened on inflation concerns.</li>
-            <li><strong>China's industrial profit</strong> growth slowed to 4.2% YoY -- demand recovery remains uneven.</li>
-            <li><strong>Dollar index</strong> near two-month high at 101.16 -- EM currencies under broad pressure.</li>
-            <li><strong>Nvidia</strong> gained 2.64% after announcing a record $150 billion share buyback.</li>
-          </ul>
-        </div>
-      </div>
+  <div>
+    <div class="article">
+      <div class="headline hl-lg">FIIs Stay Net Sellers; Domestic Buyers Hold the Line</div>
+      <div class="deck">Foreign institutional investors have accumulated net outflows of over Rs 11,490 crore in September even as domestic institutions counter with Rs 16,398 crore in purchases.</div>
+      <p>The divergence between foreign and domestic investor behaviour has been the defining narrative of September. FIIs bear-leaned heavily on index futures -- only 12.2% of index-futures positions were held long as of Monday -- while domestic institutions, buoyed by SIP inflows and pension-fund mandates, continued buying the dip. This tug-of-war has kept the market from a deeper collapse even as it drifts lower.</p>
+
+      <div class="pull-quote">"Domestic institutions are the last line of defence. If their buying dries up, the next support is 22,600."</div>
+
+      <p>The Fear &amp; Greed Index plunged from 37 to 21 on Monday, entering "extreme fear" territory. The Nifty 50 P/E now sits at 19.26 -- near its long-run average of 20 -- meaning valuations are approaching fair value after two years of premium. LIC Housing Finance and SAIL are under F&amp;O ban today.</p>
+      <a href="https://blog.liquide.life/weekly-review-indian-stock-market-prediction-sep-28th-oct-02nd-2026/" class="refer">Dive Deeper &rarr;</a>
+    </div>
+
+    <div class="article">
+      <div class="headline hl-sm">Markets Shut Friday for Gandhi Jayanti</div>
+      <p>October 2 is a national market holiday. This week has only four trading sessions, with Thursday October 1 the last day of the September series. Markets resume Monday, October 5.</p>
     </div>
   </div>
 
-  <!-- ========== SECTION 3: GLOBAL MARKETS ========== -->
-  <div class="section">
-    <div class="section-label">Global Markets</div>
-    <div class="cols-2">
-      <div>
-        <div class="article">
-          <h2 class="lead">Wall Street falls as Trump rejects Iran deal; oil at $108, yields at 5.2%</h2>
-          <p>US markets slid on September 28 as Trump's weekend rejection of Iran's Strait of Hormuz proposal sent oil prices higher and rattled sentiment. The <strong>S&amp;P 500 fell 0.77%</strong> to 7,683; the <strong>Nasdaq dropped 0.92%</strong> to 26,820; the Dow lost 0.67% to 51,481. Brent crude jumped to $108.50/bbl. Over 65% of US issues declined on the day.</p>
-          <ul>
-            <li><strong>Kodiak Sciences (KOD)</strong> surged 155% on positive Phase 3 clinical trial results.</li>
-            <li><strong>Nvidia</strong> +2.64% after announcing a record $150 billion buyback.</li>
-            <li><strong>Boeing</strong> fell 6.2% on fresh 737 MAX 10 certification delays.</li>
-            <li><strong>MongoDB (MDB)</strong> dropped 20% after its CEO departed for Meta.</li>
-          </ul>
-          <p class="dive"><a href="https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-sept-28-2026">Dive Deeper &rarr;</a></p>
-        </div>
-      </div>
-      <div>
-        <div class="article">
-          <h2>Nvidia's $150 billion buyback signals Big Tech confidence</h2>
-          <p>Nvidia's announcement of a $150 billion share buyback -- the largest in its history -- signals management confidence in continued AI-driven revenue growth even as markets wobble. The buyback came alongside strong forward guidance, and lifted sentiment among semiconductor and AI-adjacent names despite the broader market selloff.</p>
-          <p class="dive"><a href="https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-sept-28-2026">Dive Deeper &rarr;</a></p>
-        </div>
-        <div class="article">
-          <h2>India exports surge 25% in August to $82.7 billion</h2>
-          <p>India's merchandise exports hit $82.68 billion in August -- a 25.4% jump year-over-year and a strong signal that global demand for India-made electronics, petroleum products, and engineering goods remains robust. The figure provides a counterweight to currency and oil pressures hitting Indian markets.</p>
-          <p class="dive"><a href="https://blitzindiamedia.com/news/india-weekly-news-september-2026/">Dive Deeper &rarr;</a></p>
-        </div>
-      </div>
+  <div>
+    <table class="data-table">
+      <thead>
+        <tr><th>Index / Asset</th><th class="num">Level</th><th class="num">Change</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Nifty 50</td><td class="num">22,780</td><td class="num down">-1.56%</td></tr>
+        <tr><td>Sensex</td><td class="num">75,084</td><td class="num down">-1.48%</td></tr>
+        <tr><td>Bank Nifty</td><td class="num">54,471</td><td class="num down">-1.99%</td></tr>
+        <tr><td>Nifty IT</td><td class="num">&mdash;</td><td class="num down">-0.26%</td></tr>
+        <tr><td>Nifty PSU Bank</td><td class="num">&mdash;</td><td class="num down">-3.24%</td></tr>
+        <tr><td>India VIX</td><td class="num">14.77</td><td class="num down">+8.28%</td></tr>
+        <tr><td>USD/INR</td><td class="num">96.45</td><td class="num down">&darr;</td></tr>
+        <tr><td>10-yr G-Sec</td><td class="num">7.21%</td><td class="num down">&uarr;</td></tr>
+      </tbody>
+    </table>
+    <hr class="h-rule">
+    <div class="article">
+      <div class="headline hl-sm">Varmora Granito Lists at 4.7% Premium</div>
+      <p>The tile manufacturer debuted on BSE/NSE at a modest premium over its IPO price, offering some cheer amid a broader rout. Ola Electric fell 3.5% despite announcing a Rs 1,000 crore fundraise, suggesting investor scepticism about the EV maker's path to profitability.</p>
+      <a href="https://zerodha.com/ipo/" class="refer">Dive Deeper &rarr;</a>
+    </div>
+    <div class="article">
+      <div class="headline hl-sm">Landmark Cars Jumps 12% on Expansion Plan</div>
+      <p>The multi-brand auto dealership chain surged 12% after announcing aggressive expansion into Tier-2 cities, timed to capture the upcoming festive season demand surge. Auto stocks remain broadly under pressure on crude-driven margin worries.</p>
     </div>
   </div>
 
-  <!-- ========== SECTION 4: IRAN CONFLICT ========== -->
-  <div class="section">
-    <div class="section-label">Iran Conflict &mdash; Current Situation</div>
-    <div class="conflict-box">
-      <div class="cb-label">Situation Update &bull; Sep 29, 2026</div>
-      <p><strong>Trump rejects Iran's 7-day Hormuz proposal.</strong> Iran had offered to reopen the Strait of Hormuz within seven days if the US lifted its naval blockade, waived sanctions on Iranian oil, and agreed to a regional ceasefire including Lebanon. Trump rejected the terms on Saturday, saying "they want to make a deal, but it is not the deal that I want to make." He is now demanding nuclear concessions first -- a position Iran hasn't indicated willingness to discuss.</p>
-      <p>Talks are expected to resume this week. A US official called discussions "positive and constructive" but acknowledged Washington isn't rushing: it considers its military position in the strait strong. Iran's foreign minister said Tehran awaits formal communication through mediators. Brent crude jumped to $108.50 on the news -- the oil market remains the most direct barometer of this conflict.</p>
-      <p>Midterm elections in November add a domestic political dimension to Trump's hawkishness on terms.</p>
-      <p class="dive"><a href="https://www.cbsnews.com/live-updates/iran-war-us-trump-strait-of-hormuz-7-day-proposal/">Dive Deeper &rarr;</a> &nbsp;|&nbsp; <a href="https://armedconflicts.org/iran-news.html">Armed Conflicts live tracker &rarr;</a></p>
+</div><!-- /cols-3 -->
+
+<hr class="h-rule-dbl">
+
+<!-- ============================================================
+     SECTION 2: ZERODHA DESK
+     ============================================================ -->
+<span class="section-label">Zerodha Desk</span>
+<div class="cols-2">
+
+  <div>
+    <div class="article">
+      <div class="headline hl-lg">Oil Spike Breaches Rs 100 -- and the Market Breaks Below 22,800</div>
+      <div class="deck">Zerodha's aftermarket note captures Monday's rout: all 15 sectors fell, the Fear &amp; Greed gauge collapsed, and FIIs stayed decisively short.</div>
+      <div class="byline">Aftermarket Report, Zerodha &mdash; September 28, 2026</div>
+      <p>The September 28 aftermarket report described a session of "consistent selling pressure throughout the day." The Nifty opened with a 75-point gap down and never recovered. The three culprits: Brent crude jumping ~4% as US-Iran negotiations stalled; US Treasury yields hitting near-2007 highs at 5.26%; and FII positioning firmly short with only 12.2% long in index futures.</p>
+      <p>Market breadth was the worst of the current cycle: 1,881 declines versus 425 advances in the Nifty 500. Page Industries recorded the sharpest implied volatility jump. The report noted 52-week lows (44) outnumbered highs (6) six-to-one, and only pharma held above its key moving averages.</p>
+      <a href="https://aftermarketreport.zerodha.com/" class="refer">Dive Deeper &rarr;</a>
     </div>
   </div>
 
-  <!-- ========== SECTION 5: INDIA MACRO ========== -->
-  <div class="section">
-    <div class="section-label">India &mdash; Policy &amp; Economy</div>
-    <div class="cols-3">
-      <div class="article">
-        <h2>Inflation: Retail at 4.82%, Wholesale at 9.92%</h2>
-        <p>Retail inflation (CPI) rose to <strong>4.82%</strong> in August from 4.45% in July, while wholesale price inflation (WPI) stood at <strong>9.92%</strong>. The widening gap between consumer and producer-level inflation reflects crude oil and commodity cost pressures working through supply chains before fully hitting retail prices. This gives the RBI little room for rate cuts.</p>
-        <p class="dive"><a href="https://blitzindiamedia.com/news/india-weekly-news-september-2026/">Dive Deeper &rarr;</a></p>
-      </div>
-      <div class="article">
-        <h2>EPFO wage ceiling raised: 51 lakh workers gain coverage</h2>
-        <p>The Cabinet raised the mandatory EPFO contribution ceiling from &#8377;15,000 to <strong>&#8377;25,000</strong> per month -- the first revision since 2014. The PMO estimated this will extend formal social security to 51 lakh additional workers at a fiscal cost of &#8377;11,339 crore annually. A long-overdue structural step for India's formal employment ecosystem.</p>
-        <p class="dive"><a href="https://blitzindiamedia.com/news/india-weekly-news-september-2026/">Dive Deeper &rarr;</a></p>
-      </div>
-      <div class="article">
-        <h2>SEMICON India 2026: 56 MOUs, five plants producing</h2>
-        <p>SEMICON India 2026 concluded with 56 memoranda and announcements signed across three days, drawing 600+ exhibitors from 52 countries. Of twelve semiconductor projects approved under Phase I, <strong>five have now reached commercial production</strong>. India's chip ambitions are moving from policy to output.</p>
-        <p class="dive"><a href="https://blitzindiamedia.com/news/india-weekly-news-september-2026/">Dive Deeper &rarr;</a></p>
-      </div>
+  <div>
+    <div class="article">
+      <div class="headline hl-md">Weekly Outlook: Expiry Volatility, Then a Long Weekend</div>
+      <div class="deck">The market faces monthly F&amp;O expiry today, then just one more session Thursday before the Gandhi Jayanti break.</div>
+      <p>Zerodha's weekly note flagged crude above $100 as the dominant trigger -- every $5 move in Brent historically translates to 40--60 basis points of rupee depreciation and a 100--150 point Nifty headwind. Brent near $100 on Monday means a sustained move back above $105 would re-test 22,600 support.</p>
+      <p>On the positive side, domestic institutional buying of Rs 16,398 crore last week provides ballast, and the Nifty's P/E at 19.26 is no longer expensive. The key signpost: whether FIIs flip to net buyers in October, when historical seasonal patterns lean positive into Diwali.</p>
+      <p>Technical supports: 23,050--23,000 (immediate) and 22,800--22,600 (major). Resistance: 23,400--23,500 then 23,700--23,800.</p>
+      <a href="https://blog.liquide.life/weekly-review-indian-stock-market-prediction-sep-28th-oct-02nd-2026/" class="refer">Dive Deeper &rarr;</a>
     </div>
   </div>
 
-  <!-- ========== SECTION 6: CONSUMER TRENDS ========== -->
-  <div class="section">
-    <div class="section-label">Consumer Trends &mdash; India &amp; Global</div>
-    <div class="cols-2">
-      <div>
-        <div class="article">
-          <h2 class="lead">Festive season 2026: AI assistants, Tier-2 spending, and brand trust over discounts</h2>
-          <p>India's festive shopping season is upon us -- and the data from InMobi's latest report paints a striking picture:</p>
-          <ul>
-            <li><strong>77%</strong> of Indian consumers increased their festive budgets this year; 3 in 5 plan to spend over &#8377;10,000.</li>
-            <li><strong>Tier-2 city consumers now match metro shoppers</strong> in spending intent -- the geographic democratisation of discretionary consumption is accelerating.</li>
-            <li><strong>4 in 5 shoppers</strong> want AI-powered shopping assistants; 89% value smart search suggestions; 81% want virtual try-ons.</li>
-            <li>Millennials show 10 percentage points <em>more</em> AI enthusiasm than Gen Z.</li>
-            <li><strong>Brand trust (27%) beats discounts (22%)</strong> as the top purchase decision driver -- a shift brands should notice.</li>
-          </ul>
-          <p>Top categories: apparel (50%), jewellery (40%), grocery/essentials (37%).</p>
-          <p class="dive"><a href="https://mediabrief.com/india-festive-shopping-trends-2026/">Dive Deeper &rarr;</a></p>
-        </div>
-      </div>
-      <div>
-        <div class="article">
-          <h2>Global consumer: Frugality is the new normal</h2>
-          <p>The global consumer picture in late 2026 is defined by caution -- this isn't a cyclical pullback, it's a structural reset:</p>
-          <ul>
-            <li><strong>Non-food retail</strong> faces projected declines of 24 percentage points globally; only groceries show expected volume growth.</li>
-            <li><strong>Private label adoption</strong> has gone mainstream -- consumers across income brackets are switching from national brands to own-brand alternatives.</li>
-            <li><strong>Creator trust</strong> is now primary: authenticity and genuine community connections beat traditional advertising with younger cohorts.</li>
-            <li><strong>AI agents</strong> are beginning to handle purchase decisions autonomously -- brands must optimise for machine-readability, not just human attention.</li>
-          </ul>
-          <p>The strategic implication: brands must deliver clear value propositions and build authentic trust, not rely on promotional cycles.</p>
-          <p class="dive"><a href="https://www.accio.com/business/consumer-shopping-trends-september-2026">Dive Deeper &rarr;</a></p>
-        </div>
-      </div>
+</div><!-- /cols-2 -->
+
+<hr class="h-rule-dbl">
+
+<!-- ============================================================
+     SECTION 3: GLOBAL MARKETS
+     ============================================================ -->
+<span class="section-label">Global Markets</span>
+<div class="cols-3">
+
+  <div>
+    <div class="article">
+      <div class="headline hl-xl">Wall Street Falls as Oil Tops $100 and Yields Refuse to Ease</div>
+      <div class="deck">Monday's session ended with all three major US indices lower. The S&amp;P 500 fell 0.77% to 7,684 as investors priced in a "higher for longer" rate environment and geopolitical premium in crude.</div>
+      <div class="byline">Global Desk</div>
+      <p>The Dow Jones closed down 0.67% to 51,481, the S&amp;P 500 shed 0.77% to 7,683, and the Nasdaq fell 0.92% to 26,820 on September 28. The drivers were familiar: Trump's rejection of Iran's Strait of Hormuz proposal pushed Brent near $100, and the US 10-year Treasury yield held at 5.26% -- territory last seen around 2007.</p>
+      <p>Australia's RBA added to the hawkish mood by raising its cash rate 25 basis points to 4.60% -- its fourth hike of the year and a 15-year high -- signalling global central banks remain far from a pivot. Japan's Nikkei fell 1.35% and South Korea's Kospi dropped 1.07% in Tuesday's early Asian session.</p>
+      <a href="https://nordfx.com/market-news/market-pulse-september-29-2026" class="refer">Dive Deeper &rarr;</a>
     </div>
   </div>
 
-  <!-- ========== SECTION 7: SPORTS ========== -->
-  <div class="section">
-    <div class="section-label">Sports</div>
-    <div class="cols-2">
-      <div>
-        <div class="article">
-          <h2 class="lead">F1 Baku: Russell wins a chaotic race; Antonelli leads by 66 points</h2>
-          <p><strong>George Russell</strong> (Mercedes) claimed victory at the Azerbaijan Grand Prix by 0.196 seconds over Max Verstappen (Red Bull) in one of the most dramatic races of the 2026 season. Russell held on despite losing turbo power in the final laps -- "I had no turbo, so no power. Max almost got me at the line."</p>
-          <p>The race featured six retirements across multiple safety car phases. Notably, <strong>Lando Norris</strong> retired after a collision on lap 30, dealing a heavy blow to his already difficult title hopes (now 116 points behind with eight rounds left).</p>
-          <div class="stat-row">
-            <div class="stat-chip"><strong>1st</strong> Russell (MER)</div>
-            <div class="stat-chip"><strong>2nd</strong> Verstappen (RBR)</div>
-            <div class="stat-chip"><strong>3rd</strong> Hadjar (RBR)</div>
-            <div class="stat-chip"><strong>5th</strong> Antonelli (MER)</div>
-          </div>
-          <p><strong>Championship after Baku:</strong> Antonelli leads on 302 pts. Russell 236 (66 back). Hamilton 199 (103 back). Norris 186 (116 back). Mercedes constructor total: 538 pts -- 160 clear of Ferrari.</p>
-          <p class="dive"><a href="https://www.formula1.com/en/latest/article/russell-narrowly-holds-off-verstappen-to-take-victory-over-the-line-in-chaotic-azerbaijan-gp.5J4lgNh82JDL2GM302irF0">Dive Deeper &rarr;</a></p>
-        </div>
-      </div>
-      <div>
-        <div class="article">
-          <h2>India women win 8th Asia Cup in Dubai</h2>
-          <p>The Indian women's cricket team won their <strong>8th Asia Cup</strong> title in Dubai, capping a dominant tournament campaign. Junior hockey teams also swept both Asia Cups in Moqi -- a remarkable week for Indian women's sport.</p>
-          <p class="dive"><a href="https://blitzindiamedia.com/news/india-weekly-news-september-2026/">Dive Deeper &rarr;</a></p>
-        </div>
-        <div class="article">
-          <h2>Rozgar Mela crosses 12.75 lakh appointments</h2>
-          <p>The government's 20th Rozgar Mela distributed 51,000+ appointment letters, taking the programme's total to 12.75 lakh since October 2022. Labour force participation held at 55.6% in August with unemployment at 5.0%, with rural employment continuing to outpace urban.</p>
-          <p class="dive"><a href="https://blitzindiamedia.com/news/india-weekly-news-september-2026/">Dive Deeper &rarr;</a></p>
-        </div>
-      </div>
+  <div>
+    <div class="article">
+      <div class="headline hl-lg">Gold Edges Up as Safe-Haven Bid Intensifies</div>
+      <p>Gold gained 0.28% to $4,126 per troy ounce on Monday as investors sought safety from both geopolitical risk and inflation-linked uncertainty. The yellow metal has outperformed equities in the September quarter, supported by central bank buying and retail demand from India and China ahead of festive seasons.</p>
+      <p>Bitcoin edged down 0.06% to $83,249, relatively stable compared to equities, suggesting it is no longer treated as a pure risk-on asset.</p>
+      <a href="https://nordfx.com/market-news/market-pulse-september-29-2026" class="refer">Dive Deeper &rarr;</a>
+    </div>
+
+    <div class="article">
+      <div class="headline hl-md">EUR/USD at 1.1361; Dollar Strengthens Broadly</div>
+      <p>The US dollar index gained modestly as yield differentials widened. EUR/USD dipped 0.09% to 1.1361. Emerging market currencies, including the rupee at 96.45, remain under pressure as capital chases dollar yields.</p>
     </div>
   </div>
 
-  <!-- ========== SECTION 8: CFA CORNER ========== -->
-  <div class="section">
-    <div class="section-label">CFA Corner</div>
-    <div class="cfa-box">
-      <div class="cfa-label">Concept of the Day &mdash; EV/EBITDA Multiple</div>
-      <p>The <strong>EV/EBITDA</strong> (Enterprise Value to Earnings Before Interest, Taxes, Depreciation and Amortisation) multiple is one of the most widely used valuation tools in equity analysis -- particularly relevant for capital-intensive industries and cross-border comparisons where capital structure and tax regimes differ.</p>
-      <div class="formula">EV / EBITDA &nbsp;=&nbsp; (Market Cap + Debt &minus; Cash) &divide; EBITDA</div>
-      <p><strong>Why use it over P/E?</strong> Because EV/EBITDA is capital-structure neutral -- it looks at the whole enterprise (equity + debt), not just equity holders. This makes it far more useful when comparing companies with different debt levels, or when a company's net income is distorted by interest charges or tax loss carry-forwards.</p>
-      <p style="margin-top:8px;"><strong>Key nuance:</strong> EBITDA excludes capital expenditure -- so for asset-heavy businesses (telecoms, utilities, infrastructure), analysts often prefer EV/EBIT or EV/EBITDA minus capex (i.e., EV/EBITDA-Capex) to avoid overstating cash generation. A low multiple relative to sector peers may signal undervaluation, but always check whether EBITDA margins are sustainable.</p>
+  <div>
+    <table class="data-table">
+      <thead>
+        <tr><th>Index / Asset</th><th class="num">Level</th><th class="num">1-Day</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>S&amp;P 500</td><td class="num">7,684</td><td class="num down">-0.77%</td></tr>
+        <tr><td>Dow Jones</td><td class="num">51,481</td><td class="num down">-0.67%</td></tr>
+        <tr><td>Nasdaq</td><td class="num">26,820</td><td class="num down">-0.92%</td></tr>
+        <tr><td>Nikkei 225</td><td class="num">&mdash;</td><td class="num down">-1.35%</td></tr>
+        <tr><td>Kospi</td><td class="num">&mdash;</td><td class="num down">-1.07%</td></tr>
+        <tr><td>Brent Crude</td><td class="num">$99.87</td><td class="num down">+2.09%</td></tr>
+        <tr><td>WTI Crude</td><td class="num">$94.31</td><td class="num down">+1.85%</td></tr>
+        <tr><td>Gold</td><td class="num">$4,126</td><td class="num up">+0.28%</td></tr>
+        <tr><td>Bitcoin</td><td class="num">$83,249</td><td class="num down">-0.06%</td></tr>
+        <tr><td>US 10-Yr Yield</td><td class="num">5.26%</td><td class="num down">&uarr;</td></tr>
+        <tr><td>RBA Rate</td><td class="num">4.60%</td><td class="num down">+25bps</td></tr>
+      </tbody>
+    </table>
+    <div class="article" style="margin-top:10px;">
+      <div class="headline hl-sm">RBA Hikes to 15-Year High</div>
+      <p>Australia's fourth rate rise of 2026 reinforces that developed-market central banks are not done tightening. The move pressures the RBI -- which held at 5.25% in August -- to maintain its own hawkish stance as imported inflation via a weaker rupee adds to domestic price pressures.</p>
     </div>
   </div>
 
-</div><!-- end .page -->
+</div><!-- /cols-3 -->
 
-<footer>
-  News for Moti &bull; Vol. I, No. 26 &bull; Monday, September 29, 2026 &bull; Curated with care &bull; <a href="archive/index.html">Archive</a>
-</footer>
+<hr class="h-rule-dbl">
 
+<!-- ============================================================
+     SECTION 4: IRAN CONFLICT / GEOPOLITICS
+     ============================================================ -->
+<span class="section-label">Iran Conflict &amp; Geopolitics</span>
+<div class="cols-2">
+
+  <div>
+    <div class="article">
+      <div class="headline hl-xl">Trump Rejects Iran's Seven-Day Proposal; Both Sides Say Door Remains Open</div>
+      <div class="deck">Iran proposed a phased Hormuz reopening within a week; Trump said the terms were unacceptable but expects talks to resume. Oil prices climbed above $100 before easing slightly.</div>
+      <div class="byline">Foreign Desk</div>
+      <p>The diplomatic back-and-forth around the Strait of Hormuz entered a new phase over the weekend. Iran's Foreign Minister Abbas Araghchi proposed a seven-day ceasefire tied to a phased reopening of the strait, conditional on US compliance with a June memorandum and some flexibility on nuclear commitments. Trump's response on Truth Social: "I offered them NOTHING. Their deal is rejected." Yet within the same statement, Trump signalled that talks could resume "this week."</p>
+      <p>On Monday, Araghchi confirmed Tehran was awaiting a formal response and maintained Iran's readiness for dialogue: "It is up to President Trump to choose." US officials acknowledged that both sides exchanged messages through mediators on Monday but remain far apart on sequencing -- Washington wants verifiable nuclear progress first, Tehran demands sanctions relief before any meaningful gesture.</p>
+      <a href="https://www.cbsnews.com/live-updates/iran-war-us-trump-talks-strait-of-hormuz/" class="refer">Dive Deeper &rarr;</a>
+    </div>
+  </div>
+
+  <div>
+    <div class="article">
+      <div class="headline hl-lg">Oil Near $100: Market Prices In No Quick Resolution</div>
+      <p>Brent crude settled near $99.87 Monday and traded above $100 intraday. Approximately 40 million barrels currently transit the strait daily under US Navy escort -- a fragile arrangement that keeps global supply flowing but at elevated risk. Iran's parliament speaker warned that "no infrastructure will remain safe" if Iranian security is not guaranteed, a thinly veiled threat against Gulf energy facilities.</p>
+
+      <div class="pull-quote">"They want to make a deal, but it is not the deal that I want."<br>-- President Trump on Iran's Hormuz proposal</div>
+
+      <p>The market's base case appears to be a prolonged stalemate rather than either a clean deal or outright escalation. With both sides signalling openness while holding firm on core demands, Brent is likely to remain in the $95--$110 range until a clearer signal emerges. The key risk event: Trump has not ruled out additional military strikes on Iran before November's midterm elections.</p>
+      <a href="https://www.cbsnews.com/live-updates/iran-war-us-trump-strait-of-hormuz-7-day-proposal/" class="refer">Dive Deeper &rarr;</a>
+    </div>
+
+    <div class="article">
+      <div class="headline hl-sm">Iran Currency Hits Historic Low at 2.4 Million Rials Per Dollar</div>
+      <p>The Iranian rial fell to a record low, reflecting the compounding pressure of sanctions, import disruption, and the oil-revenue squeeze caused by the strait closure. Domestically, Iranians face severe import shortages even as the government maintains a public posture of resilience in negotiations.</p>
+    </div>
+  </div>
+
+</div><!-- /cols-2 -->
+
+<hr class="h-rule-dbl">
+
+<!-- ============================================================
+     SECTION 5: INDIA MACRO
+     ============================================================ -->
+<span class="section-label">India Macro</span>
+<div class="cols-3">
+
+  <div>
+    <div class="article">
+      <div class="headline hl-lg">RBI Holds at 5.25%, Rate-Cut Window Pushed to Q4</div>
+      <div class="deck">August's MPC meeting left the repo rate unchanged, but SBI Research expects the first cut in October as inflation moderates and growth concerns mount.</div>
+      <div class="byline">Economy Desk</div>
+      <p>The Reserve Bank of India held its repo rate at 5.25% in August, with the decision not unanimous -- two members voted for a 25 basis point cut, signalling cracks in the consensus for continued holds. The neutral stance was retained, but the tone was cautious: imported inflation from a weaker rupee and elevated oil complicate the picture. SBI Research's chief economist expects the first cut in the October MPC meeting, contingent on September CPI printing below 5%.</p>
+      <p>From a market standpoint, the rate-cut expectation supports bond prices and rate-sensitive sectors but will only materialise if the rupee stabilises and crude pulls back. Both preconditions remain uncertain given the Iran situation.</p>
+      <a href="https://cleartax.in/s/repo-rate" class="refer">Dive Deeper &rarr;</a>
+    </div>
+  </div>
+
+  <div>
+    <div class="article">
+      <div class="headline hl-md">Retail Poised for Festive Lift; Essential Inflation a Risk</div>
+      <p>India's retail sector expanded 8% year-on-year in July, and festive hiring is expected to jump 15--20% across quick commerce and retail. Trent reported 19% revenue growth in Q1 FY27, while Shoppers Stop returned to profitability. However, onion prices are up 22% year-on-year and sugar rose from Rs 48 to Rs 56 per kg -- both dampeners on discretionary spending. Consensus: FMCG demand to grow 9--11% from August through November, but electronics and clothing are vulnerable if essentials keep squeezing household budgets.</p>
+      <a href="https://www.thecore.in/economy/india-festive-season-retail-2026-inflation-fmcg-demand-outlook-870405" class="refer">Dive Deeper &rarr;</a>
+    </div>
+
+    <div class="article">
+      <div class="headline hl-sm">Quick Commerce Hiring Up 15-20% for Festive Rush</div>
+      <p>Blinkit, Zepto, and Swiggy Instamart are ramping up delivery executive headcount ahead of the Navratri-to-Diwali window, when same-day delivery of sweets, gifts, and decorations peaks sharply.</p>
+    </div>
+  </div>
+
+  <div>
+    <div class="article">
+      <div class="headline hl-md">Rs 7 Lakh Crore Festive Economy: The Countdown Begins</div>
+      <p>India's 29-day festive window -- Navratri (October 11) through Diwali (November 8) -- is projected to generate nearly Rs 7 lakh crore in commercial activity, up from Rs 6.05 lakh crore in 2025. E-commerce festive sales alone are expected to hit Rs 1.5--1.55 lakh crore, a 25--29% year-on-year jump driven by quick commerce and AI-personalised shopping. Jewellery, automobiles, and electronics lead the spending categories. Durga Puja (October 18--21) provides a regional early boost in eastern India.</p>
+      <a href="https://www.internationalnewsandviews.com/festive-season-2026-india-7-lakh-crore-business-diwali-shopping-409335-2/" class="refer">Dive Deeper &rarr;</a>
+    </div>
+  </div>
+
+</div><!-- /cols-3 -->
+
+<hr class="h-rule-dbl">
+
+<!-- ============================================================
+     SECTION 6: CONSUMER TRENDS -- INDIA
+     ============================================================ -->
+<span class="section-label">Consumer Trends India</span>
+<div class="cols-2">
+
+  <div>
+    <div class="article">
+      <div class="headline hl-xl">India's Festive Shopper: Higher Budgets, Shorter Decision Windows, AI Assistants</div>
+      <div class="deck">Spending is going up, but impulse cycles are compressing. Consumers want personalised AI help, and brand trust has overtaken discount depth as the primary purchase trigger.</div>
+      <div class="byline">Consumer Desk</div>
+      <p>India's 2026 festive shopper looks different from 2025's. YouGov and InMobi research finds that 77% of consumers enter the season with higher budgets, Tier-2 cities now match metros in purchase intent and basket sizes, and AI-powered shopping assistants influence four in five respondents' purchase journeys. Brand trust now ranks above discount depth as the primary reason to buy -- a structural shift that rewards quality communication over markdown wars.</p>
+      <p>AI tools are lifting transaction values by 46%, according to Whalesbook data, by pushing consumers toward premium variants they might not have considered independently. The festive calendar has also compressed: shopping is happening closer to event dates rather than during pre-festive "early bird" windows, requiring retailers to be agile on inventory and last-mile logistics.</p>
+      <a href="https://www.internationalnewsandviews.com/festive-season-2026-india-7-lakh-crore-business-diwali-shopping-409335-2/" class="refer">Dive Deeper &rarr;</a>
+    </div>
+  </div>
+
+  <div>
+    <div class="article">
+      <div class="headline hl-lg">Online Apparel Rises to 12% of Market; Premium Still Prefers Physical</div>
+      <p>Online apparel now represents about 12% of India's total apparel market and is growing -- but a notable bifurcation exists. Mid-market and budget clothing migrates online for convenience and price comparison, while premium buyers still prefer physical stores where fit, fabric, and personalised service matter. Brands that can serve both channels without cannibalising each other hold the advantage.</p>
+
+      <div class="pull-quote">Four in five festive shoppers want AI assistants to guide purchases; brand trust now beats discount depth.</div>
+
+      <p>The essential-goods inflation headwind is real: if onion and sugar prices remain elevated through October, household budgets will be squeezed before the electronics and clothing purchase decisions are made. Retailers in discretionary categories should monitor essential-commodity price trajectories as a leading indicator for festive demand.</p>
+      <a href="https://www.thecore.in/economy/india-festive-season-retail-2026-inflation-fmcg-demand-outlook-870405" class="refer">Dive Deeper &rarr;</a>
+    </div>
+  </div>
+
+</div><!-- /cols-2 -->
+
+<hr class="h-rule-dbl">
+
+<!-- ============================================================
+     SECTION 7: CONSUMER TRENDS -- GLOBAL
+     ============================================================ -->
+<span class="section-label">Consumer Trends Global</span>
+<div class="cols-3">
+
+  <div>
+    <div class="article">
+      <div class="headline hl-xl">The K-Shaped Economy: Rich Spend, Everyone Else Trades Down</div>
+      <div class="deck">Three-quarters of US households are substituting cheaper alternatives; consumer confidence has hit an all-time low even as unemployment stays near 4.3%.</div>
+      <div class="byline">Global Consumer Desk</div>
+      <p>The "affordability paradox" of 2026 -- low unemployment yet rock-bottom confidence -- is reshaping global consumer behaviour. Robeco's analysis finds that nearly 75% of US households are actively trading down, and executive mentions of "affordability" have tripled over five years. The University of Michigan's Consumer Sentiment Index crashed to an all-time low of 45 in May, even as jobs remained plentiful.</p>
+      <p>The explanation is the K-shape: upper-income households increased spending 5--10% since early 2025, while lower-income consumers pulled back sharply. The result is a bifurcated market where luxury and discount thrive simultaneously, while mid-market brands face structural pressure from both ends.</p>
+      <a href="https://www.robeco.com/en-int/insights/2026/07/affordability-is-steering-consumer-spending-trends" class="refer">Dive Deeper &rarr;</a>
+    </div>
+  </div>
+
+  <div>
+    <div class="article">
+      <div class="headline hl-lg">Private Label Hits $283 Billion; Resale Eyes $350 Billion by 2028</div>
+      <p>Store brands reached a record $283 billion in US sales -- nearly one-quarter of total unit volumes. Gen Z is expected to spend more on private-label products than any previous generation, driven by value consciousness and the erosion of traditional brand loyalty through social media. Meanwhile, second-hand platforms (eBay, Vinted, Poshmark) attract quality-conscious shoppers, with the resale market projected to reach $350 billion globally by 2028.</p>
+      <a href="https://www.robeco.com/en-int/insights/2026/07/affordability-is-steering-consumer-spending-trends" class="refer">Dive Deeper &rarr;</a>
+    </div>
+
+    <div class="article">
+      <div class="headline hl-sm">Fast-Food Value Wars Intensify</div>
+      <p>McDonald's, Chipotle, and Shake Shack all launched or expanded value menus in Q3 2026 to recapture price-sensitive diners who switched to grocery alternatives. With food-at-home costs falling relative to food-away-from-home, restaurants must compete on value, not just experience.</p>
+    </div>
+  </div>
+
+  <div>
+    <div class="article">
+      <div class="headline hl-md">Walmart and Amazon Win the Value Race</div>
+      <p>Two names dominate the 2026 value-retail landscape. Walmart's expanded private-label line and same-day delivery on budget items captures the lower-income trade-down. Amazon's growing Amazon Basics portfolio and Prime-gated deals capture the affluent-but-frugal shopper. Traditional branded-goods companies face a squeeze from both ends: discount retailers cutting shelf space for premium SKUs, and consumers actively seeking store brands.</p>
+
+      <div class="pull-quote">Gen Z is set to spend more on store brands than any generation before -- a permanent, not cyclical, shift.</div>
+
+      <a href="https://www.robeco.com/en-int/insights/2026/07/affordability-is-steering-consumer-spending-trends" class="refer">Dive Deeper &rarr;</a>
+    </div>
+  </div>
+
+</div><!-- /cols-3 -->
+
+<hr class="h-rule-dbl">
+
+<!-- ============================================================
+     SECTION 8: SPORTS
+     ============================================================ -->
+<span class="section-label">Sports</span>
+<div class="cols-3">
+
+  <div>
+    <div class="article">
+      <div class="headline hl-xl">India Women Win Cricket Gold at Asian Games -- Again</div>
+      <div class="deck">Harmanpreet Kaur's team defeated Sri Lanka in the final at Aichi-Nagoya to defend the gold medal won in Hangzhou 2023. Men's team awaits their semifinal.</div>
+      <div class="byline">Sports Desk</div>
+      <p>India's women's cricket team clinched gold at the 2026 Asian Games in Aichi-Nagoya, defeating Sri Lanka in the final to retain the title first won at Hangzhou 2023. Captain Harmanpreet Kaur and vice-captain Smriti Mandhana led the campaign, with young opener Pratika Rawal -- who replaced Jemimah Rodrigues -- providing crucial contributions in the knockout rounds. The result reaffirms India's dominance in women's Asian cricket.</p>
+      <p>On the men's side, captain Shreyas Iyer's team advanced to the semifinal after their quarter-final against Afghanistan was washed out, with India progressing on a better group-stage record. The men's final is scheduled for early October, and India are strong favourites for a gold double.</p>
+      <a href="https://sports.yahoo.com/articles/cricket-asian-games-2026-india-101438910.html" class="refer">Dive Deeper &rarr;</a>
+    </div>
+  </div>
+
+  <div>
+    <div class="article">
+      <div class="headline hl-lg">F1 Championship: Singapore GP Next, Antonelli Leads by 66 Points</div>
+      <p>The Formula 1 calendar heads to Marina Bay for the Singapore Grand Prix on October 9--11 -- one of the most demanding street circuits on the calendar. Kimi Antonelli holds the championship lead at 302 points, 66 ahead of George Russell and 116 ahead of Lando Norris. Russell's victory in Baku (0.196 seconds over Verstappen) gave him momentum heading into the crucial mid-October swing.</p>
+      <p>Norris's DNF in Baku effectively ended his title fight barring extraordinary results in the final six races. Red Bull's Verstappen, despite finishing second in Baku, sits 116 points behind Antonelli with 150 points remaining -- mathematically alive but statistically improbable.</p>
+      <a href="https://www.formula1.com/en/racing/2026/singapore" class="refer">Dive Deeper &rarr;</a>
+    </div>
+  </div>
+
+  <div>
+    <div class="article">
+      <div class="headline hl-md">Asian Games: India's Multi-Sport Tally Building in Aichi-Nagoya</div>
+      <p>The 2026 Asian Games (September 19 -- October 4, Aichi-Nagoya, Japan) are in their final stretch. India has been competitive across athletics, wrestling, shooting, and badminton alongside cricket. The games represent a homecoming of sorts for Japan, hosting the Asian Games for the first time since 1994.</p>
+      <a href="https://www.sportsdunia.com/news/sports-events-in-september-2026" class="refer">Dive Deeper &rarr;</a>
+    </div>
+
+    <div class="article">
+      <div class="headline hl-sm">India vs New Zealand: Tests Scheduled for October-November</div>
+      <p>Following the Asian Games, Indian men's attention shifts to a bilateral series against New Zealand -- two Tests, five T20Is, and five ODIs -- scheduled for October and November 2026. Full schedule details are expected to be confirmed by BCCI this week.</p>
+      <a href="https://sports.yahoo.com/articles/ind-vs-nz-schedule-2026-041527308.html" class="refer">Dive Deeper &rarr;</a>
+    </div>
+  </div>
+
+</div><!-- /cols-3 -->
+
+<hr class="h-rule-dbl">
+
+<!-- ============================================================
+     SECTION 9: CFA CORNER
+     ============================================================ -->
+<span class="section-label">CFA Corner</span>
+<div class="cols-2">
+
+  <div>
+    <div class="article">
+      <div class="headline hl-xl">Duration and the Bond Math Behind This Yield Spike</div>
+      <div class="deck">With the US 10-year at 5.26%, understanding Modified Duration helps explain why bond portfolios are suffering -- and how to think about the interest-rate risk in your equity holdings too.</div>
+      <div class="byline">CFA Prep Desk</div>
+      <p>Duration is one of the most tested -- and most misunderstood -- concepts in fixed income. At its simplest, <em>Macaulay Duration</em> is the weighted average time to receive a bond's cash flows, measured in years. <em>Modified Duration</em> converts that into a price-sensitivity number: how much does a bond's price change for a 1% (100 basis point) move in yields?</p>
+
+      <div class="cfa-box">
+        <div class="formula">
+          Modified Duration = Macaulay Duration / (1 + y/m)
+          <br><br>
+          % Price Change &asymp; &minus;Modified Duration &times; &Delta;y
+        </div>
+        <p>Where <em>y</em> is the yield to maturity and <em>m</em> is the number of coupon periods per year. A negative sign means bond prices fall when yields rise -- the core inverse relationship.</p>
+      </div>
+
+      <p>A 10-year zero-coupon bond has a Modified Duration near 9.5 at 5% yield. If yields rise 25 basis points (from 5% to 5.25%), the price falls approximately 9.5 &times; 0.25% = 2.375%. This is exactly what the current environment is doing to long-duration bond portfolios globally -- including India's long-dated G-Sec holdings at insurance companies and pension funds.</p>
+    </div>
+  </div>
+
+  <div>
+    <div class="article">
+      <div class="headline hl-lg">Why Duration Matters for Equity Investors Too</div>
+      <p>Many equity investors dismiss duration as a "bonds thing," but growth stocks are long-duration assets. A company whose cash flows arrive mostly 10--15 years in the future behaves like a long-duration bond: its present value is exquisitely sensitive to the discount rate. When the US 10-year yield rises from 4% to 5.26%, the discount rate for future cash flows rises substantially -- mechanically compressing the present value of growth stocks.</p>
+
+      <div class="pull-quote">IT and growth stocks -- long-duration by nature -- face a structural headwind until yields peak and plateau.</div>
+
+      <p>This is one reason Indian IT stocks have been relatively weak even as earnings remain solid. Nifty IT's comparative resilience (-0.26% vs. PSU Banks' -3.24%) masks a larger point: IT would be rallying much harder in a lower-yield world. The same applies to any stock with a premium P/E multiple -- the denominator in the discount rate has risen sharply, compressing what investors will pay for distant earnings.</p>
+
+      <div class="cfa-box">
+        <strong>Quick Concept Check:</strong>
+        <ul style="margin-top:8px; padding-left:18px; font-size:13px; line-height:1.7;">
+          <li>Coupon bond: Duration &lt; Maturity (intermediate cash flows shorten weighted average)</li>
+          <li>Zero-coupon bond: Duration = Maturity exactly</li>
+          <li>Higher coupon rate &rarr; lower duration (more early cash flows)</li>
+          <li>Callable bonds: Duration falls as yields drop (call option gets more valuable)</li>
+        </ul>
+      </div>
+
+      <a href="https://300hours.com/cfa-level-1-fixed-income-cheat-sheet/" class="refer">Dive Deeper &rarr;</a>
+    </div>
+  </div>
+
+</div><!-- /cols-2 -->
+
+<!-- FOOTER -->
+<hr class="h-rule-dbl">
+<div class="footer">
+  <span>News for Moti &bull; Vol. I, No. 27 &bull; Tuesday, September 30, 2026</span>
+  <span>Compiled with care &bull; <a href="archive/index.html" style="color:var(--ink-light); text-decoration:none;">Archive</a></span>
+  <span>For personal use only &bull; All times IST</span>
+</div>
+
+</div><!-- /page -->
 </body>
 </html>
