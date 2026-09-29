@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>News for Moti &mdash; Vol. I, No. 25</title>
+<style>
+  :root {
+    --ink:#1a1008; --ink-light:#3b2e1e; --rule:#1a1008;
+    --paper:#f5efe2; --paper-mid:#ede3cc; --accent:#7a1c1c;
+    --col-gap:24px; --page-pad:40px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--paper);color:var(--ink);font-family:'Georgia',serif;font-size:16px;line-height:1.6;}
+  a{color:var(--accent);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+
+  /* MASTHEAD */
+  .masthead{text-align:center;padding:28px var(--page-pad) 12px;border-bottom:4px double var(--rule);}
+  .masthead h1{font-size:clamp(2rem,7vw,4.2rem);letter-spacing:0.04em;font-weight:700;line-height:1.1;font-family:'Georgia',serif;}
+  .masthead .tagline{font-size:0.82rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-light);margin:4px 0 8px;}
+  .masthead .meta-bar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-light);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:5px 0;margin-top:8px;}
+
+  /* LAYOUT */
+  .page{max-width:1120px;margin:0 auto;padding:20px var(--page-pad) 40px;}
+  .section{margin-bottom:32px;}
+  .section-label{font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-light);border-bottom:1px solid var(--rule);padding-bottom:3px;margin-bottom:14px;}
+  .cols-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--col-gap);}
+  .cols-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--col-gap);}
+  .col-divider{border:none;border-left:1px solid var(--rule);margin:0;}
+
+  /* ARTICLES */
+  .article{margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid var(--paper-mid);}
+  .article:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+  .article h2{font-size:1.08rem;font-weight:700;line-height:1.3;margin-bottom:5px;}
+  .article h2.lead{font-size:1.22rem;}
+  .article p{font-size:0.91rem;color:var(--ink-light);margin-bottom:6px;}
+  .article ul{font-size:0.91rem;color:var(--ink-light);padding-left:16px;margin-bottom:6px;}
+  .article ul li{margin-bottom:3px;}
+  .dive{font-size:0.78rem;letter-spacing:0.04em;font-style:italic;}
+
+  /* MARKET TICKER */
+  .ticker{background:var(--paper-mid);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:7px var(--page-pad);display:flex;gap:28px;flex-wrap:wrap;font-size:0.8rem;letter-spacing:0.04em;}
+  .ticker span{white-space:nowrap;}
+  .up{color:#1a6b2a;font-weight:600;}
+  .dn{color:#7a1c1c;font-weight:600;}
+
+  /* ZERODHA DESK */
+  .zerodha-desk{background:var(--paper-mid);border:1px solid var(--rule);padding:14px 18px;margin-bottom:18px;}
+  .zerodha-desk .desk-head{font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-light);margin-bottom:10px;font-style:italic;}
+  .zerodha-desk .desk-cols{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .zerodha-desk h3{font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:700;border-bottom:1px solid var(--rule);padding-bottom:4px;margin-bottom:8px;}
+  .zerodha-desk ul{font-size:0.87rem;color:var(--ink-light);padding-left:14px;}
+  .zerodha-desk ul li{margin-bottom:5px;}
+
+  /* IRAN CONFLICT */
+  .conflict-box{border:1px solid var(--accent);padding:12px 16px;background:#fdf5f0;margin-bottom:14px;}
+  .conflict-box .cb-label{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
+  .conflict-box p{font-size:0.89rem;color:var(--ink-light);margin-bottom:4px;}
+
+  /* CFA CORNER */
+  .cfa-box{background:var(--paper-mid);border-left:3px solid var(--accent);padding:12px 16px;font-size:0.9rem;}
+  .cfa-box .cfa-label{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;}
+  .cfa-box .formula{font-family:'Courier New',monospace;font-size:0.88rem;background:var(--paper);padding:6px 10px;margin:6px 0;border:1px solid var(--paper-mid);}
+  .cfa-box p{font-size:0.87rem;color:var(--ink-light);}
+
+  /* FOOTER */
+  footer{text-align:center;font-size:0.72rem;color:var(--ink-light);letter-spacing:0.08em;border-top:2px double var(--rule);padding:14px var(--page-pad);}
+
+  /* RESPONSIVE */
+  @media(max-width:680px){
+    :root{--page-pad:16px;}
+    .cols-2,.cols-3,.zerodha-desk .desk-cols{grid-template-columns:1fr;}
+    .ticker{gap:14px;}
+    .masthead h1{font-size:2.1rem;}
+  }
+  @media(max-width:400px){
+    :root{--page-pad:10px;}
+    body{font-size:15px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <div class="tagline">All the news that's fit to print &mdash; curated for Moti</div>
+  <h1>News for Moti</h1>
+  <div class="meta-bar">
+    <span>Vol. I, No. 25</span>
+    <span>Tuesday, September 22, 2026</span>
+    <span>Baku Eve Edition</span>
+  </div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker">
+  <span>Sensex <span class="dn">74,529 &darr;330</span></span>
+  <span>Nifty <span class="dn">23,329 &darr;85</span></span>
+  <span>NSE IPO GMP <span class="up">&#8377;1,853 est.</span></span>
+  <span>Brent Crude <span class="dn">~$88 &darr;</span></span>
+  <span>USD/INR <span class="dn">&uarr; mild</span></span>
+  <span>F1 Baku &bull; Sep 26</span>
+</div>
+
+<div class="page">
+
+  <!-- ========== SECTION 1: INDIA MARKETS ========== -->
+  <div class="section">
+    <div class="section-label">India Markets</div>
+    <div class="cols-2">
+      <div>
+        <div class="article">
+          <h2 class="lead">Gains wiped as F&amp;O expiry drags Nifty below 23,350</h2>
+          <p>Tuesday's session started positively but reversed sharply heading into the weekly F&amp;O expiry. Nifty 50 closed at <strong>23,329</strong>, down 85 points (0.36%), while Sensex settled at <strong>74,529</strong>, shedding 330 points (0.44%). IT stocks led losses -- the Nifty IT index fell 0.86% -- joined by FMCG and PSU bank counters. Market breadth was nearly flat: 2,171 shares rose on BSE against 2,181 that declined.</p>
+          <p>Bright spots emerged in media, realty, and metals. The BSE 150 MidCap index eked out a 0.02% gain while the BSE SmallCap 250 dipped 0.25%.</p>
+          <p class="dive"><a href="https://www.business-standard.com/markets/capital-market-news/sensex-settles-330-pts-lower-nifty-ends-below-23-350-126092200798_1.html">Dive Deeper &rarr;</a></p>
+        </div>
+      </div>
+      <div>
+        <div class="article">
+          <h2>NSE IPO: Allotment today; listing September 24 on BSE</h2>
+          <p>National Stock Exchange's landmark IPO -- India's largest at <strong>&#8377;22,562 crore</strong> -- reached allotment on Tuesday after closing oversubscribed 5.71x. QIBs led with 12.68x, HNIs at 6.55x, retail at 1.39x. The grey market premium stood at &#8377;68 per share (4% over the &#8377;1,785 issue price), implying a listing price of ~&#8377;1,853. Official listing on BSE is scheduled for September 24.</p>
+          <p class="dive"><a href="https://www.ipoji.com/ipo/nse-ipo">Dive Deeper &rarr;</a></p>
+        </div>
+        <div class="article">
+          <h2>Moody's upgrades India growth forecast to 7% for FY27</h2>
+          <p>Moody's raised its India GDP growth forecast to <strong>7%</strong> for FY2027, citing robust domestic consumption and infrastructure spend. However, it flagged potential inflation reaching 4.8% due to crude oil pricing pressures and food cost headwinds stemming from the El Nino weather pattern.</p>
+          <p class="dive"><a href="https://www.freejobalert.com/articles/daily-current-affairs-22-september-2026-10435">Dive Deeper &rarr;</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SECTION 2: ZERODHA DESK ========== -->
+  <div class="section">
+    <div class="section-label">Zerodha Desk</div>
+    <div class="zerodha-desk">
+      <div class="desk-head">After Market Report &mdash; Sep 21, 2026 &bull; Nifty closed 23,414 &bull; Advances 1,049 / Declines 1,243</div>
+      <div class="desk-cols">
+        <div>
+          <h3>Top Stories in India</h3>
+          <ul>
+            <li><strong>Core sector growth</strong> slowed to 4.8% YoY in August; cement bucked the trend at +12.5%.</li>
+            <li><strong>Coal crisis:</strong> ~40% of coal-fired plants at critically low fuel stocks amid El Nino disruptions.</li>
+            <li><strong>Starbucks GCC:</strong> Opening a Global Capability Centre in Chennai, targeting ~800 jobs.</li>
+            <li><strong>Indian Oil</strong> approved a &#8377;2,449 crore natural gas pipeline investment.</li>
+            <li><strong>Dilip Buildcon</strong> divesting its solar portfolio at &#8377;6,829 crore enterprise value.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Top Stories Globally</h3>
+          <ul>
+            <li><strong>Crude</strong> fell toward $97.3/bbl on diplomatic de-escalation; oil stocks pressured globally.</li>
+            <li><strong>US 10-yr Treasury</strong> yield declined to 4.95% as inflation concerns eased slightly.</li>
+            <li><strong>Bitcoin</strong> rose above $84,000 (+5.6% in 24 hrs) following regulatory developments in the US.</li>
+            <li><strong>Volvo Cars</strong> appointed Klaus Zellmer as incoming CEO.</li>
+            <li><strong>SoftBank</strong> launched a $10+ billion bond sale to fund its OpenAI investment.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SECTION 3: GLOBAL MARKETS ========== -->
+  <div class="section">
+    <div class="section-label">Global Markets</div>
+    <div class="cols-2">
+      <div>
+        <div class="article">
+          <h2 class="lead">Wall Street holds gains; Nasdaq at record levels post-AMD surge</h2>
+          <p>US equities continued their strong run from the prior session. The <strong>S&amp;P 500</strong> closed around 7,765 after a 1.49% surge on September 21; the <strong>Nasdaq</strong> printed 27,122 -- its first record close since June -- propelled by a 10% rally in AMD following a blockbuster earnings report. Intel jumped 12%, Meta rose 12%, and Dow Jones closed at 52,049. AMD crossed the <strong>$1 trillion market cap</strong> milestone.</p>
+          <p>Crude oil fell 4.5% as Iran-US tensions eased, boosting consumer stocks and airline margins. The tech-driven rally is being watched closely for signs of a sustained breakout.</p>
+          <p class="dive"><a href="https://www.cnbc.com/2026/09/20/stock-market-today-live-updates.html">Dive Deeper &rarr;</a></p>
+        </div>
+      </div>
+      <div>
+        <div class="article">
+          <h2>SoftBank's $10B OpenAI bond: AI capital keeps flowing</h2>
+          <p>SoftBank launched a $10 billion-plus bond offering to fund its stake-building in OpenAI -- one of the largest single-entity AI investment vehicles in history. The move underscores how capital is continuing to flow towards large AI players even as public market sentiment on tech remains bifurcated.</p>
+          <p class="dive"><a href="https://aftermarketreport.zerodha.com/p/crude-cools-markets-breathe-easier">Dive Deeper &rarr;</a></p>
+        </div>
+        <div class="article">
+          <h2>India-Canada CEPA talks accelerate</h2>
+          <p>Trade negotiators from India and Canada signalled accelerated progress on a Comprehensive Economic Partnership Agreement at the sidelines of the Shanghai Cooperation Organisation meeting. India also pushed for paperless trade and electronic documentation frameworks at the summit.</p>
+          <p class="dive"><a href="https://blitzindiamedia.com/news/india-economic-policy-updates-september-2026/">Dive Deeper &rarr;</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SECTION 4: IRAN CONFLICT ========== -->
+  <div class="section">
+    <div class="section-label">Iran Conflict &mdash; Current Situation</div>
+    <div class="conflict-box">
+      <div class="cb-label">Situation Update &bull; Sep 22, 2026</div>
+      <p>The fragile ceasefire framework -- the Islamabad Memorandum of Understanding signed in mid-June 2026 -- remains in effect. A tentative deal reached in late May extended the ceasefire by 60 days and opened a window for new nuclear talks, though Trump has not formally endorsed the agreement.</p>
+      <p>Key sticking points remain: VP JD Vance cited "a couple of language points" around highly enriched uranium stockpiles and enrichment capability limits. Despite the framework, ceasefire violations continue: Kuwait intercepted Iranian missiles and drones ahead of the announcement, which the US military called an "egregious violation."</p>
+      <p>Iran's threat to expand the "geography of the war" hangs in the background. Oil prices are reacting to each diplomatic signal -- Brent fell to ~$88 after the weekend de-escalation.</p>
+      <p class="dive"><a href="https://armedconflicts.org/iran-news.html">Dive Deeper &rarr;</a> &nbsp;|&nbsp; <a href="https://www.pbs.org/newshour/world/u-s-and-iranian-negotiators-reach-tentative-deal-to-extend-ceasefire-and-start-new-nuclear-talks">PBS: Ceasefire deal details &rarr;</a></p>
+    </div>
+  </div>
+
+  <!-- ========== SECTION 5: INDIA MACRO ========== -->
+  <div class="section">
+    <div class="section-label">India &mdash; Policy &amp; Economy</div>
+    <div class="cols-3">
+      <div class="article">
+        <h2>Semiconductor Mission Phase II: $13.5bn</h2>
+        <p>India launched the second phase of its Semiconductor Mission with $13.5 billion in government funding. Commercial production has begun at plants in Mohali and Surat. Industry commitments at SEMICON India 2026 added $11-12 billion more, cementing India's chip ambitions.</p>
+        <p class="dive"><a href="https://blitzindiamedia.com/news/india-economic-policy-updates-september-2026/">Dive Deeper &rarr;</a></p>
+      </div>
+      <div class="article">
+        <h2>HAL delivers Tejas trainers and Dhruv NG helicopters</h2>
+        <p>Hindustan Aeronautics delivered its final batch of LCA Tejas twin-seater trainers, three HTT-40 basic trainer aircraft (named "Ankur"), and four Dhruv NG civil helicopters. India also successfully test-fired "KAL," its first domestically developed long-range attack drone with a 1,000 km range and 7-8 hour endurance from Pokhran.</p>
+        <p class="dive"><a href="https://www.freejobalert.com/articles/daily-current-affairs-22-september-2026-10435">Dive Deeper &rarr;</a></p>
+      </div>
+      <div class="article">
+        <h2>EPFO wage ceiling raised; 51 lakh new workers to gain coverage</h2>
+        <p>The government raised the mandatory EPFO contribution wage ceiling from &#8377;15,000 to &#8377;25,000 per month -- the first hike since 2014. This is expected to bring 51 lakh additional employees under formal social security coverage.</p>
+        <p class="dive"><a href="https://blitzindiamedia.com/news/india-economic-policy-updates-september-2026/">Dive Deeper &rarr;</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SECTION 6: CONSUMER TRENDS ========== -->
+  <div class="section">
+    <div class="section-label">Consumer Trends &mdash; India &amp; Global</div>
+    <div class="cols-2">
+      <div>
+        <div class="article">
+          <h2 class="lead">India's consumer boom is moving beyond the top 5 cities</h2>
+          <p>A striking insight from the World Economic Forum: 93% of India's urban consumer class growth over the next 15 years will occur <em>outside</em> Delhi, Mumbai, Bangalore, Chennai, and Hyderabad. By 2035, India will have ~499 cities where three-quarters of residents qualify as consumers (spending $13+ per day). By 2040, 149 cities will have half-a-million consumers each.</p>
+          <ul>
+            <li>Middle and affluent classes will rise from 80% of spending in 2026 to 93% by 2036.</li>
+            <li>Brands relying on metro-first strategies face a reckoning: distributed operations across hundreds of smaller cities are now table stakes.</li>
+            <li>India's consumption geography looks increasingly like China's a decade ago.</li>
+          </ul>
+          <p class="dive"><a href="https://www.weforum.org/stories/2026/02/massive-urban-shift-in-india-consumer-growth-decentralizing/">Dive Deeper &rarr;</a></p>
+        </div>
+      </div>
+      <div>
+        <div class="article">
+          <h2>McKinsey's 4 forces reshaping global consumers in 2026</h2>
+          <p>McKinsey's State of Consumer 2026 report identifies four macro shifts every brand should understand:</p>
+          <ul>
+            <li><strong>Tech-Driven Discovery:</strong> Social media now drives purchase intent across all stages for Gen Z; AI search is rewiring how consumers research.</li>
+            <li><strong>Health Revolution:</strong> Wellness now means sleep quality, gut health, and stress management, not just fitness. GLP-1 medications and wearables are major catalysts.</li>
+            <li><strong>Experience Economy:</strong> Travel and dining outpace non-essential goods growth even as consumers feel squeezed.</li>
+            <li><strong>Resourceful Consumer:</strong> Secondhand buying, DIY, and item repair have gone mainstream across income levels -- even affluent buyers are intentionally frugal.</li>
+          </ul>
+          <p class="dive"><a href="https://www.mckinsey.com/industries/consumer-packaged-goods/our-insights/state-of-consumer">Dive Deeper &rarr;</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SECTION 7: SPORTS ========== -->
+  <div class="section">
+    <div class="section-label">Sports</div>
+    <div class="cols-2">
+      <div>
+        <div class="article">
+          <h2 class="lead">F1 Baku: Antonelli's mind is the title race's biggest wildcard</h2>
+          <p>Formula 1 heads to the Baku City Circuit for the Azerbaijan Grand Prix (Race day: Saturday, September 26 -- moved from Sunday to avoid Azerbaijan's Remembrance Day). Kimi Antonelli leads the championship with <strong>292 points</strong>, 81 clear of George Russell and 106 ahead of Lando Norris.</p>
+          <ul>
+            <li><strong>Leclerc's gamble:</strong> Ferrari may deploy a fresh power unit at Leclerc's favourite street circuit (4 straight poles here), risking a grid penalty.</li>
+            <li><strong>Norris' math:</strong> Three poles in the last four races, two wins -- but 106 points back with nine rounds left makes it near-impossible arithmetic.</li>
+            <li><strong>Verstappen's hunt:</strong> RBR's driver seeks his first 2026 victory at a circuit where he dominated last year.</li>
+            <li><strong>Mercedes strategy:</strong> Holding the W17's major upgrade for Malaysia, leaning on low-drag efficiency that worked at Monza.</li>
+          </ul>
+          <p class="dive"><a href="https://coffeecornermotorsport.com/azerbaijan-grand-prix-2026-preview/">Dive Deeper &rarr;</a></p>
+        </div>
+      </div>
+      <div>
+        <div class="article">
+          <h2>Cricket: India faces Japan in historic T20I</h2>
+          <p>India's men's team plays Japan in a T20 International in Tochigi -- Japan's first-ever T20I against a full ICC member nation. The match marks a milestone for cricket's global expansion in Asia.</p>
+          <p class="dive"><a href="https://english.dainikjagranmpcg.com/top-stories/september-22-2026-top-news-headlines-from-india-and-world/article-32322">Dive Deeper &rarr;</a></p>
+        </div>
+        <div class="article">
+          <h2>Asian Games: Women's cricket reaches final</h2>
+          <p>India's women's cricket team reached the Asian Games final after defeating Bangladesh. Indian athletes are also picking up medals in MMA and shooting at the ongoing Games.</p>
+          <p class="dive"><a href="https://english.dainikjagranmpcg.com/top-stories/september-22-2026-top-news-headlines-from-india-and-world/article-32322">Dive Deeper &rarr;</a></p>
+        </div>
+        <div class="article">
+          <h2>72nd National Film Awards: "Article 370" wins Best Film</h2>
+          <p>President Droupadi Murmu will present the 72nd National Film Awards in Gujarat. "Article 370" won Best Feature Film; Yami Gautam was named Best Actress.</p>
+          <p class="dive"><a href="https://english.dainikjagranmpcg.com/top-stories/september-22-2026-top-news-headlines-from-india-and-world/article-32322">Dive Deeper &rarr;</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SECTION 8: CFA CORNER ========== -->
+  <div class="section">
+    <div class="section-label">CFA Corner</div>
+    <div class="cfa-box">
+      <div class="cfa-label">Concept of the Day &mdash; Gordon Growth Model</div>
+      <p>The <strong>Gordon Growth Model (GGM)</strong> -- also called the Dividend Discount Model -- values a stock based on a perpetually growing stream of future dividends. It is the cornerstone of intrinsic value analysis for dividend-paying equities.</p>
+      <div class="formula">V&nbsp;=&nbsp;D&sub;1; &divide; (r &minus; g)</div>
+      <p>Where: <strong>D&sub;1;</strong> = next year's expected dividend per share &nbsp;|&nbsp; <strong>r</strong> = required rate of return &nbsp;|&nbsp; <strong>g</strong> = constant dividend growth rate</p>
+      <p style="margin-top:8px;"><em>Key assumption:</em> g must be less than r, and the model assumes dividends grow at a constant rate forever -- making it most useful for mature, stable companies in steady-state industries. For high-growth or cyclical firms, multi-stage DDM models are preferred.</p>
+    </div>
+  </div>
+
+</div><!-- end .page -->
+
+<footer>
+  News for Moti &bull; Vol. I, No. 25 &bull; Tuesday, September 22, 2026 &bull; Curated with care &bull; <a href="archive/index.html">Archive</a>
+</footer>
+
+</body>
+</html>
